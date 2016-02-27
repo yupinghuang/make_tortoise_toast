@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="51.0" layoutY="328.0" mnemonicParsing="false" text="SUBMIT" />
+      <ImageView fitHeight="320.0" fitWidth="318.0" layoutX="122.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@toast.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="7.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Toast for Tory the Tortoise">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Button layoutX="448.0" layoutY="99.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button layoutX="448.0" layoutY="155.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button layoutX="448.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button layoutX="448.0" layoutY="272.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button layoutX="448.0" layoutY="328.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button layoutX="448.0" layoutY="43.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <ProgressIndicator layoutX="51.0" layoutY="235.0" prefHeight="75.0" prefWidth="68.0" progress="0.76">
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </ProgressIndicator>
+      <ImageView fitHeight="75.0" fitWidth="86.0" layoutX="47.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@toast.png" />
+         </image>
+      </ImageView>
+      <CheckBox layoutX="42.0" layoutY="43.0" mnemonicParsing="false" selected="true" text="Ingredient 1" />
+      <CheckBox layoutX="42.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Ingredient 2" />
+      <CheckBox layoutX="42.0" layoutY="90.0" mnemonicParsing="false" text="Ingredient 3" />
+      <CheckBox layoutX="42.0" layoutY="113.0" mnemonicParsing="false" text="Ingredient 4" />
+      <Slider layoutX="409.0" layoutY="235.0" orientation="VERTICAL" showTickMarks="true" />
+   </children>
+</Pane>
