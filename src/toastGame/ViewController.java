@@ -11,7 +11,7 @@ import javafx.scene.control.Button;
 
 public class ViewController implements Initializable {
 	@FXML
-	private Button firstButton;
+	private Button toppingOne;
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
 		System.out.println("firstButton pressed!");
@@ -20,7 +20,7 @@ public class ViewController implements Initializable {
 	@Override // This method is called by the FXMLLoader when initialization is
 				// complete
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		assert firstButton != null : "fx:id=\"firstButton\" was not injected: check your FXML file 'simple.fxml'.";
+		assert toppingOne != null : "fx:id=\"toppingOne\" was not injected: check your FXML file 'simple.fxml'.";
 
 		// initialize your logic here: all @FXML variables will have been
 		// injected

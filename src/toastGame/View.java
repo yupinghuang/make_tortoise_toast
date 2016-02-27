@@ -15,9 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class View extends Application {
-	// Variable Declarations
-	@FXML
-	public Button firstButton;
+
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -25,7 +23,6 @@ public class View extends Application {
 		//ViewController controller = new ViewController();
 		Pane page = (Pane) FXMLLoader.load(View.class.getResource("ToastForToryMock.fxml"));
 		Scene scene = new Scene(page);
-		System.out.println(firstButton);
 
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("FXML is Simple");
