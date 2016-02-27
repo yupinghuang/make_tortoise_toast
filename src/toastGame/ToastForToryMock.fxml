@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="toastGame.View" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="51.0" layoutY="328.0" mnemonicParsing="false" text="SUBMIT" />
       <ImageView fitHeight="320.0" fitWidth="318.0" layoutX="122.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
@@ -21,7 +21,7 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button layoutX="448.0" layoutY="99.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button fx:id="firstButton" fx:controller="toastGame.ViewController" layoutX="448.0" layoutY="99.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
       <Button layoutX="448.0" layoutY="155.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
       <Button layoutX="448.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
       <Button layoutX="448.0" layoutY="272.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
@@ -37,8 +37,8 @@
             <Image url="@toast.png" />
          </image>
       </ImageView>
-      <CheckBox layoutX="42.0" layoutY="43.0" mnemonicParsing="false" selected="true" text="Ingredient 1" />
-      <CheckBox layoutX="42.0" layoutY="66.0" mnemonicParsing="false" selected="true" text="Ingredient 2" />
+      <CheckBox layoutX="42.0" layoutY="43.0" mnemonicParsing="false" text="Ingredient 1" />
+      <CheckBox layoutX="42.0" layoutY="66.0" mnemonicParsing="false" text="Ingredient 2" />
       <CheckBox layoutX="42.0" layoutY="90.0" mnemonicParsing="false" text="Ingredient 3" />
       <CheckBox layoutX="42.0" layoutY="113.0" mnemonicParsing="false" text="Ingredient 4" />
       <Slider layoutX="409.0" layoutY="235.0" orientation="VERTICAL" showTickMarks="true" />
