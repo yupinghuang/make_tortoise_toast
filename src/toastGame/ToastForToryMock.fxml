@@ -7,8 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane fx:controller="toastGame.View" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button layoutX="51.0" layoutY="328.0" mnemonicParsing="false" text="SUBMIT" />
       <ImageView fitHeight="320.0" fitWidth="318.0" layoutX="122.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
@@ -21,12 +20,12 @@
             <Font size="30.0" />
          </font>
       </Text>
-      <Button fx:id="firstButton" fx:controller="toastGame.ViewController" layoutX="448.0" layoutY="99.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
-      <Button layoutX="448.0" layoutY="155.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
-      <Button layoutX="448.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
-      <Button layoutX="448.0" layoutY="272.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
-      <Button layoutX="448.0" layoutY="328.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
-      <Button layoutX="448.0" layoutY="43.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="Topping" />
+      <Button fx:id="toppingTwo" layoutX="448.0" layoutY="99.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="toppingTwo" />
+      <Button fx:id="toppingThree" layoutX="448.0" layoutY="155.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="toppingThree" />
+      <Button fx:id="toppingFour" layoutX="448.0" layoutY="213.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="toppingFour" />
+      <Button fx:id="toppingFive" layoutX="448.0" layoutY="272.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="toppingFive" />
+      <Button fx:id="toppingSix" layoutX="448.0" layoutY="328.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="134.0" text="toppingSix" />
+      <Button fx:id="toppingOne" layoutX="448.0" layoutY="43.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="45.0" prefWidth="134.0" text="toppingOne" />
       <ProgressIndicator layoutX="51.0" layoutY="235.0" prefHeight="75.0" prefWidth="68.0" progress="0.76">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
