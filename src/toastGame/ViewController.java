@@ -13,7 +13,7 @@ public class ViewController implements Initializable {
 	@FXML
 	private Button firstButton;
 	@FXML
-	protected void handle(ActionEvent event) {
+	protected void handleButtonAction(ActionEvent event) {
 		System.out.println("firstButton pressed!");
 	}
 	
