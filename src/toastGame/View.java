@@ -1,16 +1,9 @@
 package toastGame;
 //https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
 
-import java.io.File;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 

@@ -4,7 +4,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -32,33 +31,33 @@ public class ViewController implements Initializable {
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
 		System.out.println("Button Pressed!");
-		System.out.println(event);
+		//System.out.println(event);
 		if (event.toString().equals(TOPPINGONE)) {
-			System.out.println("Topping One");
+			//System.out.println("Topping One");
 			myController.addToppingOne();
 		}
 		if (event.toString().equals(TOPPINGTWO)) {
-			System.out.println("Topping Two");
+			//System.out.println("Topping Two");
 			myController.addToppingTwo();
 		}
 		if (event.toString().equals(TOPPINGTHREE)) {
-			System.out.println("Topping Three");
+			//System.out.println("Topping Three");
 			myController.addToppingThree();
 		}
 		if (event.toString().equals(TOPPINGFOUR)) {
-			System.out.println("Topping Four");
+			//System.out.println("Topping Four");
 			myController.addToppingFour();
 		}
 		if (event.toString().equals(TOPPINGFIVE)) {
-			System.out.println("Topping Five");
+			//System.out.println("Topping Five");
 			myController.addToppingFive();
 		}
 		if (event.toString().equals(TOPPINGSIX)) {
-			System.out.println("Topping Six");
+			//System.out.println("Topping Six");
 			myController.addToppingSix();
 		}
 		if (event.toString().equals(SUBMIT)){
-			System.out.println("Submit button pressed");
+			//System.out.println("Submit button pressed");
 			myController.submitToast();
 		}
 	}

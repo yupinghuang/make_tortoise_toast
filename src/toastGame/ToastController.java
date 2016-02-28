@@ -36,10 +36,10 @@ public class ToastController {
 	}
 	public void add(String topping){
 		//myToast.add(topping);
-		System.out.println("Adding "+topping);
+		System.out.println("Adding "+ topping);
 	}
 	
 	public void submitToast() {
-		
+		System.out.println("Toast has been submitted.");
 	}
 }
