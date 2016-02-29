@@ -10,7 +10,6 @@
 package toastGame;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -36,7 +35,7 @@ public class ViewController implements Initializable {
 	@FXML private Button toppingFive;
 	@FXML private Button toppingSix;
 	
-	private ArrayList<String> toppings;
+	private String[] toppings = {"Butter", "Jam", "PeanutButter", "Cinnamon&Sugar", "Cream Cheese", "Honey"};
 	
 	ToastController myController = new ToastController("Butter", "Jam", "PeanutButter", "Cinnamon&Sugar", "Cream Cheese", "Honey");
 	
@@ -51,7 +50,7 @@ public class ViewController implements Initializable {
 		//loops through the button and topping lists to set the button text
 		for (int i=0; i<=5; i++) {
 			Button button = buttonList[i];
-			String top = toppings.get(i);
+			String top = toppings[i];
 			button.setText(top);
 		}
 	}
@@ -105,6 +104,7 @@ public class ViewController implements Initializable {
 	 */
 	@Override 
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+		
 		assert toppingOne != null : "fx:id=\"toppingOne\" was not injected: check your FXML file 'simple.fxml'.";
 		
 		// initialize your logic here: all @FXML variables will have been injected

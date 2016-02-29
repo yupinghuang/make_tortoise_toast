@@ -9,8 +9,6 @@
 
 package toastGame;
 
-import java.util.ArrayList;
-
 public class ToastController {
 	// Topping instance variables
 	private String toppingOne;
@@ -19,7 +17,7 @@ public class ToastController {
 	private String toppingFour;
 	private String toppingFive;
 	private String toppingSix;
-	private ArrayList<String> toppings;
+	private String[] toppings = {toppingOne, toppingTwo, toppingThree, toppingFour, toppingFive, toppingSix};
 		
 	/**
 	 * Constructor for ToastController
@@ -30,7 +28,6 @@ public class ToastController {
 	 * @param toppingFive
 	 * @param toppingSix
 	 */
-
 	public ToastController(String toppingOne, String toppingTwo, String toppingThree, String toppingFour, String toppingFive, String toppingSix) {
 		//sets topping parameters to topping instance variables
 		this.toppingOne = toppingOne;
@@ -40,15 +37,12 @@ public class ToastController {
 		this.toppingFive = toppingFive;
 		this.toppingSix = toppingSix;
 		
-		//puts toppings into an arraylist
-		toppings = new ArrayList<String>();
-		toppings.add(toppingOne);
-		toppings.add(toppingTwo);
-		toppings.add(toppingThree);
-		toppings.add(toppingFour);
-		toppings.add(toppingFive);
-		toppings.add(toppingSix);
-				
+		toppings[0] = toppingOne;
+		toppings[1] = toppingTwo;
+		toppings[2] = toppingThree;
+		toppings[3] = toppingFour;
+		toppings[4] = toppingFive;
+		toppings[5] = toppingSix;
 	}
 	
 	/**
@@ -102,7 +96,7 @@ public class ToastController {
 	 * Get method to return topping list
 	 * @return list of toppings
 	 */
-	public ArrayList<String> getToppings() {
+	public String[] getToppings() {
 		return toppings;
 	}
 	
