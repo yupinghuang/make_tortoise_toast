@@ -1,5 +1,13 @@
+/**
+ * View.java
+ * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
+ * Some code altered from  https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
+ * Date: Feb 28, 2016
+ * 
+ * View communicates with the FXML file to set up the GUI
+ */
+
 package toastGame;
-//https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

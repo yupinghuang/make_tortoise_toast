@@ -1,3 +1,11 @@
+/**
+ * Tory.java
+ * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
+ * Date: Feb 28, 2016
+ * 
+ * Beginning of the model for Tory (incomplete)
+ */
+
 package toastGame;
 
 public class Tory {
