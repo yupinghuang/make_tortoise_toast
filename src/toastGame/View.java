@@ -13,12 +13,11 @@ public class View extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		//ViewController controller = new ViewController();
 		Pane page = (Pane) FXMLLoader.load(View.class.getResource("ToastForToryMock.fxml"));
 		Scene scene = new Scene(page);
 
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("FXML is Simple");
+		primaryStage.setTitle("Toast For Tory!");
 		primaryStage.show();
 	}
 

@@ -1,6 +1,7 @@
 package toastGame;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -10,12 +11,12 @@ import javafx.scene.control.Button;
 
 public class ViewController implements Initializable {
 	//Constants to use for event handling 
-	private String TOPPINGONE = "javafx.event.ActionEvent[source=Button[id=toppingOne, styleClass=button]'toppingOne']";
-	private String TOPPINGTWO = "javafx.event.ActionEvent[source=Button[id=toppingTwo, styleClass=button]'toppingTwo']";
-	private String TOPPINGTHREE = "javafx.event.ActionEvent[source=Button[id=toppingThree, styleClass=button]'toppingThree']";
-	private String TOPPINGFOUR = "javafx.event.ActionEvent[source=Button[id=toppingFour, styleClass=button]'toppingFour']";
-	private String TOPPINGFIVE = "javafx.event.ActionEvent[source=Button[id=toppingFive, styleClass=button]'toppingFive']";
-	private String TOPPINGSIX = "javafx.event.ActionEvent[source=Button[id=toppingSix, styleClass=button]'toppingSix']";
+	private String TOPPINGONE = "javafx.event.ActionEvent[source=Button[id=toppingOne, styleClass=button]'Butter']";
+	private String TOPPINGTWO = "javafx.event.ActionEvent[source=Button[id=toppingTwo, styleClass=button]'Jam']";
+	private String TOPPINGTHREE = "javafx.event.ActionEvent[source=Button[id=toppingThree, styleClass=button]'PeanutButter']";
+	private String TOPPINGFOUR = "javafx.event.ActionEvent[source=Button[id=toppingFour, styleClass=button]'Cinnamon&Sugar']";
+	private String TOPPINGFIVE = "javafx.event.ActionEvent[source=Button[id=toppingFive, styleClass=button]'Cream Cheese']";
+	private String TOPPINGSIX = "javafx.event.ActionEvent[source=Button[id=toppingSix, styleClass=button]'Honey']";
 	private String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
 	
 	
@@ -26,10 +27,24 @@ public class ViewController implements Initializable {
 	@FXML private Button toppingFive;
 	@FXML private Button toppingSix;
 	
-	ToastController myController = new ToastController("Butter", "Jam", "PeanutButter", "Jelly", "Cream Cheese", "Sugar");
+	private ArrayList<String> toppings;
+	
+	ToastController myController = new ToastController("Butter", "Jam", "PeanutButter", "Cinnamon&Sugar", "Cream Cheese", "Honey");
+	
+	@FXML
+	protected void setButtonText(){
+		Button[] buttonList = {toppingOne, toppingTwo, toppingThree, toppingFour, toppingFive, toppingSix};
+		toppings = myController.getToppings();
+		for (int i=0; i<=5; i++){
+			Button button = buttonList[i];
+			String top = toppings.get(i);
+			button.setText(top);
+		}
+	}
 	
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
+		this.setButtonText();
 		System.out.println("Button Pressed!");
 		//System.out.println(event);
 		if (event.toString().equals(TOPPINGONE)) {
@@ -73,10 +88,10 @@ public class ViewController implements Initializable {
 				// complete
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		assert toppingOne != null : "fx:id=\"toppingOne\" was not injected: check your FXML file 'simple.fxml'.";
-
+		
 		// initialize your logic here: all @FXML variables will have been
 		// injected
-
+		this.setButtonText();
 
 	}
 }
