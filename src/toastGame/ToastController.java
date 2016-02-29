@@ -1,5 +1,7 @@
 package toastGame;
 
+import java.util.ArrayList;
+
 public class ToastController {
 	private String toppingOne;
 	private String toppingTwo;
@@ -7,7 +9,8 @@ public class ToastController {
 	private String toppingFour;
 	private String toppingFive;
 	private String toppingSix;
-	
+	private ArrayList<String> toppings;
+		
 	public ToastController(String toppingOne, String toppingTwo, String toppingThree, String toppingFour, String toppingFive, String toppingSix) {
 		this.toppingOne = toppingOne;
 		this.toppingTwo = toppingTwo;
@@ -15,6 +18,15 @@ public class ToastController {
 		this.toppingFour = toppingFour;
 		this.toppingFive = toppingFive;
 		this.toppingSix = toppingSix;
+		
+		toppings = new ArrayList<String>();
+		toppings.add(toppingOne);
+		toppings.add(toppingTwo);
+		toppings.add(toppingThree);
+		toppings.add(toppingFour);
+		toppings.add(toppingFive);
+		toppings.add(toppingSix);
+				
 	}
 	public void addToppingOne() {
 		this.add(toppingOne);
@@ -48,4 +60,10 @@ public class ToastController {
 	public void submitToast() {
 		System.out.println("Toast has been submitted.");
 	}
+	
+	public ArrayList<String> getToppings() {
+		return toppings;
+	}
+	
+	
 }
