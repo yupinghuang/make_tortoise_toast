@@ -36,26 +36,32 @@ public class ViewController implements Initializable {
 			//System.out.println("Topping One");
 			myController.addToppingOne();
 		}
+		
 		if (event.toString().equals(TOPPINGTWO)) {
 			//System.out.println("Topping Two");
 			myController.addToppingTwo();
 		}
+		
 		if (event.toString().equals(TOPPINGTHREE)) {
 			//System.out.println("Topping Three");
 			myController.addToppingThree();
 		}
+		
 		if (event.toString().equals(TOPPINGFOUR)) {
 			//System.out.println("Topping Four");
 			myController.addToppingFour();
 		}
+		
 		if (event.toString().equals(TOPPINGFIVE)) {
 			//System.out.println("Topping Five");
 			myController.addToppingFive();
 		}
+		
 		if (event.toString().equals(TOPPINGSIX)) {
 			//System.out.println("Topping Six");
 			myController.addToppingSix();
 		}
+		
 		if (event.toString().equals(SUBMIT)){
 			//System.out.println("Submit button pressed");
 			myController.submitToast();

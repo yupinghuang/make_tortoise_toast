@@ -16,7 +16,7 @@ public class Tory {
         
         this.criteria.clear();
         //This is where we would randomly get rid of toppings and set the toastiness of the criteria
-        return this.criteria
+        return this.criteria;
     }
     
     public Toast getCriteria() {
@@ -29,7 +29,7 @@ public class Tory {
         //takes in the user's toast and judges it based on Tory's current criteria (implement later)
         //Could judge differently based on difficulty of level
         
-        return '';
+        return "";
     }
     
 }

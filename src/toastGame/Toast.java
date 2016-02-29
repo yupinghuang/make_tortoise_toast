@@ -1,9 +1,9 @@
 package toastGame;
 
-import java.util.*
+import java.util.*;
 
 public class Toast {
-    private ArrayList<String>;
+    private ArrayList<String> toppings;
     private int toastiness;
 
     public Toast() {
@@ -35,7 +35,7 @@ public class Toast {
         this.toastiness = toastiness;
     }
     
-    public int get toastiness() {
+    public int getToastiness() {
         //returns toastiness
         
         return this.toastiness;

@@ -19,21 +19,27 @@ public class ToastController {
 	public void addToppingOne() {
 		this.add(toppingOne);
 	}
+	
 	public void addToppingTwo() {
 		this.add(toppingTwo);
 	}
+	
 	public void addToppingThree() {
 		this.add(toppingThree);
 	}
+	
 	public void addToppingFour() {
 		this.add(toppingFour);
 	}
+	
 	public void addToppingFive() {
 		this.add(toppingFive);
 	}
+	
 	public void addToppingSix() {
 		this.add(toppingSix);
 	}
+	
 	public void add(String topping){
 		//myToast.add(topping);
 		System.out.println("Adding "+ topping);
