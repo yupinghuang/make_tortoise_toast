@@ -3,41 +3,51 @@
  * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
  * Date: Feb 28, 2016
  * 
- * Beginning of the model for Tory (incomplete)
+ * Beginning of the model for judging the toast(incomplete)
  */
 
 package toastGame;
 
 public class Tory {
-    private Toast criteria;
+	private Toast criteriaToast;
 
-    public Tory() {
-        //creates the Tory object
-        //sets Tory's toast criteria to be plain toast
-        
-        this.criteria = new Toast();
-    }
-    
-    public Toast createCriteria() {
-        //creates a randomized Toast object to judge upon and returns it
-        //should create toast objects based on difficulty of the game (implement this later)
-        
-        this.criteria.clear();
-        //This is where we would randomly get rid of toppings and set the toastiness of the criteria
-        return this.criteria;
-    }
-    
-    public Toast getCriteria() {
-        //returns a toast object of Tory's current criteria
-        
-        return this.criteria;
-    }
- 
-    public String judgeToast(Toast userToast) {
-        //takes in the user's toast and judges it based on Tory's current criteria (implement later)
-        //Could judge differently based on difficulty of level
-        
-        return "";
-    }
-    
+	/**
+	 * Constructor of the judge, initialize instance variables
+	 * 
+	 */
+	Tory() {
+		this.criteriaToast = new Toast();
+	}
+
+	/**
+	 * Generate the criteria toast for the user to imitate and the judge to
+	 * judge upon
+	 * 
+	 * @return
+	 */
+	public Toast createCriteria() {
+		this.criteriaToast.clear();
+		// TODO add random toppings
+		return this.criteriaToast;
+	}
+
+	/**
+	 * Getter for criteria toast
+	 * 
+	 * @return
+	 */
+	Toast getCriteriaToast() {
+		return criteriaToast;
+	}
+
+	/**
+	 * Takes in user's toast and judge it based on the criteriaToast
+	 * 
+	 * @param userToast
+	 * @return the judging comments
+	 */
+	public String judgeToast(Toast userToast) {
+		return "";
+	}
+
 }
