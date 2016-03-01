@@ -27,6 +27,7 @@ public class GameController {
 	 */
 	GameController() {
 	}
+	
 	/**
 	 * Registers the controller with the view initializer.
 	 * Observer Pattern in use.

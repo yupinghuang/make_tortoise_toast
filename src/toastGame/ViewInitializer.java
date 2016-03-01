@@ -53,7 +53,8 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Arranges Buttons in a stack pane. This stack pane is placed on the
+	 * Arranges Buttons in a stack pane.
+	 * This stack pane is placed on the right side of the window.
 	 */
 	@FXML
 	protected void setButtons() {
@@ -82,8 +83,7 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Handles button action. Calls to the GameController to handle the button
-	 * press.
+	 * Handles button action. Calls to the GameController to handle the button press.
 	 */
 	public void handleButtons() {
 		// Associate actions with each button
@@ -131,7 +131,7 @@ public class ViewInitializer implements Initializable {
 		double imageviewY = (r.nextDouble() - 0.5) * stackPaneHeight;
 		imageview.setPreserveRatio(true);
 		imageview.setFitHeight(stackPaneHeight / 10.0);
-		System.out.println("("+ imageviewX +","+ imageviewY +")");
+		//System.out.println("("+ imageviewX +","+ imageviewY +")");
 		//TODO Fix randomization!
 		imageview.setLayoutX(imageviewX);
 		imageview.setLayoutY(imageviewY);
