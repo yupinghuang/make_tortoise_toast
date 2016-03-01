@@ -19,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
-
 public class ViewInitializer implements Initializable {
 	// Constant variables
 	private static final int BUTTON_Y_MULTIPLIER = 56;
@@ -34,7 +33,7 @@ public class ViewInitializer implements Initializable {
 	@FXML
 	private Button submitButton;
 	@FXML
-	private StackPane toastStackPane;
+	private Pane toastPane;
 	@FXML
 	private StackPane sideButtonPane;
 
@@ -43,8 +42,8 @@ public class ViewInitializer implements Initializable {
 	private Button[] buttonList;
 
 	/**
-	 * Sets up observer relationship with GameController.
-	 * Uses GameController to define button list.
+	 * Sets up observer relationship with GameController. Uses GameController to
+	 * define button list.
 	 */
 	protected void setUp() {
 		myController = new GameController();
@@ -70,7 +69,9 @@ public class ViewInitializer implements Initializable {
 	 * Handles button action for submit button. The submit button is implemented
 	 * in the .fxml file. As such, it can't be handled in the same method as the
 	 * other buttons.
-	 * @param event		The event that needs to be handled
+	 * 
+	 * @param event
+	 *            The event that needs to be handled
 	 */
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
@@ -102,8 +103,12 @@ public class ViewInitializer implements Initializable {
 
 	/**
 	 * Called as a constructor, initializes all GUI elements of the java GUI.
-	 * @param fxmlFileLocation		The location of the fxml file to be used as a base GUI.
-	 * @param resources				The bundle of resources to be used in additional GUI development.
+	 * 
+	 * @param fxmlFileLocation
+	 *            The location of the fxml file to be used as a base GUI.
+	 * @param resources
+	 *            The bundle of resources to be used in additional GUI
+	 *            development.
 	 */
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -120,21 +125,26 @@ public class ViewInitializer implements Initializable {
 	/**
 	 * Takes the image to put on the toastStackPane, resize it to appropriate
 	 * size, rotate and position it randomly on the toast
-	 * @param image		The image to be shown on top the toast image
+	 * 
+	 * @param image
+	 *            The image to be shown on top the toast image
 	 */
 	void addImageOnToast(Image image) {
 		ImageView imageview = new ImageView(image);
-		double stackPaneHeight = toastStackPane.getHeight();
-		double stackPaneWidth = toastStackPane.getWidth();
+		double paneHeight = toastPane.getHeight();
+		double paneWidth = toastPane.getWidth();
+
 		Random r = new Random();
-		double imageviewX = (r.nextDouble() - 0.5) * stackPaneWidth;
-		double imageviewY = (r.nextDouble() - 0.5) * stackPaneHeight;
+		int imageViewX = (r.nextInt((int) paneHeight));
+		int imageViewY = (r.nextInt((int) paneWidth));
+
 		imageview.setPreserveRatio(true);
-		imageview.setFitHeight(stackPaneHeight / 10.0);
-		System.out.println("("+ imageviewX +","+ imageviewY +")");
-		//TODO Fix randomization!
-		imageview.setLayoutX(imageviewX);
-		imageview.setLayoutY(imageviewY);
-		toastStackPane.getChildren().add(imageview);
+		imageview.setFitHeight(paneHeight / 5.0);
+
+		System.out.println("(" + imageViewX + "," + imageViewY + ")");
+		// TODO Fix randomization!
+		imageview.setLayoutX(imageViewX);
+		imageview.setLayoutY(imageViewY - 35);
+		toastPane.getChildren().add(imageview);
 	}
 }

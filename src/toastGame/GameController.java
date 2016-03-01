@@ -21,16 +21,19 @@ public class GameController {
 	private Topping[] toppingList;
 	// maintains a reference to the view class
 	private ViewInitializer view = new ViewInitializer();
-	
+
 	/**
 	 * Constructor for GameController
 	 */
 	GameController() {
 	}
+
 	/**
-	 * Registers the controller with the view initializer.
-	 * Observer Pattern in use.
-	 * @param view	The ViewInitializer to register with
+	 * Registers the controller with the view initializer. Observer Pattern in
+	 * use.
+	 * 
+	 * @param view
+	 *            The ViewInitializer to register with
 	 */
 	void registerView(ViewInitializer view) {
 		this.view = view;
@@ -38,8 +41,10 @@ public class GameController {
 
 	/**
 	 * Create a list of buttons and return it. Should be called by the view.
-	 * @param 	numberOfButtons	Topping buttons desired in the given round
-	 * @return	buttons			List of all the buttons created.
+	 * 
+	 * @param numberOfButtons
+	 *            Topping buttons desired in the given round
+	 * @return buttons List of all the buttons created.
 	 */
 	Button[] createButtons(int numberOfButtons) {
 		generateToppings(numberOfButtons);
@@ -50,10 +55,12 @@ public class GameController {
 		}
 		return buttons;
 	}
-	
+
 	/**
 	 * Generates random toppings for a given round of the game
-	 * @param numberOfToppings	Toppings desired in the round
+	 * 
+	 * @param numberOfToppings
+	 *            Toppings desired in the round
 	 */
 	private void generateToppings(int numberOfToppings) {
 		numberOfToppings = 6;// for testing purpose
@@ -66,7 +73,9 @@ public class GameController {
 
 	/**
 	 * Called by the view to react to button click
-	 * @param buttonIndex 	the index of the button clicked
+	 * 
+	 * @param buttonIndex
+	 *            the index of the button clicked
 	 */
 	void handleButtonClickEvent(int buttonIndex) {
 		// TODO change toast model state
@@ -75,10 +84,9 @@ public class GameController {
 		view.addImageOnToast(addedToastImage);
 		System.out.println(toppingList[toppingIndex].getName());
 	}
-	
+
 	/**
-	 * Method called when submit is pressed.
-	 * Will eventually judge the game.
+	 * Method called when submit is pressed. Will eventually judge the game.
 	 */
 	void submitToast() {
 		// TODO initiate judging
