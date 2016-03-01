@@ -1,3 +1,10 @@
+/**
+ * Topping.java
+ * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
+ * Date: Feb 29, 2016
+ * 
+ * Topping class to help GUI element implementation
+ */
 package toastGame;
 
 import javafx.scene.image.Image;
