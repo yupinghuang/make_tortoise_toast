@@ -21,11 +21,14 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 
 public class ViewInitializer implements Initializable {
-	//Constant to use for Event Handling
-	private String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
+	// Constant variables
+	private static final int BUTTON_Y_MULTIPLIER = 56;
+	private static final int BUTTON_X_LAYOUT = 25;
+	private static final int BUTTONSIZE_Y = 45;
+	private static final int BUTTONSIZE_X = 134;
+	private static final String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
 	
 	//FXML Variable Injections
 	@FXML private Pane buttonPane;
@@ -38,6 +41,7 @@ public class ViewInitializer implements Initializable {
 	private GameController myController;
 	private ArrayList<Button> buttonList;
 	
+	//Used later as an example of how to add to a stackpane
 	private Rectangle exampleRectangle;
 	/**
 	 * Defines instance variables and creates topping buttons. 
@@ -52,7 +56,9 @@ public class ViewInitializer implements Initializable {
 		/* As we have not yet implemented the full extent of our model,
 		 * we will currently hard code the example for our GUI.
 		 * Creating the buttons and adding them to the buttonList will eventually be 
-		 * randomized by our GameController.
+		 * randomized by our GameController.  (TOBEDELETED)
+		 * 
+		 * Currently our interface is limited to six topping buttons, but this can change.
 		 */
 		Button one = new Button("Butter");
 		Button two = new Button("Jam");
@@ -67,6 +73,7 @@ public class ViewInitializer implements Initializable {
 		buttonList.add(five);
 		buttonList.add(six);
 		
+		// For the stack pane example.  (TOBEDELETED)
 		exampleRectangle = new Rectangle();
         exampleRectangle.setX(50);
         exampleRectangle.setY(50);
@@ -76,19 +83,17 @@ public class ViewInitializer implements Initializable {
 	
 	/**
 	 * Arranges Buttons in a stack pane.
-	 * This stack pane acts as a tool bar that the user can drag around to where they feel it works best for them.
+	 * This stack pane is placed on the 
 	 */
 	@FXML
 	protected void setButtons() {
-		Stage secondaryStage = new Stage();
+		//Add buttons in list to the pane
 		buttonPane = new Pane();
-		buttonPane.setPrefSize(184, 63*buttonList.size());
-		
 		for (int i=0; i< buttonList.size(); i++) {
 			buttonPane.getChildren().add(buttonList.get(i));
 		}
+		//Add the button pane to the side pane
 		sideButtonPane.getChildren().add(buttonPane);
-
 	}
 	
 	/**
@@ -120,7 +125,7 @@ public class ViewInitializer implements Initializable {
 	            @Override
 	            public void handle(ActionEvent event) {
 	                System.out.println("Button pressed");
-	                toastStackPane.getChildren().add(exampleRectangle);
+	                //toastStackPane.getChildren().add(exampleRectangle);
 	                myController.handleEvent(buttonList.get(j).getText());
 	            }
 	        });
@@ -136,9 +141,9 @@ public class ViewInitializer implements Initializable {
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		this.setUp();	
 		for (int i=0; i< buttonList.size(); i++) {
-			buttonList.get(i).setPrefSize(134, 45);
-			buttonList.get(i).setLayoutX(25);
-			buttonList.get(i).setLayoutY(56*i + 25);
+			buttonList.get(i).setPrefSize(BUTTONSIZE_X, BUTTONSIZE_Y);
+			buttonList.get(i).setLayoutX(BUTTON_X_LAYOUT);
+			buttonList.get(i).setLayoutY(BUTTON_Y_MULTIPLIER*i + BUTTON_X_LAYOUT);
 		}
 		this.setButtons();
         this.handleButtons();
