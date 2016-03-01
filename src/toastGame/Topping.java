@@ -14,6 +14,11 @@ class Topping {
 	private Image image;
 	//TODO implement default size for a given topping
 
+	/**
+	 * Instantiates topping object
+	 * @param name			Name of topping
+	 * @param imageFile		Image of topping
+	 */
 	Topping(String name, String imageFile) {
 		// load the Image object from the imageFile file under the same path as
 		// the package

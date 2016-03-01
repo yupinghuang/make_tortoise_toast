@@ -47,7 +47,7 @@ public class GameController {
 	 * @return buttons List of all the buttons created.
 	 */
 	Button[] createButtons(int numberOfButtons) {
-		generateToppings(numberOfButtons);
+		this.toppingList = generateToppings(numberOfButtons);
 		Button[] buttons = new Button[toppingList.length];
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i] = new Button();
@@ -60,15 +60,16 @@ public class GameController {
 	 * Generates random toppings for a given round of the game
 	 * 
 	 * @param numberOfToppings
-	 *            Toppings desired in the round
+	 * @return
 	 */
-	private void generateToppings(int numberOfToppings) {
+	private Topping[] generateToppings(int numberOfToppings) {
 		numberOfToppings = 6;// for testing purpose
-		this.toppingList = new Topping[numberOfToppings];
+		toppingList = new Topping[numberOfToppings];
 		for (int i = 0; i < toppingList.length; i++) {
 			// TODO: randomize the topping generation process
 			toppingList[i] = new Topping("Honey", "honey.png");
 		}
+		return toppingList;
 	}
 
 	/**

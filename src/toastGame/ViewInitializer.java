@@ -52,7 +52,8 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Arranges Buttons in a stack pane. This stack pane is placed on the
+	 * Arranges Buttons in a stack pane. This stack pane is placed on the right
+	 * side of the window.
 	 */
 	@FXML
 	protected void setButtons() {
