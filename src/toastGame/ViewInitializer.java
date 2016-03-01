@@ -14,6 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class ViewInitializer implements Initializable {
 	// Constant variables
@@ -49,7 +52,6 @@ public class ViewInitializer implements Initializable {
 		myController.registerView(this);
 		buttonList = myController.createButtons(6);
 
-		// For the stack pane example. (TOBEDELETED)
 		exampleRectangle = new Rectangle();
 		exampleRectangle.setX(50);
 		exampleRectangle.setY(50);
