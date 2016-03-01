@@ -11,79 +11,73 @@ package toastGame;
 
 import java.util.ArrayList;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+
 public class GameController {
 	// Topping instance variables
-	private String toppingOne;
-	private String toppingTwo;
-	private String toppingThree;
-	private String toppingFour;
-	private String toppingFive;
-	private String toppingSix;
-	private ArrayList<String> toppings;
-		
+	private Topping[] toppingList;
+	// maintains a reference to the view class
+	private ViewInitializer view;
+
 	/**
 	 * Constructor for ToastController
-	 * @param toppings 
+	 * 
+	 * @param toppings
 	 */
-	public GameController() {
-		//sets topping parameters to topping instance variables
-		
+	GameController() {
+		// sets topping parameters to topping instance variables
+
 	}
-	
+
+	void registerView(ViewInitializer view) {
+		this.view = view;
+	}
+
 	/**
-	 * Methods to add toppings to the user's toast
-	 * They all take no parameters and return nothing
+	 * Create a list of buttons and return it. Should be called by the view.
+	 * 
+	 * @param numberOfButtons
+	 * @return
 	 */
-	public void addToppingOne() {
-		this.add(toppingOne);
+	Button[] createButtons(int numberOfButtons) {
+		generateToppings(numberOfButtons);
+		Button[] buttons = new Button[toppingList.length];
+		for (int i = 0; i < buttons.length; i++) {
+			buttons[i] = new Button();
+			buttons[i].setText(toppingList[i].getName());
+		}
+		return buttons;
 	}
-	
-	public void addToppingTwo() {
-		this.add(toppingTwo);
+
+	private void generateToppings(int numberOfToppings) {
+		numberOfToppings = 6;// for testing purpose
+		this.toppingList = new Topping[numberOfToppings];
+		for (int i = 0; i < toppingList.length; i++) {
+			// TODO: randomize the topping generation process
+			toppingList[i] = new Topping("Honey", "honey.png");
+		}
 	}
-	
-	public void addToppingThree() {
-		this.add(toppingThree);
-	}
-	
-	public void addToppingFour() {
-		this.add(toppingFour);
-	}
-	
-	public void addToppingFive() {
-		this.add(toppingFive);
-	}
-	
-	public void addToppingSix() {
-		this.add(toppingSix);
-	}
-	
+
 	/**
-	 * General add method that adds a given topping and prints out 
-	 * which topping is being added.
-	 * Right now, we don't know which of the adds methods we will need 
-	 * to use, and so we have multiple methods that we may or may not keep.
-	 * @param topping 
+	 * Called by the view to react to button click
+	 * 
+	 * @param buttonIndex
+	 *            the index of the button clicked
 	 */
-	public void add(String topping){
-		//myToast.add(topping);
-		System.out.println("Adding "+ topping);
+	void handleButtonClickEvent(int buttonIndex) {
+		// TODO change toast model state
+		int toppingIndex = buttonIndex;
+		Image addedToastImage = toppingList[toppingIndex].getImage();
+		view.addImageOnToast(addedToastImage);
+		System.out.println(toppingList[toppingIndex].getName());
 	}
-	
-	/**
-	 * Will eventually call a judging method when user submits toast for critiquing
-	 */
-	public void submitToast() {
+
+	void submitToast() {
+		// TODO initiate judging
 		System.out.println("Toast has been submitted.");
 	}
-	
-	/**
-	 * Get method to return topping list
-	 * @return list of toppings
-	 */
-	public ArrayList<String> getToppings() {
-		return toppings;
-	}
-	
-	
+
 }
