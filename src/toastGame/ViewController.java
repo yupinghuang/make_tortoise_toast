@@ -30,41 +30,28 @@ import javafx.stage.Stage;
 
 public class ViewController implements Initializable {
 	//Constants to use for event handling 
-	private String TOPPINGONE = "javafx.event.ActionEvent[source=Button[id=toppingOne, styleClass=button]'Butter']";
-	private String TOPPINGTWO = "javafx.event.ActionEvent[source=Button[id=toppingTwo, styleClass=button]'Jam']";
-	private String TOPPINGTHREE = "javafx.event.ActionEvent[source=Button[id=toppingThree, styleClass=button]'PeanutButter']";
-	private String TOPPINGFOUR = "javafx.event.ActionEvent[source=Button[id=toppingFour, styleClass=button]'Cinnamon&Sugar']";
-	private String TOPPINGFIVE = "javafx.event.ActionEvent[source=Button[id=toppingFive, styleClass=button]'Cream Cheese']";
-	private String TOPPINGSIX = "javafx.event.ActionEvent[source=Button[id=toppingSix, styleClass=button]'Honey']";
 	private String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
 	
 	//Injects all the topping buttons for event handling
 	@FXML private Pane myStackPane;
-	@FXML private Button toppingOne;
-	@FXML private Button toppingTwo;
-	@FXML private Button toppingThree;
-	@FXML private Button toppingFour;
-	@FXML private Button toppingFive;
-	@FXML private Button toppingSix;
-	Button two = new Button("Jam");
+	@FXML private Button submitButton;
 
 	
 	private ArrayList<String> toppings;
 	private ToastController myController;
-
+	private Button two;
 	
 	protected void setUp() {
 		toppings = new ArrayList<String>();
-		toppings.add("Butter");
-		toppings.add("Jam");
-		toppings.add("Men");
-		myController = new ToastController(toppings);
+		myController = new ToastController();
+		two = new Button("Jam");
+
 	}
 	
 	/**
 	 * Is called in the instantiator.
 	 * Sets the button text to be for the toppings available in this round.
-	 */
+	
 	@FXML
 	protected void setButtonText() {
 		Button[] buttonList = {toppingOne, toppingTwo, toppingThree, toppingFour, toppingFive, toppingSix};
@@ -75,7 +62,7 @@ public class ViewController implements Initializable {
 			String top = toppings.get(i);
 			button.setText(top);
 		}
-	}
+	} */
 	
 	/**
 	 * @param ArrayList<Button>
@@ -87,7 +74,7 @@ public class ViewController implements Initializable {
 		myStackPane.setPrefSize(184, 63*buttonList.length);
 		
 		for (int i=0; i< buttonList.length; i++) {
-			System.out.println(buttonList[i]);
+			//System.out.println(buttonList[i]);
 			buttonList[i].setId("handleButtonAction");
 			myStackPane.getChildren().add(buttonList[i]);
 		}
@@ -107,35 +94,6 @@ public class ViewController implements Initializable {
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
 		System.out.println("Button Pressed!");
-		//System.out.println(event);
-		
-		// A series of if statements to check which button has been pressed
-		// and it calls the controller to add the topping
-		if (event.toString().equals(TOPPINGONE)) {
-			//System.out.println("Topping One");
-			myController.addToppingOne();
-		}
-		if (event.toString().equals(TOPPINGTWO)) {
-			//System.out.println("Topping Two");
-			myController.addToppingTwo();
-		}
-		if (event.toString().equals(TOPPINGTHREE)) {
-			//System.out.println("Topping Three");
-			myController.addToppingThree();
-		}
-		if (event.toString().equals(TOPPINGFOUR)) {
-			//System.out.println("Topping Four");
-			myController.addToppingFour();
-		}
-		if (event.toString().equals(TOPPINGFIVE)) {
-			//System.out.println("Topping Five");
-			myController.addToppingFive();
-		}
-		if (event.toString().equals(TOPPINGSIX)) {
-			//System.out.println("Topping Six");
-			myController.addToppingSix();
-		}
-		
 		// When submit is pressed, calls the submit toast method
 		if (event.toString().equals(SUBMIT)){
 			//System.out.println("Submit button pressed");
@@ -149,6 +107,7 @@ public class ViewController implements Initializable {
             public void handle(ActionEvent event) {
                 System.out.println("Button two pressed");;
             }
+        
         });
 	}
 	
@@ -157,11 +116,7 @@ public class ViewController implements Initializable {
 	 */
 	@Override 
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		this.setUp();
-		System.out.println("Done ehher");
-		
-		assert toppingOne != null : "fx:id=\"toppingOne\" was not injected: check your FXML file 'simple.fxml'.";
-		System.out.println("Done assert");
+		this.setUp();		
 
 		Button one = new Button("Butter");
 		Button three = new Button("Cinnamon&Sugar");
@@ -184,14 +139,8 @@ public class ViewController implements Initializable {
                 System.out.println("Button one pressed");;
             }
         });
+        this.handleButtons();
         
-		
 		// initialize your logic here: all @FXML variables will have been injected
-		System.out.println("prior setButtonText");
-
-		this.setButtonText();
-		System.out.println("Done setButtonText");
-
-
 	}
 }
