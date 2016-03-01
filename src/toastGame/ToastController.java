@@ -25,10 +25,9 @@ public class ToastController {
 	 * Constructor for ToastController
 	 * @param toppings 
 	 */
-	public ToastController(ArrayList<String> toppings) {
+	public ToastController() {
 		//sets topping parameters to topping instance variables
-		this.toppings = toppings;
-
+		
 	}
 	
 	/**
