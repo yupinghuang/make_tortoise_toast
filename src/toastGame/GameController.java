@@ -20,16 +20,15 @@ public class GameController {
 	// Topping instance variables
 	private Topping[] toppingList;
 	// maintains a reference to the view class
-	private ViewInitializer view;
-
+	private ViewInitializer view = new ViewInitializer();
+	
 	/**
-	 * Constructor for ToastController
+	 * Constructor for GameController
 	 * 
 	 * @param toppings
 	 */
 	GameController() {
 		// sets topping parameters to topping instance variables
-
 	}
 
 	void registerView(ViewInitializer view) {
@@ -73,6 +72,13 @@ public class GameController {
 		Image addedToastImage = toppingList[toppingIndex].getImage();
 		view.addImageOnToast(addedToastImage);
 		System.out.println(toppingList[toppingIndex].getName());
+	}
+	
+	void handleEvent(String buttonText) {
+		// TODO handle events
+		System.out.println("Event Being Handled: " + buttonText);
+		Image addedToastImage = new Image(getClass().getResource("honey.png").toExternalForm());
+		//view.addImageOnToast(addedToastImage);
 	}
 
 	void submitToast() {

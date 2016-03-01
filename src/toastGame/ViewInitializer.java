@@ -21,6 +21,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class ViewInitializer implements Initializable {
 	// Constant variables
@@ -51,7 +54,7 @@ public class ViewInitializer implements Initializable {
 		buttonList = new ArrayList<Button>();
 		
 		myController = new GameController();
-		myController.getToppings();
+		//myController.getToppings();
 		
 		/* As we have not yet implemented the full extent of our model,
 		 * we will currently hard code the example for our GUI.
@@ -124,13 +127,29 @@ public class ViewInitializer implements Initializable {
 	        buttonList.get(i).setOnAction(new EventHandler<ActionEvent>() {
 	            @Override
 	            public void handle(ActionEvent event) {
-	                System.out.println("Button pressed");
+	                System.out.println("Button pressed!");
 	                //toastStackPane.getChildren().add(exampleRectangle);
 	                myController.handleEvent(buttonList.get(j).getText());
 	            }
 	        });
 		}
 	}
+	
+	//TODO Figure out how to add an image to a stack pane and do this step
+	/* NOTE:::: GameController CANNOT have a ViewInitializer because it will not initialize the view
+	 * As such, we need to work around this.  Otherwise, none of the stacks are set or buttons which 
+	 * leads to a series of frustrating errors.  
+	 * These classes so far work together and can handle events well enough but we need
+	 * to think around gameController having a ViewInitializer.
+	*/
+	public void addImageOnToast(Image addToToast) {
+		ImageView imv = new ImageView();
+		System.out.println("Adding Image to Toast");
+		imv.setImage(addToToast);
+		System.out.println("set to imv");
+       // toastStackPane.getChildren().add(imv);
+	}
+	
 	
 	/**
 	 * Called as a constructor, initializes all GUI elements of the java GUI.
