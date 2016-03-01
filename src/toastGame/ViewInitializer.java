@@ -1,6 +1,6 @@
 /**
  * ViewInitializer.java
- * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
+ * Authors: Yuping Huang, Tegan Wilson, and Carolyn Ryan
  * Class structure taken from https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
  * Date: Feb 28, 2016
  * 
@@ -17,9 +17,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class ViewInitializer implements Initializable {
@@ -27,14 +28,17 @@ public class ViewInitializer implements Initializable {
 	private String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
 	
 	//FXML Variable Injections
-	@FXML private Pane myStackPane;
+	@FXML private Pane buttonPane;
 	@FXML private Button submitButton;
-
+	@FXML private StackPane toastStackPane;
+	@FXML private StackPane sideButtonPane;
+	
 	// Instance Variables
 	private ArrayList<Topping> toppings;
 	private GameController myController;
 	private ArrayList<Button> buttonList;
 	
+	private Rectangle exampleRectangle;
 	/**
 	 * Defines instance variables and creates topping buttons. 
 	 */
@@ -62,6 +66,12 @@ public class ViewInitializer implements Initializable {
 		buttonList.add(four);
 		buttonList.add(five);
 		buttonList.add(six);
+		
+		exampleRectangle = new Rectangle();
+        exampleRectangle.setX(50);
+        exampleRectangle.setY(50);
+        exampleRectangle.setWidth(200);
+        exampleRectangle.setHeight(100);
 	}
 	
 	/**
@@ -71,19 +81,13 @@ public class ViewInitializer implements Initializable {
 	@FXML
 	protected void setButtons() {
 		Stage secondaryStage = new Stage();
-		myStackPane = new Pane();
-		myStackPane.setPrefSize(184, 63*buttonList.size());
+		buttonPane = new Pane();
+		buttonPane.setPrefSize(184, 63*buttonList.size());
 		
 		for (int i=0; i< buttonList.size(); i++) {
-			//System.out.println(buttonList[i]);
-			buttonList.get(i).setId("handleButtonAction");
-			myStackPane.getChildren().add(buttonList.get(i));
+			buttonPane.getChildren().add(buttonList.get(i));
 		}
-
-		Scene scene = new Scene(myStackPane);
-		secondaryStage.setScene(scene);
-		secondaryStage.setTitle("Toast For Tory!");
-		secondaryStage.show();
+		sideButtonPane.getChildren().add(buttonPane);
 
 	}
 	
@@ -116,6 +120,7 @@ public class ViewInitializer implements Initializable {
 	            @Override
 	            public void handle(ActionEvent event) {
 	                System.out.println("Button pressed");
+	                toastStackPane.getChildren().add(exampleRectangle);
 	                myController.handleEvent(buttonList.get(j).getText());
 	            }
 	        });
@@ -137,6 +142,5 @@ public class ViewInitializer implements Initializable {
 		}
 		this.setButtons();
         this.handleButtons();
-      
 	}
 }
