@@ -1,9 +1,9 @@
 /**
- * ToastController.java
+ * GameController.java
  * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
  * Date: Feb 28, 2016
  * 
- * ToastController class to communicate between the ViewController and eventually the model 
+ * GameController class to communicate between the ViewInitializer and eventually the model 
  * Doesn't yet communicate to the model as we have not yet implemented that aspect of the project
  */
 
