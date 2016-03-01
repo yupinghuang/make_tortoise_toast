@@ -10,6 +10,7 @@
 package toastGame;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -48,9 +49,17 @@ public class ViewController implements Initializable {
 	Button two = new Button("Jam");
 
 	
-	private String[] toppings = {"Butter", "Jam", "PeanutButter", "Cinnamon&Sugar", "Cream Cheese", "Honey"};
+	private ArrayList<String> toppings;
+	private ToastController myController;
+
 	
-	ToastController myController = new ToastController(toppings);
+	protected void setUp() {
+		toppings = new ArrayList<String>();
+		toppings.add("Butter");
+		toppings.add("Jam");
+		toppings.add("Men");
+		myController = new ToastController(toppings);
+	}
 	
 	/**
 	 * Is called in the instantiator.
@@ -61,9 +70,9 @@ public class ViewController implements Initializable {
 		Button[] buttonList = {toppingOne, toppingTwo, toppingThree, toppingFour, toppingFive, toppingSix};
 		toppings = myController.getToppings();
 		//loops through the button and topping lists to set the button text
-		for (int i=0; i<=5; i++) {
+		for (int i=0; i<toppings.size(); i++) {
 			Button button = buttonList[i];
-			String top = toppings[i];
+			String top = toppings.get(i);
 			button.setText(top);
 		}
 	}
@@ -148,8 +157,12 @@ public class ViewController implements Initializable {
 	 */
 	@Override 
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
+		this.setUp();
+		System.out.println("Done ehher");
 		
 		assert toppingOne != null : "fx:id=\"toppingOne\" was not injected: check your FXML file 'simple.fxml'.";
+		System.out.println("Done assert");
+
 		Button one = new Button("Butter");
 		Button three = new Button("Cinnamon&Sugar");
 		Button four = new Button("Peanut Butter");
@@ -171,10 +184,14 @@ public class ViewController implements Initializable {
                 System.out.println("Button one pressed");;
             }
         });
+        
 		
 		// initialize your logic here: all @FXML variables will have been injected
+		System.out.println("prior setButtonText");
+
 		this.setButtonText();
-		this.handleButtons();
+		System.out.println("Done setButtonText");
+
 
 	}
 }

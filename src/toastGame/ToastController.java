@@ -9,6 +9,8 @@
 
 package toastGame;
 
+import java.util.ArrayList;
+
 public class ToastController {
 	// Topping instance variables
 	private String toppingOne;
@@ -17,27 +19,16 @@ public class ToastController {
 	private String toppingFour;
 	private String toppingFive;
 	private String toppingSix;
-	private String[] toppings;
+	private ArrayList<String> toppings;
 		
 	/**
 	 * Constructor for ToastController
-	 * @param toppingOne
-	 * @param toppingTwo
-	 * @param toppingThree
-	 * @param toppingFour
-	 * @param toppingFive
-	 * @param toppingSix
+	 * @param toppings 
 	 */
-	public ToastController(String[] toppings) {
+	public ToastController(ArrayList<String> toppings) {
 		//sets topping parameters to topping instance variables
-		this.toppingOne = toppings[0];
-		this.toppingTwo = toppings[1];
-		this.toppingThree = toppings[2];
-		this.toppingFour = toppings[3];
-		this.toppingFive = toppings[4];
-		this.toppingSix = toppings[5];
-		
 		this.toppings = toppings;
+
 	}
 	
 	/**
@@ -91,7 +82,7 @@ public class ToastController {
 	 * Get method to return topping list
 	 * @return list of toppings
 	 */
-	public String[] getToppings() {
+	public ArrayList<String> getToppings() {
 		return toppings;
 	}
 	
