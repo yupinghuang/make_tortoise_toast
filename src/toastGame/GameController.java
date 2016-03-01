@@ -39,11 +39,13 @@ public class GameController {
 
 	/**
 	 * Create a list of buttons and return it. Should be called by the view.
-	 * @param 	numberOfButtons	Topping buttons desired in the given round
-	 * @return	buttons			List of all the buttons created.
+	 * 
+	 * @param numberOfButtons
+	 *            Topping buttons desired in the given round
+	 * @return buttons List of all the buttons created.
 	 */
 	Button[] createButtons(int numberOfButtons) {
-		generateToppings(numberOfButtons);
+		this.toppingList = generateToppings(numberOfButtons);
 		Button[] buttons = new Button[toppingList.length];
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i] = new Button();
@@ -51,23 +53,22 @@ public class GameController {
 		}
 		return buttons;
 	}
-	
-	/**
-	 * Generates random toppings for a given round of the game
-	 * @param numberOfToppings	Toppings desired in the round
-	 */
-	private void generateToppings(int numberOfToppings) {
+
+	private Topping[] generateToppings(int numberOfToppings) {
 		numberOfToppings = 6;// for testing purpose
-		this.toppingList = new Topping[numberOfToppings];
+		toppingList = new Topping[numberOfToppings];
 		for (int i = 0; i < toppingList.length; i++) {
 			// TODO: randomize the topping generation process
 			toppingList[i] = new Topping("Honey", "honey.png");
 		}
+		return toppingList;
 	}
 
 	/**
 	 * Called by the view to react to button click
-	 * @param buttonIndex 	the index of the button clicked
+	 * 
+	 * @param buttonIndex
+	 *            the index of the button clicked
 	 */
 	void handleButtonClickEvent(int buttonIndex) {
 		// TODO change toast model state
@@ -76,10 +77,9 @@ public class GameController {
 		view.addImageOnToast(addedToastImage);
 		System.out.println(toppingList[toppingIndex].getName());
 	}
-	
+
 	/**
-	 * Method called when submit is pressed.
-	 * Will eventually judge the game.
+	 * Method called when submit is pressed. Will eventually judge the game.
 	 */
 	void submitToast() {
 		// TODO initiate judging
