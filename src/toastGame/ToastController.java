@@ -17,7 +17,7 @@ public class ToastController {
 	private String toppingFour;
 	private String toppingFive;
 	private String toppingSix;
-	private String[] toppings = {toppingOne, toppingTwo, toppingThree, toppingFour, toppingFive, toppingSix};
+	private String[] toppings;
 		
 	/**
 	 * Constructor for ToastController
@@ -28,21 +28,16 @@ public class ToastController {
 	 * @param toppingFive
 	 * @param toppingSix
 	 */
-	public ToastController(String toppingOne, String toppingTwo, String toppingThree, String toppingFour, String toppingFive, String toppingSix) {
+	public ToastController(String[] toppings) {
 		//sets topping parameters to topping instance variables
-		this.toppingOne = toppingOne;
-		this.toppingTwo = toppingTwo;
-		this.toppingThree = toppingThree;
-		this.toppingFour = toppingFour;
-		this.toppingFive = toppingFive;
-		this.toppingSix = toppingSix;
+		this.toppingOne = toppings[0];
+		this.toppingTwo = toppings[1];
+		this.toppingThree = toppings[2];
+		this.toppingFour = toppings[3];
+		this.toppingFive = toppings[4];
+		this.toppingSix = toppings[5];
 		
-		toppings[0] = toppingOne;
-		toppings[1] = toppingTwo;
-		toppings[2] = toppingThree;
-		toppings[3] = toppingFour;
-		toppings[4] = toppingFive;
-		toppings[5] = toppingSix;
+		this.toppings = toppings;
 	}
 	
 	/**

@@ -13,9 +13,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 public class ViewController implements Initializable {
 	//Constants to use for event handling 
@@ -28,16 +38,19 @@ public class ViewController implements Initializable {
 	private String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
 	
 	//Injects all the topping buttons for event handling
+	@FXML private Pane myStackPane;
 	@FXML private Button toppingOne;
 	@FXML private Button toppingTwo;
 	@FXML private Button toppingThree;
 	@FXML private Button toppingFour;
 	@FXML private Button toppingFive;
 	@FXML private Button toppingSix;
+	Button two = new Button("Jam");
+
 	
 	private String[] toppings = {"Butter", "Jam", "PeanutButter", "Cinnamon&Sugar", "Cream Cheese", "Honey"};
 	
-	ToastController myController = new ToastController("Butter", "Jam", "PeanutButter", "Cinnamon&Sugar", "Cream Cheese", "Honey");
+	ToastController myController = new ToastController(toppings);
 	
 	/**
 	 * Is called in the instantiator.
@@ -53,6 +66,28 @@ public class ViewController implements Initializable {
 			String top = toppings[i];
 			button.setText(top);
 		}
+	}
+	
+	/**
+	 * @param ArrayList<Button>
+	 */
+	@FXML
+	protected void setButtons(Button[] buttonList) {
+		Stage secondaryStage = new Stage();
+		myStackPane = new Pane();
+		myStackPane.setPrefSize(184, 63*buttonList.length);
+		
+		for (int i=0; i< buttonList.length; i++) {
+			System.out.println(buttonList[i]);
+			buttonList[i].setId("handleButtonAction");
+			myStackPane.getChildren().add(buttonList[i]);
+		}
+
+		Scene scene = new Scene(myStackPane);
+		secondaryStage.setScene(scene);
+		secondaryStage.setTitle("Toast For Tory!");
+		secondaryStage.show();
+
 	}
 	
 	/**
@@ -99,6 +134,15 @@ public class ViewController implements Initializable {
 		}
 	}
 	
+	public void handleButtons() {
+		two.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Button two pressed");;
+            }
+        });
+	}
+	
 	/**
 	 * This method is called by the FXMLLoader when initialization is complete.
 	 */
@@ -106,9 +150,31 @@ public class ViewController implements Initializable {
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		
 		assert toppingOne != null : "fx:id=\"toppingOne\" was not injected: check your FXML file 'simple.fxml'.";
+		Button one = new Button("Butter");
+		Button three = new Button("Cinnamon&Sugar");
+		Button four = new Button("Peanut Butter");
+		Button five = new Button("Honey");
+		Button six = new Button("Avocado");
+
+		
+		Button[] buttonList = {one, two, three, four, five, six};
+		for (int i=0; i< buttonList.length; i++) {
+			buttonList[i].setPrefSize(134, 45);
+			buttonList[i].setLayoutX(25);
+			buttonList[i].setLayoutY(56*i + 25);
+		}
+		this.setButtons(buttonList);
+		// Associate actions with each button
+        one.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                System.out.println("Button one pressed");;
+            }
+        });
 		
 		// initialize your logic here: all @FXML variables will have been injected
 		this.setButtonText();
+		this.handleButtons();
 
 	}
 }
