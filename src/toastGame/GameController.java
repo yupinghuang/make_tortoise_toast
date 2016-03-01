@@ -20,16 +20,7 @@ public class GameController {
 	// Topping instance variables
 	private Topping[] toppingList;
 	// maintains a reference to the view class
-	private ViewInitializer view = new ViewInitializer();
-	
-	/**
-	 * Constructor for GameController
-	 * 
-	 * @param toppings
-	 */
-	GameController() {
-		// sets topping parameters to topping instance variables
-	}
+	private ViewInitializer view;
 
 	void registerView(ViewInitializer view) {
 		this.view = view;
@@ -42,7 +33,7 @@ public class GameController {
 	 * @return
 	 */
 	Button[] createButtons(int numberOfButtons) {
-		generateToppings(numberOfButtons);
+		this.toppingList = generateToppings(numberOfButtons);
 		Button[] buttons = new Button[toppingList.length];
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i] = new Button();
@@ -51,13 +42,14 @@ public class GameController {
 		return buttons;
 	}
 
-	private void generateToppings(int numberOfToppings) {
+	private Topping[] generateToppings(int numberOfToppings) {
 		numberOfToppings = 6;// for testing purpose
-		this.toppingList = new Topping[numberOfToppings];
+		toppingList = new Topping[numberOfToppings];
 		for (int i = 0; i < toppingList.length; i++) {
 			// TODO: randomize the topping generation process
 			toppingList[i] = new Topping("Honey", "honey.png");
 		}
+		return toppingList;
 	}
 
 	/**
@@ -72,13 +64,6 @@ public class GameController {
 		Image addedToastImage = toppingList[toppingIndex].getImage();
 		view.addImageOnToast(addedToastImage);
 		System.out.println(toppingList[toppingIndex].getName());
-	}
-	
-	void handleEvent(String buttonText) {
-		// TODO handle events
-		System.out.println("Event Being Handled: " + buttonText);
-		Image addedToastImage = new Image(getClass().getResource("honey.png").toExternalForm());
-		//view.addImageOnToast(addedToastImage);
 	}
 
 	void submitToast() {
