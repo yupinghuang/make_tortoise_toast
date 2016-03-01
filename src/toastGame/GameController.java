@@ -9,10 +9,6 @@
 
 package toastGame;
 
-import java.util.ArrayList;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
@@ -83,7 +79,7 @@ public class GameController {
 		int toppingIndex = buttonIndex;
 		Image addedToastImage = toppingList[toppingIndex].getImage();
 		view.addImageOnToast(addedToastImage);
-		System.out.println(toppingList[toppingIndex].getName());
+		System.out.println("Adding " + toppingList[toppingIndex].getName() + " to toast!");
 	}
 
 	/**
@@ -91,7 +87,7 @@ public class GameController {
 	 */
 	void submitToast() {
 		// TODO initiate judging
-		System.out.println("Toast has been submitted.");
+		System.out.println("Toast has been submitted for judging.");
 	}
 
 }

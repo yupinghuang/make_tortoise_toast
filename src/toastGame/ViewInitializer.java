@@ -95,7 +95,7 @@ public class ViewInitializer implements Initializable {
 			buttonList[i].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					System.out.println("Button pressed");
+					System.out.println("Button pressed!");
 					myController.handleButtonClickEvent(j);
 				}
 			});
@@ -142,8 +142,6 @@ public class ViewInitializer implements Initializable {
 		imageview.setPreserveRatio(true);
 		imageview.setFitHeight(paneHeight / 5.0);
 
-		System.out.println("(" + imageViewX + "," + imageViewY + ")");
-		// TODO Fix randomization!
 		imageview.setLayoutX(imageViewX);
 		imageview.setLayoutY(imageViewY - 35);
 		toastPane.getChildren().add(imageview);
