@@ -1,4 +1,9 @@
-/** * ViewInitializer.java * Authors: Yuping Huang, Tegan Wilson, and Carolyn Ryan * Class structure taken from https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to * Date: Feb 28, 2016 * * ViewInitializer class helps set up the GUI (View) */
+/** 
+* ViewInitializer.java 
+* Authors: Yuping Huang, Tegan Wilson, and Carolyn Ryan 
+* Class structure taken from https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to 
+* Date: Feb 28, 2016
+* ViewInitializer class helps set up the GUI (View) */
 package toastGame;
 
 import java.net.URL;
@@ -13,9 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 
 public class ViewInitializer implements Initializable {
@@ -40,23 +42,14 @@ public class ViewInitializer implements Initializable {
 	private GameController myController;
 	private Button[] buttonList;
 
-	// Used later as an example of how to add to a stackpane
-	private Rectangle exampleRectangle;
-
 	/**
-	 * Defines instance variables and creates topping buttons.
+	 * Sets up observer relationship with GameController.
+	 * Uses GameController to define button list.
 	 */
 	protected void setUp() {
-
 		myController = new GameController();
 		myController.registerView(this);
 		buttonList = myController.createButtons(6);
-
-		exampleRectangle = new Rectangle();
-		exampleRectangle.setX(50);
-		exampleRectangle.setY(50);
-		exampleRectangle.setWidth(200);
-		exampleRectangle.setHeight(100);
 	}
 
 	/**
@@ -77,9 +70,7 @@ public class ViewInitializer implements Initializable {
 	 * Handles button action for submit button. The submit button is implemented
 	 * in the .fxml file. As such, it can't be handled in the same method as the
 	 * other buttons.
-	 * 
-	 * @param event
-	 *            The event that needs to be handled
+	 * @param event		The event that needs to be handled
 	 */
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
@@ -103,7 +94,6 @@ public class ViewInitializer implements Initializable {
 				@Override
 				public void handle(ActionEvent event) {
 					System.out.println("Button pressed");
-					// toastStackPane.getChildren().add(exampleRectangle);
 					myController.handleButtonClickEvent(j);
 				}
 			});
@@ -112,12 +102,8 @@ public class ViewInitializer implements Initializable {
 
 	/**
 	 * Called as a constructor, initializes all GUI elements of the java GUI.
-	 * 
-	 * @param fxmlFileLocation
-	 *            The location of the fxml file to be used as a base GUI.
-	 * @param resources
-	 *            The bundle of resources to be used in additional GUI
-	 *            development.
+	 * @param fxmlFileLocation		The location of the fxml file to be used as a base GUI.
+	 * @param resources				The bundle of resources to be used in additional GUI development.
 	 */
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
@@ -134,8 +120,7 @@ public class ViewInitializer implements Initializable {
 	/**
 	 * Takes the image to put on the toastStackPane, resize it to appropriate
 	 * size, rotate and position it randomly on the toast
-	 * 
-	 * @param image
+	 * @param image		The image to be shown on top the toast image
 	 */
 	void addImageOnToast(Image image) {
 		ImageView imageview = new ImageView(image);
@@ -146,9 +131,10 @@ public class ViewInitializer implements Initializable {
 		double imageviewY = (r.nextDouble() - 0.5) * stackPaneHeight;
 		imageview.setPreserveRatio(true);
 		imageview.setFitHeight(stackPaneHeight / 10.0);
-		System.out.println(imageviewX);
-		imageview.setLayoutX(300);
-		imageview.setLayoutY(300);
+		System.out.println("("+ imageviewX +","+ imageviewY +")");
+		//TODO Fix randomization!
+		imageview.setLayoutX(imageviewX);
+		imageview.setLayoutY(imageviewY);
 		toastStackPane.getChildren().add(imageview);
 	}
 }

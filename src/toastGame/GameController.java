@@ -30,7 +30,8 @@ public class GameController {
 	 * Create a list of buttons and return it. Should be called by the view.
 	 * 
 	 * @param numberOfButtons
-	 * @return
+	 *            Topping buttons desired in the given round
+	 * @return buttons List of all the buttons created.
 	 */
 	Button[] createButtons(int numberOfButtons) {
 		this.toppingList = generateToppings(numberOfButtons);
@@ -66,6 +67,9 @@ public class GameController {
 		System.out.println(toppingList[toppingIndex].getName());
 	}
 
+	/**
+	 * Method called when submit is pressed. Will eventually judge the game.
+	 */
 	void submitToast() {
 		// TODO initiate judging
 		System.out.println("Toast has been submitted.");
