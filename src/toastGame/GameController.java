@@ -11,7 +11,7 @@ package toastGame;
 
 import java.util.ArrayList;
 
-public class ToastController {
+public class GameController {
 	// Topping instance variables
 	private String toppingOne;
 	private String toppingTwo;
@@ -25,7 +25,7 @@ public class ToastController {
 	 * Constructor for ToastController
 	 * @param toppings 
 	 */
-	public ToastController() {
+	public GameController() {
 		//sets topping parameters to topping instance variables
 		
 	}
