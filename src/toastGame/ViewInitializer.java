@@ -25,7 +25,6 @@ public class ViewInitializer implements Initializable {
 	private static final int BUTTON_X_LAYOUT = 25;
 	private static final int BUTTONSIZE_Y = 45;
 	private static final int BUTTONSIZE_X = 134;
-	private static final String SUBMIT = "javafx.event.ActionEvent[source=Button[id=submitButton, styleClass=button]'SUBMIT']";
 
 	// FXML Variable Injections
 	@FXML
@@ -78,7 +77,7 @@ public class ViewInitializer implements Initializable {
 	protected void handleButtonAction(ActionEvent event) {
 		System.out.println("Button Pressed!");
 		// When submit is pressed, calls the submit toast method
-		if (event.toString().equals(SUBMIT)) {
+		if (event.getSource().equals(submitButton)) {
 			myController.submitToast();
 		}
 	}

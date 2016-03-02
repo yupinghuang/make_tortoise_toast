@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 public class GameController {
 	// Topping instance variables
 	private Topping[] toppingList;
+	
 	// maintains a reference to the view class
 	private ViewInitializer view = new ViewInitializer();
 

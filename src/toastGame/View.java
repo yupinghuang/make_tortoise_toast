@@ -23,7 +23,8 @@ public class View extends Application {
 		// TODO Auto-generated method stub
 		Pane page = (Pane) FXMLLoader.load(View.class.getResource("ToastForToryMock.fxml"));
 		Scene scene = new Scene(page);
-
+		
+		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Toast For Tory!");
 		primaryStage.show();
