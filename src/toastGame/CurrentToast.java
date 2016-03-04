@@ -7,5 +7,6 @@ package toastGame;
  *
  */
 class CurrentToast {
-
+	private Toast toast;
+	
 }

@@ -45,8 +45,7 @@ public class ViewInitializer implements Initializable {
 	 * define button list.
 	 */
 	protected void setUp() {
-		myController = new GameController();
-		myController.registerView(this);
+		myController = new GameController(this);
 		buttonList = myController.createButtons(6);
 	}
 
