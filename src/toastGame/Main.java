@@ -15,13 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class View extends Application {
+public class Main extends Application {
 
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		Pane page = (Pane) FXMLLoader.load(View.class.getResource("ToastForToryMock.fxml"));
+		Pane page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryMock.fxml"));
 		Scene scene = new Scene(page);
 		
 		primaryStage.setResizable(false);
@@ -35,7 +35,7 @@ public class View extends Application {
 	 *            the command line arguments
 	 */
 	public static void main(String[] args) {
-		Application.launch(View.class, (java.lang.String[]) null);
+		Application.launch(Main.class, (java.lang.String[]) null);
 	}
 
 }

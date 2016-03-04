@@ -9,12 +9,16 @@
 
 package toastGame;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 public class GameController {
 	// Topping instance variables
 	private Topping[] toppingList;
+	private ArrayList<Topping> possibleToppings;
 	
 	// maintains a reference to the view class
 	private ViewInitializer view = new ViewInitializer();
@@ -23,6 +27,23 @@ public class GameController {
 	 * Constructor for GameController
 	 */
 	GameController() {
+		possibleToppings = new ArrayList<Topping>();
+		possibleToppings.add(0, new Topping("Honey", "honey.png"));
+		possibleToppings.add(1, new Topping("Butter", "honey.png"));
+		possibleToppings.add(2, new Topping("Peanut Butter", "honey.png"));
+		possibleToppings.add(3, new Topping("Cinnamon", "honey.png"));
+		possibleToppings.add(4, new Topping("Jam", "honey.png"));
+		possibleToppings.add(5, new Topping("Avocado", "honey.png"));
+		possibleToppings.add(6, new Topping("Jelly", "honey.png"));
+		possibleToppings.add(7, new Topping("Sugar", "honey.png"));
+
+		/*possibleToppings[0] = new Topping("Honey", "honey.png");
+		possibleToppings[1] = new Topping("Butter", "honey.png");
+		possibleToppings[2] = new Topping("Peanut Butter", "honey.png");
+		possibleToppings[3] = new Topping("Cinnamon", "honey.png");
+		possibleToppings[4] = new Topping("Jam", "honey.png");
+		possibleToppings[5] = new Topping("Avocado", "honey.png");*/
+		
 	}
 
 	/**
@@ -62,9 +83,12 @@ public class GameController {
 	private Topping[] generateToppings(int numberOfToppings) {
 		numberOfToppings = 6;// for testing purpose
 		toppingList = new Topping[numberOfToppings];
+		Collections.shuffle(possibleToppings);
+		
 		for (int i = 0; i < toppingList.length; i++) {
+			
 			// TODO: randomize the topping generation process
-			toppingList[i] = new Topping("Honey", "honey.png");
+			toppingList[i] = possibleToppings.get(i);
 		}
 		return toppingList;
 	}
