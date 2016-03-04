@@ -103,17 +103,26 @@ public class GameController {
 	void handleButtonClickEvent(int buttonIndex) {
 		// TODO change toast model state
 		int toppingIndex = buttonIndex;
+		toastModel.addTopping(toppingList[toppingIndex]);
 		Image addedToastImage = toppingList[toppingIndex].getImage();
 		view.addImageOnToast(addedToastImage);
 		System.out.println("Adding " + toppingList[toppingIndex].getName() + " to toast!");
 	}
 
 	/**
-	 * Method called when submit is pressed. Will eventually judge the game.
+	 * Method called when submit is pressed to judge the toast made
 	 */
 	void submitToast() {
 		// TODO initiate judging
+		toryModel.judgeToast(toastModel.getToast());
 		System.out.println("Toast has been submitted for judging.");
 	}
-
+	
+	/**
+	 * Method called by the view to toast the toast
+	 * @param toastiness
+	 */
+	void toastToast(int toastiness) {
+		toastModel.toast(toastiness);
+	}
 }
