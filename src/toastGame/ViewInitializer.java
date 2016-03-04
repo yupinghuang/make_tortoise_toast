@@ -56,15 +56,15 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Arranges Buttons in a pane. This stack pane is placed on the right
-	 * side of the window.
+	 * Arranges Buttons in a pane. This stack pane is placed on the right side
+	 * of the window.
 	 */
 	@FXML
 	protected void setButtons() {
 		// Add buttons in list to the pane
 		buttonPane = new Pane();
 		for (int i = 0; i < buttonList.length; i++) {
-			//styles the buttons just before they are added to buttonPane
+			// styles the buttons just before they are added to buttonPane
 			buttonList[i].setStyle("-fx-font: 13 chalkduster; -fx-background-color: #5B4118; -fx-text-fill: WHITE;");
 			buttonPane.getChildren().add(buttonList[i]);
 		}
@@ -127,17 +127,22 @@ public class ViewInitializer implements Initializable {
 		}
 		this.setButtons();
 		this.handleButtons();
-		
+
 		// Listen for Slider value changes
 		toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
-			public void changed(ObservableValue<? extends Number> observable,Number oldValue, Number newValue) {
+			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				System.out.println(("Slider Value Changed newValue: " + newValue.intValue()));
+				/*
+				myController.handleSliderEvent(newValue.intValue());
+				public void handleSliderEvent(int SliderValue) {
+					view.changeToastinessLevel(SliderValue);
+				} */
 			}
 		});
-			
-		}
 
+	}
+	
 	/**
 	 * Takes the image to put on the toastStackPane, resize it to appropriate
 	 * size, rotate and position it randomly on the toast
