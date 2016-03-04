@@ -43,13 +43,13 @@ public class GameController {
 	private ArrayList<Topping> createPossibleHeadings() {
 		possibleToppings = new ArrayList<Topping>();
 		possibleToppings.add(0, new Topping("Honey", "honey.png"));
-		possibleToppings.add(1, new Topping("Butter", "honey.png"));
-		possibleToppings.add(2, new Topping("Peanut Butter", "honey.png"));
-		possibleToppings.add(3, new Topping("Cinnamon", "honey.png"));
-		possibleToppings.add(4, new Topping("Jam", "honey.png"));
-		possibleToppings.add(5, new Topping("Avocado", "honey.png"));
-		possibleToppings.add(6, new Topping("Jelly", "honey.png"));
-		possibleToppings.add(7, new Topping("Sugar", "honey.png"));
+		possibleToppings.add(1, new Topping("Butter", "butter.png"));
+		possibleToppings.add(2, new Topping("Peanut Butter", "peanutbutter.png"));
+		possibleToppings.add(3, new Topping("Cinnamon", "cinnamon.png"));
+		possibleToppings.add(4, new Topping("Jam", "jam.png"));
+		possibleToppings.add(5, new Topping("Avocado", "avocado.png"));
+		possibleToppings.add(6, new Topping("Cream Cheese", "creamcheese.png"));
+		possibleToppings.add(7, new Topping("Sugar", "sugar.png"));
 		/*possibleToppings[0] = new Topping("Honey", "honey.png");
 		possibleToppings[1] = new Topping("Butter", "honey.png");
 		possibleToppings[2] = new Topping("Peanut Butter", "honey.png");
