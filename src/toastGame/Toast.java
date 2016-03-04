@@ -11,7 +11,7 @@ package toastGame;
 import java.util.*;
 
 class Toast {
-	// TODO maybe a hashmap {Topping,quantity} makes more sense
+	// TODO maybe a hashmap {Topping, quantity} would make more sense
 	private LinkedList<Topping> toppings;
 	private int toastiness;
 
@@ -24,7 +24,7 @@ class Toast {
 	}
 
 	/**
-	 * add topping to the toast might want to check the topping is legitimate
+	 * Adds topping to the toast, might want to check the topping is legitimate
 	 * 
 	 * @param topping
 	 */
@@ -43,7 +43,14 @@ class Toast {
 	 *            toastiness to add to the current toastiness
 	 */
 	void toast(int toastiness) {
-		this.toastiness = toastiness;
+		//is toastiness is not between 0 and 3, sets it to 0 or 3.
+		if (toastiness < 0) {
+			this.toastiness = 0;
+		} else if (toastiness > 3) {
+			this.toastiness = 3;
+		} else {
+			this.toastiness = toastiness;
+		}
 	}
 
 	int getToastiness() {
