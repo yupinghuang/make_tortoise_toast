@@ -11,28 +11,41 @@ package toastGame;
 import java.util.*;
 
 class Toast {
-	// TODO maybe a hashmap {Topping, quantity} would make more sense
-	private LinkedList<Topping> toppings;
+	//instance variables: toppings and toastiness
+	private Map<Topping, Integer> toppings;
 	private int toastiness;
+	
 
 	/**
-	 * create the toast object with 0 toastiness and no topping
+	 * create the toast object with 0 toastiness and no toppings
 	 */
 	Toast() {
-		this.toppings = new LinkedList<Topping>();
+		this.toppings = new HashMap<Topping, Integer>();
 		this.toastiness = 0;
 	}
 
 	/**
 	 * Adds topping to the toast, might want to check the topping is legitimate
+	 * (Topping should be legitimate, since it was created, but we could create an assert/if statement...)
 	 * 
 	 * @param topping
 	 */
 	void addTopping(Topping topping) {
-		this.toppings.add(topping);
+		if (this.toppings.containsKey(topping)) {
+			//if topping is already in hashmap, updates the number
+			int i = this.toppings.get(topping);
+			this.toppings.put(topping, i++);
+		} else {
+			//else, adds the new topping to the hashmap
+			this.toppings.put(topping,  1);
+		}
 	}
 
-	LinkedList<Topping> getToppings() {
+	/**
+	 * Get function for the toppings hashmap
+	 * @return		list of toppings currently on toast
+	 */
+	Map<Topping, Integer> getToppings() {
 		return this.toppings;
 	}
 
@@ -43,7 +56,7 @@ class Toast {
 	 *            toastiness to add to the current toastiness
 	 */
 	void toast(int toastiness) {
-		//is toastiness is not between 0 and 3, sets it to 0 or 3.
+		// is toastiness is not between 0 and 3, sets it to 0 or 3.
 		if (toastiness < 0) {
 			this.toastiness = 0;
 		} else if (toastiness > 3) {
@@ -53,13 +66,18 @@ class Toast {
 		}
 	}
 
+	/**
+	 * get function for toastiness
+	 * @return		current toastiness of toast
+	 */
 	int getToastiness() {
-		// returns toastiness
 		return toastiness;
 	}
 
+	/**
+	 * Clears the toast object
+	 */
 	void clear() {
-		// resets toastiness to 0 and toppings list to empty
 		// The user should not be able to clear their toast when making it
 		this.toastiness = 0;
 		this.toppings.clear();

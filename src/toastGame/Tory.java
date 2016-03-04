@@ -26,8 +26,8 @@ public class Tory {
      * @return			the criteria Toast object
      */
     public Toast createCriteria(Topping[] toppingList) {
-        //creates a randomized Toast object to judge upon and returns it
         //should create toast objects based on difficulty of the game (implement this later)
+    	
     	this.criteriaToast.clear();
     	
     	//randomly sets the number of toppings for our criteria toast
@@ -50,7 +50,6 @@ public class Tory {
     
     public Toast getCriteria() {
         //returns a toast object of Tory's current criteria
-        
         return this.criteriaToast;
     }
  
@@ -62,7 +61,7 @@ public class Tory {
     public String judgeToast(Toast userToast) {
         //takes in the user's toast and judges it based on Tory's current criteria (implement later)
         //Could judge differently based on difficulty of level
-        
+    	
         return "";
     }
 }
