@@ -20,13 +20,27 @@ public class GameController {
 	private Topping[] toppingList;
 	private ArrayList<Topping> possibleToppings;
 	
-	// maintains a reference to the view class
-	private ViewInitializer view = new ViewInitializer();
+	// maintains references to the view and models
+	private ViewInitializer view;
+	private CurrentToast toastModel;
+	private Tory toryModel;
 
 	/**
 	 * Constructor for GameController
 	 */
-	GameController() {
+	GameController(ViewInitializer view) {
+		// register the view
+		this.view = view;
+		// Create the models
+		this.toastModel = new CurrentToast();
+		this.toryModel = new Tory();
+		this.possibleToppings = createPossibleHeadings();
+	}
+
+	/**
+	 * Helper method to generate possible topping list 
+	 */
+	private ArrayList<Topping> createPossibleHeadings() {
 		possibleToppings = new ArrayList<Topping>();
 		possibleToppings.add(0, new Topping("Honey", "honey.png"));
 		possibleToppings.add(1, new Topping("Butter", "honey.png"));
@@ -36,25 +50,13 @@ public class GameController {
 		possibleToppings.add(5, new Topping("Avocado", "honey.png"));
 		possibleToppings.add(6, new Topping("Jelly", "honey.png"));
 		possibleToppings.add(7, new Topping("Sugar", "honey.png"));
-
 		/*possibleToppings[0] = new Topping("Honey", "honey.png");
 		possibleToppings[1] = new Topping("Butter", "honey.png");
 		possibleToppings[2] = new Topping("Peanut Butter", "honey.png");
 		possibleToppings[3] = new Topping("Cinnamon", "honey.png");
 		possibleToppings[4] = new Topping("Jam", "honey.png");
 		possibleToppings[5] = new Topping("Avocado", "honey.png");*/
-		
-	}
-
-	/**
-	 * Registers the controller with the view initializer. Observer Pattern in
-	 * use.
-	 * 
-	 * @param view
-	 *            The ViewInitializer to register with
-	 */
-	void registerView(ViewInitializer view) {
-		this.view = view;
+		return possibleToppings;
 	}
 
 	/**
@@ -86,7 +88,6 @@ public class GameController {
 		Collections.shuffle(possibleToppings);
 		
 		for (int i = 0; i < toppingList.length; i++) {
-			
 			// TODO: randomize the topping generation process
 			toppingList[i] = possibleToppings.get(i);
 		}
