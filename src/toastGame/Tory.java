@@ -8,6 +8,8 @@
 
 package toastGame;
 
+import java.util.Random;
+
 public class Tory {
 	private Toast criteriaToast;
     /**
@@ -20,14 +22,29 @@ public class Tory {
     
     /**
      * Changes the criteria Toast to have a randomized set of toppings
+     * @param toppingList		the list of possible toppings the user can select
      * @return			the criteria Toast object
      */
-    public Toast createCriteria() {
+    public Toast createCriteria(Topping[] toppingList) {
         //creates a randomized Toast object to judge upon and returns it
         //should create toast objects based on difficulty of the game (implement this later)
-        
-        this.criteriaToast.clear();
+    	this.criteriaToast.clear();
+    	
+    	//randomly sets the number of toppings for our criteria toast
+    	Random rand = new Random();
+    	int numToppings = 5 + rand.nextInt(10);
+    	
+    	//adds random toppings from toppingList until we have the correct number of toppings
+    	for (int i = 0; i < numToppings; i++) {
+    		int topping = rand.nextInt(6);
+    		criteriaToast.addTopping(toppingList[topping]);
+    	}
+    	
+    	//toasts the toast a random amount
+    	int toastiness = rand.nextInt(4);
+    	criteriaToast.toast(toastiness);
         //This is where we would randomly get rid of toppings and set the toastiness of the criteria
+        
         return this.criteriaToast;
     }
     
