@@ -11,6 +11,7 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -129,17 +130,14 @@ public class ViewInitializer implements Initializable {
 		this.handleButtons();
 		
 		// Listen for Slider value changes
-		//ChangeListener<Number> listener;
-		//toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() );
-		/*.valueProperty().addListener(new ChangeListener<Number>() {
-		    @Override
-		    public void changed(ObservableValue<? extends Number> observable,
-		            Number oldValue, Number newValue) {
-
-		        outputTextArea.appendText("Slider Value Changed (newValue: " + newValue.intValue() + ")\n");
-		    }
-		});*/
-	}
+		toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() {
+			@Override
+			public void changed(ObservableValue<? extends Number> observable,Number oldValue, Number newValue) {
+				System.out.println(("Slider Value Changed newValue: " + newValue.intValue()));
+			}
+		});
+			
+		}
 
 	/**
 	 * Takes the image to put on the toastStackPane, resize it to appropriate
