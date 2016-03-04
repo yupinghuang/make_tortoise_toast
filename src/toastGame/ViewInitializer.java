@@ -59,6 +59,8 @@ public class ViewInitializer implements Initializable {
 		// Add buttons in list to the pane
 		buttonPane = new Pane();
 		for (int i = 0; i < buttonList.length; i++) {
+			//styles the buttons just before they are added to buttonPane
+			buttonList[i].setStyle("-fx-font: 13 chalkduster; -fx-background-color: #5B4118; -fx-text-fill: WHITE;");
 			buttonPane.getChildren().add(buttonList[i]);
 		}
 		// Add the button pane to the side pane
