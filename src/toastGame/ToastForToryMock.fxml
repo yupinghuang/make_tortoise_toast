@@ -34,7 +34,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </ProgressIndicator>
-      <Slider layoutX="409.0" layoutY="235.0" orientation="VERTICAL" showTickMarks="true" />
+      <Slider fx:id="toastinessIndicator" layoutX="409.0" layoutY="235.0" orientation="VERTICAL" showTickMarks="true" />
       <StackPane id="buttonpane" fx:id="sideButtonPane" layoutX="438.0" layoutY="24.0" prefHeight="349.0" prefWidth="171.0" />
       <ImageView fitHeight="75.0" fitWidth="86.0" layoutX="48.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
          <image>

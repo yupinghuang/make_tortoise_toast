@@ -86,7 +86,6 @@ public class GameController {
 		Collections.shuffle(possibleToppings);
 		
 		for (int i = 0; i < toppingList.length; i++) {
-			
 			// TODO: randomize the topping generation process
 			toppingList[i] = possibleToppings.get(i);
 		}

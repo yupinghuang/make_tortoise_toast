@@ -9,11 +9,14 @@ package toastGame;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
+
+import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -35,6 +38,8 @@ public class ViewInitializer implements Initializable {
 	private Pane toastPane;
 	@FXML
 	private StackPane sideButtonPane;
+	@FXML
+	private Slider toastinessIndicator;
 
 	// Instance Variables
 	private GameController myController;
@@ -122,6 +127,18 @@ public class ViewInitializer implements Initializable {
 		}
 		this.setButtons();
 		this.handleButtons();
+		
+		// Listen for Slider value changes
+		//ChangeListener<Number> listener;
+		//toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() );
+		/*.valueProperty().addListener(new ChangeListener<Number>() {
+		    @Override
+		    public void changed(ObservableValue<? extends Number> observable,
+		            Number oldValue, Number newValue) {
+
+		        outputTextArea.appendText("Slider Value Changed (newValue: " + newValue.intValue() + ")\n");
+		    }
+		});*/
 	}
 
 	/**
