@@ -82,7 +82,6 @@ public class ViewInitializer implements Initializable {
 	 */
 	@FXML
 	protected void handleButtonAction(ActionEvent event) {
-		System.out.println("Button Pressed!");
 		// When submit is pressed, calls the submit toast method
 		if (event.getSource().equals(submitButton)) {
 			myController.submitToast();
@@ -101,7 +100,6 @@ public class ViewInitializer implements Initializable {
 			buttonList[i].setOnAction(new EventHandler<ActionEvent>() {
 				@Override
 				public void handle(ActionEvent event) {
-					System.out.println("Button pressed!");
 					myController.handleButtonClickEvent(j);
 				}
 			});

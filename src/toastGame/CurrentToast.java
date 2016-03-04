@@ -16,6 +16,7 @@ class CurrentToast {
 
 	void addTopping(Topping topping) {
 		toast.addTopping(topping);
+		System.out.println("Adding " + topping.getName() + " to toast!");
 	}
 	
 	Toast getToast() {
