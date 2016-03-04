@@ -50,12 +50,7 @@ public class GameController {
 		possibleToppings.add(5, new Topping("Avocado", "avocado.png"));
 		possibleToppings.add(6, new Topping("Cream Cheese", "creamcheese.png"));
 		possibleToppings.add(7, new Topping("Sugar", "sugar.png"));
-		/*possibleToppings[0] = new Topping("Honey", "honey.png");
-		possibleToppings[1] = new Topping("Butter", "honey.png");
-		possibleToppings[2] = new Topping("Peanut Butter", "honey.png");
-		possibleToppings[3] = new Topping("Cinnamon", "honey.png");
-		possibleToppings[4] = new Topping("Jam", "honey.png");
-		possibleToppings[5] = new Topping("Avocado", "honey.png");*/
+		
 		return possibleToppings;
 	}
 
@@ -106,7 +101,6 @@ public class GameController {
 		toastModel.addTopping(toppingList[toppingIndex]);
 		Image addedToastImage = toppingList[toppingIndex].getImage();
 		view.addImageOnToast(addedToastImage);
-		System.out.println("Adding " + toppingList[toppingIndex].getName() + " to toast!");
 	}
 
 	/**
