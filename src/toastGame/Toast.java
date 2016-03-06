@@ -62,8 +62,8 @@ class Toast {
 		// is toastiness is not between 0 and 3, sets it to 0 or 3.
 		if (toastiness < 0) {
 			this.toastiness = 0;
-		} else if (toastiness > 3) {
-			this.toastiness = 3;
+		} else if (toastiness > 5) {
+			this.toastiness = 5;
 		} else {
 			this.toastiness = toastiness;
 		}
