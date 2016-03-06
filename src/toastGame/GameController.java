@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 
 public class GameController {
 	// Topping instance variables
@@ -32,7 +31,7 @@ public class GameController {
 		// register the view
 		this.view = view;
 		// Create the models
-		this.toastModel = new CurrentToast();
+		this.toastModel = new CurrentToast(this, view);
 		this.toryModel = new Tory();
 		this.possibleToppings = createPossibleHeadings();
 	}
@@ -99,8 +98,6 @@ public class GameController {
 		// TODO change toast model state
 		int toppingIndex = buttonIndex;
 		toastModel.addTopping(toppingList[toppingIndex]);
-		Image addedToastImage = toppingList[toppingIndex].getImage();
-		view.addImageOnToast(addedToastImage);
 	}
 
 	/**
@@ -109,7 +106,6 @@ public class GameController {
 	void submitToast() {
 		// TODO initiate judging
 		toryModel.judgeToast(toastModel.getToast());
-		System.out.println("Toast has been submitted for judging.");
 	}
 	
 	/**

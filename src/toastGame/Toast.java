@@ -34,11 +34,14 @@ class Toast {
 		if (this.toppings.containsKey(topping)) {
 			//if topping is already in hashmap, updates the number
 			int i = this.toppings.get(topping);
-			this.toppings.put(topping, i++);
+			i++;
+			this.toppings.put(topping, i);
 		} else {
 			//else, adds the new topping to the hashmap
 			this.toppings.put(topping,  1);
 		}
+		System.out.println("Number of "+ topping.getName() + " is " + toppings.get(topping) + "\n");
+
 	}
 
 	/**

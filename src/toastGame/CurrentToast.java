@@ -1,5 +1,7 @@
 package toastGame;
 
+import javafx.scene.image.Image;
+
 /**
  * The model that keeps track of the current toast displayed on the view. Should
  * be observed by the view.
@@ -9,14 +11,20 @@ package toastGame;
  */
 class CurrentToast {
 	private Toast toast;
+	private GameController game;
+	private ViewInitializer view;
 
-	CurrentToast() {
+	CurrentToast(GameController game, ViewInitializer view) {
 		this.toast = new Toast();
+		this.game = game;
+		this.view = view;
 	}
 
 	void addTopping(Topping topping) {
-		toast.addTopping(topping);
 		System.out.println("Adding " + topping.getName() + " to toast!");
+		toast.addTopping(topping);
+		Image addedToastImage = topping.getImage();
+		view.addImageOnToast(addedToastImage);
 	}
 	
 	Toast getToast() {
@@ -25,6 +33,6 @@ class CurrentToast {
 	
 	void toast(int toastiness) {
 		System.out.println("CurrentToast.toast() not implemented yet");
+		toast.toast(toastiness);
 	}
-
 }

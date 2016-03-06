@@ -8,6 +8,7 @@
 
 package toastGame;
 
+import java.util.Map;
 import java.util.Random;
 
 public class Tory {
@@ -61,7 +62,11 @@ public class Tory {
     public String judgeToast(Toast userToast) {
         //takes in the user's toast and judges it based on Tory's current criteria (implement later)
         //Could judge differently based on difficulty of level
-    	
+		System.out.println("Toast has been submitted for judging.");
+		for(Map.Entry<Topping, Integer> entry : userToast.getToppings().entrySet()){
+		    System.out.printf("Toast has %s %s. %n", entry.getValue(), entry.getKey().getName());
+		}
+		System.out.println("Toast has " + userToast.getToastiness() +" toastiness level.");
         return "";
     }
 }
