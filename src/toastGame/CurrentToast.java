@@ -32,7 +32,12 @@ class CurrentToast {
 	}
 	
 	void toast(int toastiness) {
-		System.out.println("CurrentToast.toast() not implemented yet");
+		// TODO implement view version of toastiness changes 
 		toast.toast(toastiness);
+		if ((0<=toastiness) || (toastiness <= 3)) {
+			Image toast = new Image(getClass().getResource("toastlevel"+toastiness+".png").toExternalForm());
+			view.changeToastiness(toast);
+
+		}
 	}
 }

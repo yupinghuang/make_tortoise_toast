@@ -24,6 +24,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 public class ViewInitializer implements Initializable {
+	private static final double TOPPING_SCALE_FACTOR = 4.6;
 	// Constant variables
 	private static final int BUTTON_Y_MULTIPLIER = 56;
 	private static final int BUTTON_X_LAYOUT = 25;
@@ -41,11 +42,13 @@ public class ViewInitializer implements Initializable {
 	private StackPane sideButtonPane;
 	@FXML
 	private Slider toastinessIndicator;
+	@FXML
+	private ImageView toastImage;
 
 	// Instance Variables
 	private GameController myController;
 	private Button[] buttonList;
-
+	
 	/**
 	 * Sets up observer relationship with GameController. Uses GameController to
 	 * define button list.
@@ -54,58 +57,7 @@ public class ViewInitializer implements Initializable {
 		myController = new GameController(this);
 		buttonList = myController.createButtons(6);
 	}
-
-	/**
-	 * Arranges Buttons in a pane. This stack pane is placed on the right side
-	 * of the window.
-	 */
-	@FXML
-	protected void setButtons() {
-		// Add buttons in list to the pane
-		buttonPane = new Pane();
-		for (int i = 0; i < buttonList.length; i++) {
-			// styles the buttons just before they are added to buttonPane
-			buttonList[i].setStyle("-fx-font: 13 chalkduster; -fx-background-color: #5B4118; -fx-text-fill: WHITE;");
-			buttonPane.getChildren().add(buttonList[i]);
-		}
-		// Add the button pane to the side pane
-		sideButtonPane.getChildren().add(buttonPane);
-	}
-
-	/**
-	 * Handles button action for submit button. The submit button is implemented
-	 * in the .fxml file. As such, it can't be handled in the same method as the
-	 * other buttons.
-	 * 
-	 * @param event
-	 *            The event that needs to be handled
-	 */
-	@FXML
-	protected void handleButtonAction(ActionEvent event) {
-		// When submit is pressed, calls the submit toast method
-		if (event.getSource().equals(submitButton)) {
-			myController.submitToast();
-		}
-	}
-
-	/**
-	 * Handles button action. Calls to the GameController to handle the button
-	 * press.
-	 */
-	public void handleButtons() {
-		// Associate actions with each button
-		for (int i = 0; i < buttonList.length; i++) {
-			// Associate actions with each button
-			int j = i;
-			buttonList[i].setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent event) {
-					myController.handleButtonClickEvent(j);
-				}
-			});
-		}
-	}
-
+	
 	/**
 	 * Called as a constructor, initializes all GUI elements of the java GUI.
 	 * 
@@ -130,15 +82,64 @@ public class ViewInitializer implements Initializable {
 		toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				System.out.println(("Slider Value Changed newValue: " + newValue.intValue()));
-				/*
-				myController.handleSliderEvent(newValue.intValue());
-				public void handleSliderEvent(int SliderValue) {
-					view.changeToastinessLevel(SliderValue);
-				} */
+				if (! (oldValue.intValue() == newValue.intValue())) {
+					myController.toastToast(newValue.intValue());
+					System.out.println(("Slider Value Changed newValue: " + newValue.intValue()));
+				}
 			}
 		});
 
+	}
+
+	/**
+	 * Arranges Buttons in a pane. This stack pane is placed on the right side
+	 * of the window.
+	 */
+	@FXML
+	protected void setButtons() {
+		// Add buttons in list to the pane
+		buttonPane = new Pane();
+		for (int i = 0; i < buttonList.length; i++) {
+			// styles the buttons just before they are added to buttonPane
+			buttonList[i].setStyle("-fx-font: 13 chalkduster; -fx-background-color: #5B4118; -fx-text-fill: WHITE;");
+			buttonPane.getChildren().add(buttonList[i]);
+		}
+		// Add the button pane to the side pane
+		sideButtonPane.getChildren().add(buttonPane);
+	}
+
+	/**
+	 * Handles button action. Calls to the GameController to handle the button
+	 * press.
+	 */
+	public void handleButtons() {
+		// Associate actions with each button
+		for (int i = 0; i < buttonList.length; i++) {
+			// Associate actions with each button
+			int j = i;
+			buttonList[i].setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					myController.handleButtonClickEvent(j);
+				}
+			});
+		}
+	}
+	
+	/**
+	 * Handles button action for submit button. The submit button is implemented
+	 * in the .fxml file. As such, it can't be handled in the same method as the
+	 * other buttons.
+	 * 
+	 * @param event
+	 *            The event that needs to be handled
+	 */
+	@FXML
+	protected void handleButtonAction(ActionEvent event) {
+		// When submit is pressed, calls the submit toast method
+		if (event.getSource().equals(submitButton)) {
+			myController.submitToast();
+		}
 	}
 	
 	/**
@@ -158,10 +159,16 @@ public class ViewInitializer implements Initializable {
 		int imageViewY = (r.nextInt((int) paneWidth));
 
 		imageview.setPreserveRatio(true);
-		imageview.setFitHeight(paneHeight / 5.0);
+		imageview.setFitHeight(paneHeight / TOPPING_SCALE_FACTOR); 
 
 		imageview.setLayoutX(imageViewX);
-		imageview.setLayoutY(imageViewY - 35);
+		imageview.setLayoutY(imageViewY);
 		toastPane.getChildren().add(imageview);
+	}
+	
+	void changeToastiness(Image toast) {
+		System.out.println("Change Toastiness running.");
+		toastImage.setImage(toast);
+		toastImage.getImage();
 	}
 }
