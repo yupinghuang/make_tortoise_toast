@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 
 public class GameController {
 	// Topping instance variables
@@ -22,7 +21,7 @@ public class GameController {
 	
 	// maintains references to the view and models
 	private ViewInitializer view;
-	private CurrentToast toastModel;
+	private ToastModel toastModel;
 	private Tory toryModel;
 
 	/**
@@ -32,7 +31,7 @@ public class GameController {
 		// register the view
 		this.view = view;
 		// Create the models
-		this.toastModel = new CurrentToast();
+		this.toastModel = new ToastModel(this, view);
 		this.toryModel = new Tory();
 		this.possibleToppings = createPossibleHeadings();
 	}
@@ -43,19 +42,14 @@ public class GameController {
 	private ArrayList<Topping> createPossibleHeadings() {
 		possibleToppings = new ArrayList<Topping>();
 		possibleToppings.add(0, new Topping("Honey", "honey.png"));
-		possibleToppings.add(1, new Topping("Butter", "honey.png"));
-		possibleToppings.add(2, new Topping("Peanut Butter", "honey.png"));
-		possibleToppings.add(3, new Topping("Cinnamon", "honey.png"));
-		possibleToppings.add(4, new Topping("Jam", "honey.png"));
-		possibleToppings.add(5, new Topping("Avocado", "honey.png"));
-		possibleToppings.add(6, new Topping("Jelly", "honey.png"));
-		possibleToppings.add(7, new Topping("Sugar", "honey.png"));
-		/*possibleToppings[0] = new Topping("Honey", "honey.png");
-		possibleToppings[1] = new Topping("Butter", "honey.png");
-		possibleToppings[2] = new Topping("Peanut Butter", "honey.png");
-		possibleToppings[3] = new Topping("Cinnamon", "honey.png");
-		possibleToppings[4] = new Topping("Jam", "honey.png");
-		possibleToppings[5] = new Topping("Avocado", "honey.png");*/
+		possibleToppings.add(1, new Topping("Butter", "butter.png"));
+		possibleToppings.add(2, new Topping("Peanut Butter", "peanutbutter.png"));
+		possibleToppings.add(3, new Topping("Cinnamon", "cinnamon.png"));
+		possibleToppings.add(4, new Topping("Jam", "jam.png"));
+		possibleToppings.add(5, new Topping("Avocado", "avocado.png"));
+		possibleToppings.add(6, new Topping("Cream Cheese", "creamcheese.png"));
+		possibleToppings.add(7, new Topping("Sugar", "sugar.png"));
+		
 		return possibleToppings;
 	}
 
@@ -104,9 +98,6 @@ public class GameController {
 		// TODO change toast model state
 		int toppingIndex = buttonIndex;
 		toastModel.addTopping(toppingList[toppingIndex]);
-		Image addedToastImage = toppingList[toppingIndex].getImage();
-		view.addImageOnToast(addedToastImage);
-		System.out.println("Adding " + toppingList[toppingIndex].getName() + " to toast!");
 	}
 
 	/**
@@ -115,7 +106,6 @@ public class GameController {
 	void submitToast() {
 		// TODO initiate judging
 		toryModel.judgeToast(toastModel.getToast());
-		System.out.println("Toast has been submitted for judging.");
 	}
 	
 	/**

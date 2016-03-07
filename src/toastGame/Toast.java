@@ -34,11 +34,14 @@ class Toast {
 		if (this.toppings.containsKey(topping)) {
 			//if topping is already in hashmap, updates the number
 			int i = this.toppings.get(topping);
-			this.toppings.put(topping, i++);
+			i++;
+			this.toppings.put(topping, i);
 		} else {
 			//else, adds the new topping to the hashmap
 			this.toppings.put(topping,  1);
 		}
+		System.out.println("Number of "+ topping.getName() + " is " + toppings.get(topping) + "\n");
+
 	}
 	
 	/**
@@ -73,8 +76,8 @@ class Toast {
 		// is toastiness is not between 0 and 3, sets it to 0 or 3.
 		if (toastiness < 0) {
 			this.toastiness = 0;
-		} else if (toastiness > 3) {
-			this.toastiness = 3;
+		} else if (toastiness > 5) {
+			this.toastiness = 5;
 		} else {
 			this.toastiness = toastiness;
 		}
@@ -88,6 +91,14 @@ class Toast {
 		return toastiness;
 	}
 
+	/**
+	 * set function for toastiness
+	 * @param	desired toastiness of toast
+	 */
+	void setToastiness(int toastiness) {
+		this.toastiness = toastiness;
+	}
+	
 	/**
 	 * Clears the toast object
 	 */
