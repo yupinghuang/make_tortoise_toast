@@ -73,7 +73,7 @@ class Toast {
 	 *            toastiness to add to the current toastiness
 	 */
 	void toast(int toastiness) {
-		// is toastiness is not between 0 and 3, sets it to 0 or 3.
+		// is toastiness is not between 0 and 5, sets it to 0 or 5.
 		if (toastiness < 0) {
 			this.toastiness = 0;
 		} else if (toastiness > 5) {
@@ -103,7 +103,6 @@ class Toast {
 	 * Clears the toast object
 	 */
 	void clear() {
-		// The user should not be able to clear their toast when making it
 		this.toastiness = 0;
 		this.toppings.clear();
 	}

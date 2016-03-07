@@ -14,12 +14,21 @@ class ToastModel {
 	private GameController game;
 	private ViewInitializer view;
 
+	/**
+	 * instantiates the user's toast in view
+	 * @param game
+	 * @param view
+	 */
 	ToastModel(GameController game, ViewInitializer view) {
 		this.toast = new Toast();
 		this.game = game;
 		this.view = view;
 	}
 
+	/**
+	 * Adds topping to the user's toast in view
+	 * @param topping
+	 */
 	void addTopping(Topping topping) {
 		System.out.println("Adding " + topping.getName() + " to toast!");
 		toast.addTopping(topping);
@@ -27,12 +36,16 @@ class ToastModel {
 		view.addImageOnToast(addedToastImage);
 	}
 	
+	//Returns the toast
 	Toast getToast() {
 		return toast;
 	}
 	
-	void toast(int toastiness) {
-		// TODO implement view version of toastiness changes 
+	/**
+	 * Toasts the toast and changes the toast image based on toastiness scale
+	 * @param toastiness
+	 */
+	void toast(int toastiness) { 
 		toast.toast(toastiness);
 		if ((0<=toastiness) || (toastiness <= 3)) {
 			Image toast = new Image(getClass().getResource("toastlevel"+toastiness+".png").toExternalForm());
