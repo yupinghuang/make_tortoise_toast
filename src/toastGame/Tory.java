@@ -26,7 +26,7 @@ public class Tory {
      * @param toppingList		the list of possible toppings the user can select
      * @return			the criteria Toast object
      */
-    public Toast createCriteria(Topping[] toppingList) {
+    public void createCriteria(Topping[] toppingList) {
         //should create toast objects based on difficulty of the game (implement this later)
     	
     	this.criteriaToast.clear();
@@ -45,8 +45,9 @@ public class Tory {
     	int toastiness = rand.nextInt(4);
     	criteriaToast.toast(toastiness);
         //This is where we would randomly get rid of toppings and set the toastiness of the criteria
-        
-        return this.criteriaToast;
+    	
+    	
+    	
     }
     
     public Toast getCriteria() {
@@ -64,14 +65,15 @@ public class Tory {
         //Could judge differently based on difficulty of level
 		System.out.println("Toast has been submitted for judging.");
 		System.out.println("User toast has " + userToast.getToastiness() +" toastiness level.");
-
-		for(Map.Entry<Topping, Integer> entry : userToast.getToppings().entrySet()){
-		    System.out.printf("User toast has %s %s. %n", entry.getValue(), entry.getKey().getName());
 		    
-		    for(Map.Entry<Topping, Integer> criteriaEntry : criteriaToast.getToppings().entrySet()){
-			    System.out.printf("Criteria toast has %s %s. %n", criteriaEntry.getValue(), criteriaEntry.getKey().getName());
-			}
+		//loops through criteria toppings
+		for(Map.Entry<Topping, Integer> criteriaEntry : criteriaToast.getToppings().entrySet()){
+			System.out.printf("Criteria toast has %s %s. %n", criteriaEntry.getValue(), criteriaEntry.getKey().getName());
+			
+			
+			
 		}
+		
 		System.out.println("Criteria toast has " + criteriaToast.getToastiness() +" toastiness level.");
 
         return "";
