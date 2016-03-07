@@ -9,12 +9,12 @@ import javafx.scene.image.Image;
  * @author Yuping Huang
  *
  */
-class CurrentToast {
+class ToastModel {
 	private Toast toast;
 	private GameController game;
 	private ViewInitializer view;
 
-	CurrentToast(GameController game, ViewInitializer view) {
+	ToastModel(GameController game, ViewInitializer view) {
 		this.toast = new Toast();
 		this.game = game;
 		this.view = view;
