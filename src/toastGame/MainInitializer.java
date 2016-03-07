@@ -14,24 +14,21 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainInitializer implements Initializable {
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		System.out.println(location);
-		System.out.println(resources);
-		
-	}
-	
 	@FXML
 	private Button play;
 	@FXML
 	private Button howTo;
-	/*@FXML
-	private Button main;
-	@FXML 
-	private Button play1;*/
 	
+	Stage howToStage;
+	Stage playStage;
+	
+	
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		howToStage = new Stage();
+		playStage = new Stage();
+	}
 	
 	/**
 	 * Handles button action for submit button. The submit button is implemented
@@ -55,30 +52,27 @@ public class MainInitializer implements Initializable {
 		}
 	}
 
-
 	private void openPlay() throws IOException {
 		Pane page;
-		Stage secondaryStage = new Stage();
 		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
 
 		Scene scene = new Scene(page);
 
-		secondaryStage.setResizable(false);
-		secondaryStage.setScene(scene);
-		secondaryStage.setTitle("Toast For Tory!");
-		secondaryStage.show();
+		playStage.setResizable(false);
+		playStage.setScene(scene);
+		playStage.setTitle("Toast For Tory!");
+		playStage.show();
 	}
+	
 	private void openHowTo() throws IOException {
 		Pane page;
-		Stage secondaryStage = new Stage();
 		page = (Pane) FXMLLoader.load(Main.class.getResource("HowToTory.fxml"));
 
 		Scene scene = new Scene(page);
 
-		secondaryStage.setResizable(false);
-		secondaryStage.setScene(scene);
-		secondaryStage.setTitle("Toast For Tory!");
-		secondaryStage.show();
+		howToStage.setResizable(false);
+		howToStage.setScene(scene);
+		howToStage.setTitle("Toast For Tory!");
+		howToStage.show();
 	}
-
 }
