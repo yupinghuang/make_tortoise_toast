@@ -78,6 +78,14 @@ class Toast {
 	}
 
 	/**
+	 * set function for toastiness
+	 * @param	desired toastiness of toast
+	 */
+	void setToastiness(int toastiness) {
+		this.toastiness = toastiness;
+	}
+	
+	/**
 	 * Clears the toast object
 	 */
 	void clear() {
