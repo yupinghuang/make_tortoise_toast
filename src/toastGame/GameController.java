@@ -71,7 +71,8 @@ public class GameController {
 	}
 
 	/**
-	 * Generates random toppings for a given round of the game
+	 * Generates random toppings for a given round of the game.
+	 * Currently also generates Tory's criteria, but doesn't do anything with it.
 	 * 
 	 * @param numberOfToppings
 	 * @return
@@ -85,9 +86,10 @@ public class GameController {
 			// TODO: randomize the topping generation process
 			toppingList[i] = possibleToppings.get(i);
 		}
+		this.toryModel.createCriteria(toppingList);
 		return toppingList;
 	}
-
+	
 	/**
 	 * Called by the view to react to button click
 	 * 
@@ -97,7 +99,7 @@ public class GameController {
 	void handleButtonClickEvent(int buttonIndex) {
 		// TODO change toast model state
 		int toppingIndex = buttonIndex;
-		toastModel.addTopping(toppingList[toppingIndex]);
+		this.toastModel.addTopping(toppingList[toppingIndex]);
 	}
 
 	/**
@@ -105,7 +107,8 @@ public class GameController {
 	 */
 	void submitToast() {
 		// TODO initiate judging
-		toryModel.judgeToast(toastModel.getToast());
+		
+		this.toryModel.judgeToast(this.toastModel.getToast());
 	}
 	
 	/**
@@ -113,6 +116,6 @@ public class GameController {
 	 * @param toastiness
 	 */
 	void toastToast(int toastiness) {
-		toastModel.toast(toastiness);
+		this.toastModel.toast(toastiness);
 	}
 }
