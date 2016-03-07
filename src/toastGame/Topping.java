@@ -33,4 +33,5 @@ class Topping {
 	public Image getImage() {
 		return image;
 	}
+	
 }

@@ -72,7 +72,7 @@ public class GameController {
 
 	/**
 	 * Generates random toppings for a given round of the game.
-	 * Currently also generates Tory's criteria, but doesn't do anything with it.
+	 * Currently also generates Tory's criteria.
 	 * 
 	 * @param numberOfToppings
 	 * @return
@@ -83,9 +83,10 @@ public class GameController {
 		Collections.shuffle(possibleToppings);
 		
 		for (int i = 0; i < toppingList.length; i++) {
-			// TODO: randomize the topping generation process
+			// randomizes the topping generation process
 			toppingList[i] = possibleToppings.get(i);
 		}
+		//currently creates Tory's criteria within this method
 		this.toryModel.createCriteria(toppingList);
 		return toppingList;
 	}

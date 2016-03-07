@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 
 public class Tory {
 	private Toast criteriaToast;
+	private Topping[] toppingList;
 
 	/**
 	 * Instantiates Tory object, which has a (plain) Toast object as it's
@@ -35,12 +36,13 @@ public class Tory {
 		// should create toast objects based on difficulty of the game
 		// (implement this later)
 		this.criteriaToast.clear();
+		this.toppingList = toppingList;
 
 		// randomly sets the number of toppings for our criteria toast
 		Random rand = new Random();
 		int numToppings = 5 + rand.nextInt(5);
 
-		// adds random toppings from toppingList 
+		// adds random toppings from toppingList
 		// adds toppings in randomized amounts
 		for (int i = 0; i < numToppings; i++) {
 			int topping = rand.nextInt(6);
@@ -55,6 +57,7 @@ public class Tory {
 
 	/**
 	 * Returns Tory's current toast criteria
+	 * 
 	 * @return
 	 */
 	Toast getCriteria() {
@@ -63,8 +66,7 @@ public class Tory {
 	}
 
 	/**
-	 * Generate and return the image of the toast?
-	 * (Currently returns null)
+	 * Generate and return the image of the toast? (Currently returns null)
 	 * TODO: Finish dealing with this function
 	 * 
 	 * @return
@@ -88,37 +90,41 @@ public class Tory {
 
 		int judgeValue = 0;
 		Map<Topping, Integer> userToppingsMap = userToast.getToppings();
+		Map<Topping, Integer> criteriaToppingsMap = criteriaToast.getToppings();
 		// loops through criteria toppings
-		for (Map.Entry<Topping, Integer> criteriaEntry : criteriaToast.getToppings().entrySet()) {
+		for (Topping topping : toppingList) {
 
 			int userToppingNumber = 0;
 			// finds the number of this topping the user put into their toast,
 			// returns 0 if not in the map
-			if (!(userToppingsMap.get(criteriaEntry.getKey()) == null)) {
-				userToppingNumber = userToppingsMap.get(criteriaEntry.getKey());
+			if (userToppingsMap.get(topping) != null) {
+				userToppingNumber = userToppingsMap.get(topping);
+			}
+			int criteriaToppingNumber = 0;
+			if (criteriaToppingsMap.get(topping) != null) {
+				criteriaToppingNumber = criteriaToppingsMap.get(topping);
 			}
 			// finds the difference between user and criteria toppings
 			// adds difference to the judgeValue
-			judgeValue = judgeValue + Math.abs(userToppingNumber - criteriaEntry.getValue());
-			System.out.printf("Criteria toast has %s %s. %n", criteriaEntry.getValue(), criteriaEntry.getKey().getName());
-			System.out.printf("User toast has %s %s. %n", userToppingNumber, criteriaEntry.getKey().getName());
+			judgeValue = judgeValue + Math.abs(userToppingNumber - criteriaToppingNumber);
+			System.out.printf("Criteria toast has %s %s. %n", criteriaToppingNumber, topping.getName());
+			System.out.printf("User toast has %s %s. %n", userToppingNumber, topping.getName());
 			System.out.println("JudgeValue currently at " + judgeValue);
 
 		}
 
 		System.out.println("Criteria toast has " + criteriaToast.getToastiness() + " toastiness level.");
 		System.out.println("User toast has " + userToast.getToastiness() + " toastiness level.");
-		
+
 		// adds difference in toastiness to the judgeValue
 		judgeValue = judgeValue + Math.abs(userToast.getToastiness() - criteriaToast.getToastiness());
 		System.out.println("JudgeValue currently at " + judgeValue);
-		
 		String toryOpinion = "";
 		if (judgeValue < 4) {
 			toryOpinion = "Awesome!";
 		} else if (judgeValue < 7) {
 			toryOpinion = "Good.";
-		} else if (judgeValue < 10){
+		} else if (judgeValue < 10) {
 			toryOpinion = "Bad.";
 		} else {
 			toryOpinion = "Horrible!";
