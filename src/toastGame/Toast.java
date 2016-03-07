@@ -43,6 +43,20 @@ class Toast {
 		System.out.println("Number of "+ topping.getName() + " is " + toppings.get(topping) + "\n");
 
 	}
+	
+	/**
+	 * Add an amount of a certain topping, gets called by Tory
+	 * @param topping
+	 * @param amount
+	 */
+	void addTopping(Topping topping,int amount) {
+		if (this.toppings.containsKey(topping)) {
+			int i = this.toppings.get(topping);
+			this.toppings.put(topping, i+amount);
+		} else {
+			this.toppings.put(topping, amount);
+		}
+	}
 
 	/**
 	 * Get function for the toppings hashmap
