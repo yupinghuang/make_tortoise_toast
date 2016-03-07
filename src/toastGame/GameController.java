@@ -78,7 +78,7 @@ public class GameController {
 	 * @return
 	 */
 	private Topping[] generateToppings(int numberOfToppings) {
-		numberOfToppings = 6;// for testing purpose
+		numberOfToppings = 6; // for testing purpose
 		toppingList = new Topping[numberOfToppings];
 		Collections.shuffle(possibleToppings);
 		
