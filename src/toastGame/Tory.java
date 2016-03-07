@@ -91,15 +91,17 @@ public class Tory {
 		int judgeValue = 0;
 		Map<Topping, Integer> userToppingsMap = userToast.getToppings();
 		Map<Topping, Integer> criteriaToppingsMap = criteriaToast.getToppings();
-		// loops through criteria toppings
+		// loops through the possible toppings for this round
 		for (Topping topping : toppingList) {
 
 			int userToppingNumber = 0;
 			// finds the number of this topping the user put into their toast,
-			// returns 0 if not in the map
+			// sets to 0 if not in the map
 			if (userToppingsMap.get(topping) != null) {
 				userToppingNumber = userToppingsMap.get(topping);
 			}
+			// finds the number of this topping in the criteria toast
+			// sets to 0 if not in the map
 			int criteriaToppingNumber = 0;
 			if (criteriaToppingsMap.get(topping) != null) {
 				criteriaToppingNumber = criteriaToppingsMap.get(topping);
@@ -113,18 +115,20 @@ public class Tory {
 
 		}
 
+		// finds difference in toastiness between user and criteria toast
+		// adds difference to the judgeValue
 		System.out.println("Criteria toast has " + criteriaToast.getToastiness() + " toastiness level.");
 		System.out.println("User toast has " + userToast.getToastiness() + " toastiness level.");
-
-		// adds difference in toastiness to the judgeValue
 		judgeValue = judgeValue + Math.abs(userToast.getToastiness() - criteriaToast.getToastiness());
 		System.out.println("JudgeValue currently at " + judgeValue);
+		
+		// Returns Tory's opinion of the toast based on the judgeValue
 		String toryOpinion = "";
 		if (judgeValue < 4) {
 			toryOpinion = "Awesome!";
-		} else if (judgeValue < 7) {
+		} else if (judgeValue < 8) {
 			toryOpinion = "Good.";
-		} else if (judgeValue < 10) {
+		} else if (judgeValue < 12) {
 			toryOpinion = "Bad.";
 		} else {
 			toryOpinion = "Horrible!";
