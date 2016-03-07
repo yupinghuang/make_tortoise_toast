@@ -1,5 +1,5 @@
 /**
- * Main.java
+ * OpeningMain.java
  * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
  * Code altered from  https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
  * Date: Feb 28, 2016
@@ -15,18 +15,17 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+public class OpeningMain extends Application {
 
-	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		Pane page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryMock.fxml"));
+		Pane page = (Pane) FXMLLoader.load(OpeningMain.class.getResource("ToastForToryOpening.fxml"));
 		Scene scene = new Scene(page);
 		
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Toast For Tory!");
+		primaryStage.setTitle("Toast For Torddsy!");
 		primaryStage.show();
 	}
 
@@ -35,7 +34,7 @@ public class Main extends Application {
 	 *            the command line arguments
 	 */
 	public static void main(String[] args) {
-		Application.launch(Main.class, (java.lang.String[]) null);
+		Application.launch(OpeningMain.class, (java.lang.String[]) null);
 	}
 
 }

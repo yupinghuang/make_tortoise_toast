@@ -6,7 +6,7 @@ import javafx.scene.image.Image;
  * The model that keeps track of the current toast displayed on the view. Should
  * be observed by the view.
  * 
- * @author Yuping Huang
+ * @author Yuping Huang, Tegan Wilson, and Carolyn Ryan
  *
  */
 class ToastModel {
