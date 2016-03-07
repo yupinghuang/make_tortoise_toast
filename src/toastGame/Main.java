@@ -1,5 +1,5 @@
 /**
- * View.java
+ * Main.java
  * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
  * Code altered from  https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
  * Date: Feb 28, 2016
