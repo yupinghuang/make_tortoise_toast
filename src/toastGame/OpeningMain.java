@@ -25,7 +25,7 @@ public class OpeningMain extends Application {
 		
 		primaryStage.setResizable(false);
 		primaryStage.setScene(scene);
-		primaryStage.setTitle("Toast For Torddsy!");
+		primaryStage.setTitle("Toast For Tory!");
 		primaryStage.show();
 	}
 
