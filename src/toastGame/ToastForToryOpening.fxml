@@ -16,25 +16,13 @@
          	</font>
       </Text>
       
-      <Button fx:id="dif1" layoutX="249.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #5B4118;" text="Difficulty 1" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="play" layoutX="249.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="102.0" style="-fx-background-color: #5B4118;" text="PLAY!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>
       </Button> 
       
-      <Button fx:id="dif2" layoutX="249.0" layoutY="200.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #5B4118;" text="Difficulty 2" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="Chalkduster" size="13.0" />
-         </font>
-      </Button>     
-      
-      <Button fx:id="dif3" layoutX="248.0" layoutY="245.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: #5B4118;" text="Difficulty 3" textFill="WHITE">
-         <font>
-            <Font name="Chalkduster" size="13.0" />
-         </font>
-      </Button>
-      
-      <Button fx:id="instructions" layoutX="248.0" layoutY="286.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleButtonAction" prefWidth="103.6" style="-fx-background-color: #5B4118;" text="Intructions" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="howTo" layoutX="249.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="102.0" style="-fx-background-color: #5B4118;" text="HOW TO!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>

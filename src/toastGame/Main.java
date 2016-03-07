@@ -21,7 +21,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		Pane page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryMock.fxml"));
+		Pane page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
 		Scene scene = new Scene(page);
 		
 		primaryStage.setResizable(false);

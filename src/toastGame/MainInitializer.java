@@ -1,28 +1,37 @@
 package toastGame;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 public class MainInitializer implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
+		System.out.println(location);
+		System.out.println(resources);
 		
 	}
+	
 	@FXML
-	private Button dif1;
+	private Button play;
 	@FXML
-	private Button dif2;
-	@FXML
-	private Button dif3;
-	@FXML
-	private Button instructions;
+	private Button howTo;
+	/*@FXML
+	private Button main;
+	@FXML 
+	private Button play1;*/
+	
 	
 	/**
 	 * Handles button action for submit button. The submit button is implemented
@@ -31,14 +40,45 @@ public class MainInitializer implements Initializable {
 	 * 
 	 * @param event
 	 *            The event that needs to be handled
+	 * @throws IOException 
 	 */
 	@FXML
-	protected void handleButtonAction(ActionEvent event) {
+	protected void handleButtonAction(ActionEvent event) throws IOException {
 		System.out.println("Button Pressed!");
 		// When submit is pressed, calls the submit toast method
-		if (event.getSource().equals(dif1)) {
 
+		if (event.getSource().equals(play)) {
+			openPlay();
 		}
+		if (event.getSource().equals(howTo)) {
+			openHowTo();
+		}
+	}
+
+
+	private void openPlay() throws IOException {
+		Pane page;
+		Stage secondaryStage = new Stage();
+		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
+
+		Scene scene = new Scene(page);
+
+		secondaryStage.setResizable(false);
+		secondaryStage.setScene(scene);
+		secondaryStage.setTitle("Toast For Tory!");
+		secondaryStage.show();
+	}
+	private void openHowTo() throws IOException {
+		Pane page;
+		Stage secondaryStage = new Stage();
+		page = (Pane) FXMLLoader.load(Main.class.getResource("HowToTory.fxml"));
+
+		Scene scene = new Scene(page);
+
+		secondaryStage.setResizable(false);
+		secondaryStage.setScene(scene);
+		secondaryStage.setTitle("Toast For Tory!");
+		secondaryStage.show();
 	}
 
 }
