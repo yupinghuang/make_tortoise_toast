@@ -21,7 +21,7 @@ public class GameController {
 	
 	// maintains references to the view and models
 	private ViewInitializer view;
-	private ToastModel toastModel;
+	private GameModel toastModel;
 	private Tory toryModel;
 
 	/**
@@ -31,7 +31,7 @@ public class GameController {
 		// register the view
 		this.view = view;
 		// Create the models
-		this.toastModel = new ToastModel(this, view);
+		this.toastModel = new GameModel(this, view);
 		this.toryModel = new Tory();
 		this.possibleToppings = createPossibleHeadings();
 	}

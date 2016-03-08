@@ -9,19 +9,20 @@ import javafx.scene.image.Image;
  * @author Yuping Huang, Tegan Wilson, and Carolyn Ryan
  *
  */
-class ToastModel {
+class GameModel {
 	private Toast toast;
-	private GameController game;
+	private GameController controller;
 	private ViewInitializer view;
+	private Scorer scorer;
 
 	/**
 	 * instantiates the user's toast in view
 	 * @param game
 	 * @param view
 	 */
-	ToastModel(GameController game, ViewInitializer view) {
+	GameModel(GameController game, ViewInitializer view) {
 		this.toast = new Toast();
-		this.game = game;
+		this.controller = game;
 		this.view = view;
 	}
 
