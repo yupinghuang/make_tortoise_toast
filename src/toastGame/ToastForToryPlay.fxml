@@ -27,7 +27,7 @@
       </Button>
 	  <ImageView fx:id="toastImage" fitHeight="322.0" fitWidth="319.0" layoutX="115.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
         	<image>
-            	<Image url="@toastlevel0.png" />
+            	<Image url="@images/toastlevel0.png" />
         	</image>
       </ImageView>
       

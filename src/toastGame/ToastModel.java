@@ -48,7 +48,7 @@ class ToastModel {
 	void toast(int toastiness) { 
 		toast.toast(toastiness);
 		if ((0<=toastiness) || (toastiness <= 3)) {
-			Image toast = new Image(getClass().getResource("toastlevel"+toastiness+".png").toExternalForm());
+			Image toast = new Image(getClass().getResource("images/toastlevel"+toastiness+".png").toExternalForm());
 			view.changeToastiness(toast);
 
 		}
