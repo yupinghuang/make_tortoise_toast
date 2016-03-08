@@ -32,6 +32,8 @@ public class MainInitializer implements Initializable {
 		// TODO Auto-generated method stub
 		myStage = new Stage();
 		myStage.setResizable(false);
+		page = new Pane();
+		scene = new Scene(page);
 
 		//playStage = new Stage();
 	}
@@ -73,7 +75,7 @@ public class MainInitializer implements Initializable {
 	
 	private void openHowTo() throws IOException {
 		page = (Pane) FXMLLoader.load(Main.class.getResource("HowToTory.fxml"));
-
+		
 		scene = new Scene(page);
 
 		myStage.setScene(scene);
