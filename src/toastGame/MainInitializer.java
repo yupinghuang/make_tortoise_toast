@@ -41,9 +41,6 @@ public class MainInitializer implements Initializable {
 	 */
 	@FXML
 	protected void handleButtonAction(ActionEvent event) throws IOException {
-		System.out.println("Button Pressed!");
-		// When submit is pressed, calls the submit toast method
-
 		if (event.getSource().equals(play)) {
 			openPlay();
 		}
