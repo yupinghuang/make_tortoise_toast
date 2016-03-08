@@ -14,6 +14,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainInitializer implements Initializable {
+	private static final String MAINSTRING = "javafx.event.ActionEvent[source=Button@55b9e92a[styleClass=button]'MAIN']";
+
 	@FXML
 	private Button play;
 	@FXML
@@ -47,8 +49,12 @@ public class MainInitializer implements Initializable {
 		if (event.getSource().equals(howTo)) {
 			openHowTo();
 		}
+		if (event.toString().equals(MAINSTRING)){
+			// TODO Figure out how to get the howToStage to close when user clicks button!
+			howToStage.close();
+		}
 	}
-
+	
 	private void openPlay() throws IOException {
 		Pane page;
 		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
