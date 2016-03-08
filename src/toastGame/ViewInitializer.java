@@ -27,7 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.util.Pair;
 
 public class ViewInitializer implements Initializable {
-	private static final double TOPPING_SCALE_FACTOR = 4.6;
+	private static final double SCALE_FACTOR = 4.6;
 	// Constant variables
 	private static final int BUTTON_Y_MULTIPLIER = 56;
 	private static final int BUTTON_X_LAYOUT = 25;
@@ -186,7 +186,7 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Helper function to add an image (scaled by TOPPING_SCALE_FACTOR) onto a
+	 * Helper function to add an image onto a
 	 * pane. Usually used to add topping onto an existing toast
 	 * 
 	 * @param image
@@ -202,7 +202,7 @@ public class ViewInitializer implements Initializable {
 		int imageViewY = (r.nextInt((int) paneWidth));
 
 		imageview.setPreserveRatio(true);
-		imageview.setFitHeight(paneHeight / TOPPING_SCALE_FACTOR);
+		imageview.setFitHeight(paneHeight / SCALE_FACTOR);
 
 		imageview.setLayoutX(imageViewX);
 		imageview.setLayoutY(imageViewY);

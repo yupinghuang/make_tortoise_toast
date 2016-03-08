@@ -21,15 +21,19 @@ public class MainInitializer implements Initializable {
 	@FXML
 	private Button howTo;
 	
-	Stage howToStage;
-	Stage playStage;
+	Stage myStage;
+	Pane page;
+	Scene scene;
+
 	
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		howToStage = new Stage();
-		playStage = new Stage();
+		myStage = new Stage();
+		myStage.setResizable(false);
+
+		//playStage = new Stage();
 	}
 	
 	/**
@@ -43,39 +47,37 @@ public class MainInitializer implements Initializable {
 	 */
 	@FXML
 	protected void handleButtonAction(ActionEvent event) throws IOException {
+		String eventString = event.getSource().toString();
+				
 		if (event.getSource().equals(play)) {
 			openPlay();
 		}
 		if (event.getSource().equals(howTo)) {
 			openHowTo();
 		}
-		if (event.toString().equals(MAINSTRING)){
+		if (eventString.substring(eventString.length()-6).equals("'MAIN'")) {
+			System.out.println("Main pressed!");
 			// TODO Figure out how to get the howToStage to close when user clicks button!
-			howToStage.close();
+			myStage.close();
 		}
 	}
 	
 	private void openPlay() throws IOException {
-		Pane page;
 		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
+		scene = new Scene(page);
 
-		Scene scene = new Scene(page);
-
-		playStage.setResizable(false);
-		playStage.setScene(scene);
-		playStage.setTitle("Toast For Tory!");
-		playStage.show();
+		myStage.setScene(scene);
+		myStage.setTitle("Play Toast For Tory!");
+		myStage.show();
 	}
 	
 	private void openHowTo() throws IOException {
-		Pane page;
 		page = (Pane) FXMLLoader.load(Main.class.getResource("HowToTory.fxml"));
 
-		Scene scene = new Scene(page);
+		scene = new Scene(page);
 
-		howToStage.setResizable(false);
-		howToStage.setScene(scene);
-		howToStage.setTitle("Toast For Tory!");
-		howToStage.show();
+		myStage.setScene(scene);
+		myStage.setTitle("How To Play");
+		myStage.show();
 	}
 }
