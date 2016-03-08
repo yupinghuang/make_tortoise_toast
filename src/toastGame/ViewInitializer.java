@@ -7,6 +7,7 @@
 package toastGame;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -22,6 +23,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 public class ViewInitializer implements Initializable {
 	private static final double TOPPING_SCALE_FACTOR = 4.6;
@@ -44,11 +47,15 @@ public class ViewInitializer implements Initializable {
 	private Slider toastinessIndicator;
 	@FXML
 	private ImageView toastImage;
+	@FXML
+	private Pane criteriaToastPane;
+	@FXML
+	private VBox toastRequest;
 
 	// Instance Variables
 	private GameController myController;
 	private Button[] buttonList;
-	
+
 	/**
 	 * Sets up observer relationship with GameController. Uses GameController to
 	 * define button list.
@@ -57,7 +64,7 @@ public class ViewInitializer implements Initializable {
 		myController = new GameController(this);
 		buttonList = myController.createButtons(6);
 	}
-	
+
 	/**
 	 * Called as a constructor, initializes all GUI elements of the java GUI.
 	 * 
@@ -82,7 +89,7 @@ public class ViewInitializer implements Initializable {
 		toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-				if (! (oldValue.intValue() == newValue.intValue())) {
+				if (!(oldValue.intValue() == newValue.intValue())) {
 					myController.toastToast(newValue.intValue());
 					System.out.println(("Slider Value Changed newValue: " + newValue.intValue()));
 				}
@@ -125,7 +132,7 @@ public class ViewInitializer implements Initializable {
 			});
 		}
 	}
-	
+
 	/**
 	 * Handles button action for submit button. The submit button is implemented
 	 * in the .fxml file. As such, it can't be handled in the same method as the
@@ -141,7 +148,7 @@ public class ViewInitializer implements Initializable {
 			myController.submitToast();
 		}
 	}
-	
+
 	/**
 	 * Takes the image to put on the toastStackPane, resize it to appropriate
 	 * size, rotate and position it randomly on the toast
@@ -150,22 +157,70 @@ public class ViewInitializer implements Initializable {
 	 *            The image to be shown on top the toast image
 	 */
 	void addImageOnToast(Image image) {
+		addImageOnPane(image, toastPane);
+	}
+
+	/**
+	 * Generate an image according to the base image and the decorative images
+	 * and the number of each. The decorations are on top of the base.
+	 * 
+	 * @param base
+	 *            the image at the bottom
+	 * @param decorations
+	 *            a list of <Image, number> pair where number is the the number
+	 *            of the certain image to add
+	 */
+	void createCriteriaImage(Image base, ArrayList<Pair<Image, Integer>> decorations) {
+		ImageView baseview = new ImageView(base);
+		baseview.setPreserveRatio(true);
+		baseview.setFitHeight((criteriaToastPane.getHeight()));
+		criteriaToastPane.getChildren().add(baseview);
+		for (Pair<Image, Integer> imageWithNumber : decorations) {
+			int amount = imageWithNumber.getValue();
+			Image image = imageWithNumber.getKey();
+			while (amount > 0) {
+				addImageOnPane(image, criteriaToastPane);
+				amount--;
+			}
+		}
+	}
+
+	/**
+	 * Helper function to add an image (scaled by TOPPING_SCALE_FACTOR) onto a
+	 * pane. Usually used to add topping onto an existing toast
+	 * 
+	 * @param image
+	 * @param pane
+	 */
+	private void addImageOnPane(Image image, Pane pane) {
 		ImageView imageview = new ImageView(image);
-		double paneHeight = toastPane.getHeight();
-		double paneWidth = toastPane.getWidth();
+		double paneHeight = pane.getHeight();
+		double paneWidth = pane.getWidth();
 
 		Random r = new Random();
 		int imageViewX = (r.nextInt((int) paneHeight));
 		int imageViewY = (r.nextInt((int) paneWidth));
 
 		imageview.setPreserveRatio(true);
-		imageview.setFitHeight(paneHeight / TOPPING_SCALE_FACTOR); 
+		imageview.setFitHeight(paneHeight / TOPPING_SCALE_FACTOR);
 
 		imageview.setLayoutX(imageViewX);
 		imageview.setLayoutY(imageViewY);
-		toastPane.getChildren().add(imageview);
+		pane.getChildren().add(imageview);
 	}
-	
+
+	/**
+	 * Post request text to the request vbox on the view In the toastGame case
+	 * it is the order
+	 * 
+	 * @param requests
+	 *            as a two-column array, the first the name and the second the
+	 *            description(e.g. amount)
+	 */
+	void createTextRequest(String[][] requests) {
+
+	}
+
 	void changeToastiness(Image toast) {
 		System.out.println("Change Toastiness running.");
 		toastImage.setImage(toast);
