@@ -202,11 +202,11 @@ public class ViewInitializer implements Initializable {
 		ImageView imageview = new ImageView(entry.getKey().getImage());
 		
 		Random r = new Random();
-		int imageViewX = (r.nextInt(50)) + 10;
-		int imageViewY = (r.nextInt(50)) + 10;
+		int imageViewX = (r.nextInt(80)) + 10;
+		int imageViewY = (r.nextInt(80)) + 10;
 
 		imageview.setPreserveRatio(true);
-		imageview.setFitHeight(15);
+		imageview.setFitHeight(25);
 		imageview.setLayoutX(imageViewX);
 		imageview.setLayoutY(imageViewY);
 		
@@ -215,7 +215,7 @@ public class ViewInitializer implements Initializable {
 	
 	void addCriteriaToast(Image image) {
 		ImageView imageview = new ImageView(image);
-		imageview.setFitHeight(100);
+		imageview.setFitHeight(160);
 		imageview.setPreserveRatio(true);
 		criteriaToastPane.getChildren().add(imageview);
 	}
