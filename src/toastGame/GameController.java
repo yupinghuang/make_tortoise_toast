@@ -88,6 +88,7 @@ public class GameController {
 		}
 		//currently creates Tory's criteria within this method
 		this.toryModel.createCriteria(toppingList);
+		this.toryModel.printCriteria();
 		return toppingList;
 	}
 	
