@@ -31,7 +31,6 @@ class GameModel {
 	 * @param topping
 	 */
 	void addTopping(Topping topping) {
-		System.out.println("Adding " + topping.getName() + " to toast!");
 		toast.addTopping(topping);
 		Image addedToastImage = topping.getImage();
 		view.addImageOnToast(addedToastImage);

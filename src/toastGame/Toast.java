@@ -40,8 +40,6 @@ class Toast {
 			//else, adds the new topping to the hashmap
 			this.toppings.put(topping,  1);
 		}
-		System.out.println("Number of "+ topping.getName() + " is " + toppings.get(topping) + "\n");
-
 	}
 	
 	/**

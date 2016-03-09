@@ -95,7 +95,6 @@ public class ViewInitializer implements Initializable {
 			public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
 				if (!(oldValue.intValue() == newValue.intValue())) {
 					myController.toastToast(newValue.intValue());
-					System.out.println(("Slider Value Changed newValue: " + newValue.intValue()));
 				}
 			}
 		});
@@ -202,8 +201,8 @@ public class ViewInitializer implements Initializable {
 		ImageView imageview = new ImageView(entry.getKey().getImage());
 		
 		Random r = new Random();
-		int imageViewX = (r.nextInt(80)) + 10;
-		int imageViewY = (r.nextInt(80)) + 10;
+		int imageViewX = (r.nextInt(80)) + 20;
+		int imageViewY = (r.nextInt(80)) + 20;
 
 		imageview.setPreserveRatio(true);
 		imageview.setFitHeight(25);
@@ -261,7 +260,6 @@ public class ViewInitializer implements Initializable {
 	}
 
 	void changeToastiness(Image toast) {
-		System.out.println("Change Toastiness running.");
 		toastImage.setImage(toast);
 		toastImage.getImage();
 	}

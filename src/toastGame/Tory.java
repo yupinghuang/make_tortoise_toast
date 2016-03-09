@@ -158,20 +158,13 @@ public class Tory {
 			// finds the difference between user and criteria toppings
 			// adds difference to the judgeValue
 			judgeValue = judgeValue + Math.abs(userToppingNumber - criteriaToppingNumber);
-
-			// System.out.printf("Criteria toast has %s %s. %n", criteriaToppingNumber, topping.getName());
-			// System.out.printf("User toast has %s %s. %n", userToppingNumber, topping.getName());
-			// System.out.println("JudgeValue currently at " + judgeValue);
-
 		}
 
 		// finds difference in toastiness between user and criteria toast
 		// adds difference to the judgeValue
 
-		// System.out.println("Criteria toast has " + criteriaToast.getToastiness() + "toastiness level.");
-		// System.out.println("User toast has " + userToast.getToastiness() + "toastiness level.");
 		judgeValue = judgeValue + Math.abs(userToast.getToastiness() - criteriaToast.getToastiness());
-		System.out.println("Final JudgeValue at " + judgeValue);
+		System.out.println("You made " + judgeValue + " mistakes.");
 
 		// Returns Tory's opinion of the toast based on the judgeValue
 		String toryOpinion = "";
