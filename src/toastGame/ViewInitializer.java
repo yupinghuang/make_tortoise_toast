@@ -97,8 +97,7 @@ public class ViewInitializer implements Initializable {
 					myController.toastToast(newValue.intValue());
 				}
 			}
-		});
-
+		} );
 	}
 
 	/**
