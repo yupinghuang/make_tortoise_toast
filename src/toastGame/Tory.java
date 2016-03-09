@@ -51,7 +51,7 @@ public class Tory {
 		}
 
 		// toasts the toast a random amount
-		int toastiness = rand.nextInt(4);
+		int toastiness = rand.nextInt(6);
 		criteriaToast.toast(toastiness);
 	}
 
@@ -63,6 +63,41 @@ public class Tory {
 	Toast getCriteria() {
 		// returns a toast object of Tory's current criteria
 		return this.criteriaToast;
+	}
+
+	/**
+	 * Prints Tory's criteria to the terminal window
+	 * Criteria is given somewhat vaguely, but specific enough to (kind of) understand
+	 */
+	void printCriteria() {
+		System.out.println("Tory wants:");
+		Map<Topping, Integer> criteriaToppingsMap = criteriaToast.getToppings();
+		for (Topping topping : toppingList) {
+			int criteriaToppingNumber = 0;
+			if (criteriaToppingsMap.get(topping) != null) {
+				criteriaToppingNumber = criteriaToppingsMap.get(topping);
+			}
+			//System.out.printf("Criteria toast has %s %s. %n", criteriaToppingNumber, topping.getName());
+			
+			if (criteriaToppingNumber == 0) {
+				//System.out.printf("No %s, %n", topping.getName());
+			} else if (criteriaToppingNumber < 4) {
+				System.out.printf("A few %s, %n", topping.getName());
+			} else if (criteriaToppingNumber < 9) {
+				System.out.printf("Lots of %s, %n", topping.getName());
+			} else {
+				System.out.printf("A ton of %s, %n", topping.getName());
+			}
+			
+		}
+		//System.out.println("Criteria toast has " + criteriaToast.getToastiness() + " toastiness level.");
+		if (criteriaToast.getToastiness() < 2) {
+			System.out.println("And not toasted.");
+		} else if (criteriaToast.getToastiness() < 4) {
+			System.out.println("And somewhat toasted.");
+		} else {
+			System.out.println("And almost burnt.");
+		}
 	}
 
 	/**
@@ -109,19 +144,21 @@ public class Tory {
 			// finds the difference between user and criteria toppings
 			// adds difference to the judgeValue
 			judgeValue = judgeValue + Math.abs(userToppingNumber - criteriaToppingNumber);
-			System.out.printf("Criteria toast has %s %s. %n", criteriaToppingNumber, topping.getName());
-			System.out.printf("User toast has %s %s. %n", userToppingNumber, topping.getName());
-			System.out.println("JudgeValue currently at " + judgeValue);
+
+			// System.out.printf("Criteria toast has %s %s. %n", criteriaToppingNumber, topping.getName());
+			// System.out.printf("User toast has %s %s. %n", userToppingNumber, topping.getName());
+			// System.out.println("JudgeValue currently at " + judgeValue);
 
 		}
 
 		// finds difference in toastiness between user and criteria toast
 		// adds difference to the judgeValue
-		System.out.println("Criteria toast has " + criteriaToast.getToastiness() + " toastiness level.");
-		System.out.println("User toast has " + userToast.getToastiness() + " toastiness level.");
+
+		// System.out.println("Criteria toast has " + criteriaToast.getToastiness() + "toastiness level.");
+		// System.out.println("User toast has " + userToast.getToastiness() + "toastiness level.");
 		judgeValue = judgeValue + Math.abs(userToast.getToastiness() - criteriaToast.getToastiness());
-		System.out.println("JudgeValue currently at " + judgeValue);
-		
+		System.out.println("Final JudgeValue at " + judgeValue);
+
 		// Returns Tory's opinion of the toast based on the judgeValue
 		String toryOpinion = "";
 		if (judgeValue < 4) {
