@@ -8,6 +8,7 @@ package toastGame;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -188,9 +189,35 @@ public class ViewInitializer implements Initializable {
 		}
 	}
 	
+	void addCriteriaToppings(Toast toast) {
+		Map<Topping, Integer> map = toast.getToppings();
+		for(Map.Entry<Topping, Integer> entry : map.entrySet()){
+			for (int i=0; i < entry.getValue(); i++) {
+				putToppingCriteria(entry);
+			}
+            System.out.printf("Key : %s and Value: %s %n", entry.getKey(), entry.getValue());
+        }
+	}
+
+	private void putToppingCriteria(Map.Entry<Topping, Integer> entry) {
+		ImageView imageview = new ImageView(entry.getKey().getImage());
+		
+		Random r = new Random();
+		int imageViewX = (r.nextInt(50)) + 10;
+		int imageViewY = (r.nextInt(50)) + 10;
+
+		System.out.println("image");
+
+		imageview.setPreserveRatio(true);
+		imageview.setFitHeight(15);
+		imageview.setLayoutX(imageViewX);
+		imageview.setLayoutY(imageViewY);
+		
+		criteriaToastPane.getChildren().add(imageview);
+	}
+	
 	void addCriteriaToast(Image image) {
 		ImageView imageview = new ImageView(image);
-		
 		imageview.setFitHeight(100);
 		imageview.setPreserveRatio(true);
 		criteriaToastPane.getChildren().add(imageview);

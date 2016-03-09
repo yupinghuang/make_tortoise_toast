@@ -58,6 +58,7 @@ public class Tory {
 		
 		view.addCriteria(getCriteriaString());
 		view.addCriteriaToast(this.getToastImage());
+		view.addCriteriaToppings(criteriaToast);
 	}
 
 	/**
@@ -121,7 +122,6 @@ public class Tory {
 		int toastiness = criteriaToast.getToastiness();
 		Image toast = new Image(getClass().getResource("images/toastlevel"+ toastiness +".png").toExternalForm());
 		return toast;
-		
 	}
 
 	/**
