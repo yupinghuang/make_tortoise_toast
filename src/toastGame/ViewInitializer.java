@@ -195,7 +195,6 @@ public class ViewInitializer implements Initializable {
 			for (int i=0; i < entry.getValue(); i++) {
 				putToppingCriteria(entry);
 			}
-            System.out.printf("Key : %s and Value: %s %n", entry.getKey(), entry.getValue());
         }
 	}
 
@@ -205,8 +204,6 @@ public class ViewInitializer implements Initializable {
 		Random r = new Random();
 		int imageViewX = (r.nextInt(50)) + 10;
 		int imageViewY = (r.nextInt(50)) + 10;
-
-		System.out.println("image");
 
 		imageview.setPreserveRatio(true);
 		imageview.setFitHeight(15);
