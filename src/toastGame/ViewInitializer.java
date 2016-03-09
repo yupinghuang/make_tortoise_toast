@@ -223,6 +223,10 @@ public class ViewInitializer implements Initializable {
 	void createTextRequest(String[][] requests) {
 
 	}
+	
+	void addCriteria(String criteria) {
+		criteriaToastText.setText(criteria);
+	}
 
 	void changeToastiness(Image toast) {
 		System.out.println("Change Toastiness running.");

@@ -32,7 +32,7 @@ public class GameController {
 		this.view = view;
 		// Create the models
 		this.toastModel = new GameModel(this, view);
-		this.toryModel = new Tory();
+		this.toryModel = new Tory(view);
 		this.possibleToppings = createPossibleHeadings();
 	}
 
@@ -88,7 +88,6 @@ public class GameController {
 		}
 		//currently creates Tory's criteria within this method
 		this.toryModel.createCriteria(toppingList);
-		this.toryModel.printCriteria();
 		return toppingList;
 	}
 	
@@ -109,12 +108,6 @@ public class GameController {
 	 */
 	void submitToast() {		
 		this.toryModel.judgeToast(this.toastModel.getToast());
-	}
-	
-	String getCriteria() {
-		toryModel.getCriteria();
-		
-		return "";
 	}
 	
 	/**

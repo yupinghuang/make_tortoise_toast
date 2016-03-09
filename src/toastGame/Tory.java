@@ -16,13 +16,15 @@ import javafx.scene.image.Image;
 public class Tory {
 	private Toast criteriaToast;
 	private Topping[] toppingList;
+	private ViewInitializer view;
 
 	/**
 	 * Instantiates Tory object, which has a (plain) Toast object as it's
 	 * criteria
 	 */
-	Tory() {
+	Tory(ViewInitializer view) {
 		this.criteriaToast = new Toast();
+		this.view = view;
 	}
 
 	/**
@@ -53,6 +55,8 @@ public class Tory {
 		// toasts the toast a random amount
 		int toastiness = rand.nextInt(6);
 		criteriaToast.toast(toastiness);
+		
+		view.addCriteria(getCriteriaString());
 	}
 
 	/**
@@ -70,34 +74,40 @@ public class Tory {
 	 * Criteria is given somewhat vaguely, but specific enough to (kind of) understand
 	 */
 	void printCriteria() {
-		System.out.println("Tory wants:");
+		System.out.println(getCriteriaString());
+	}
+	
+	/**
+	 * Prints Tory's criteria to the terminal window
+	 * Criteria is given somewhat vaguely, but specific enough to (kind of) understand
+	 */
+	String getCriteriaString() {
+		String criteriaString = "Tory wants: \n";
 		Map<Topping, Integer> criteriaToppingsMap = criteriaToast.getToppings();
 		for (Topping topping : toppingList) {
 			int criteriaToppingNumber = 0;
 			if (criteriaToppingsMap.get(topping) != null) {
 				criteriaToppingNumber = criteriaToppingsMap.get(topping);
-			}
-			//System.out.printf("Criteria toast has %s %s. %n", criteriaToppingNumber, topping.getName());
-			
+			}			
 			if (criteriaToppingNumber == 0) {
-				//System.out.printf("No %s, %n", topping.getName());
+				//criteriaString = criteriaString + "None of " + topping.getName() + "\n";
 			} else if (criteriaToppingNumber < 4) {
-				System.out.printf("A few %s, %n", topping.getName());
+				criteriaString = criteriaString + "A few " + topping.getName() + ".\n";
 			} else if (criteriaToppingNumber < 9) {
-				System.out.printf("Lots of %s, %n", topping.getName());
+				criteriaString = criteriaString + "Lots of " + topping.getName() + ".\n";
 			} else {
-				System.out.printf("A ton of %s, %n", topping.getName());
+				criteriaString = criteriaString + "A ton of " + topping.getName() + ".\n";
 			}
 			
 		}
-		//System.out.println("Criteria toast has " + criteriaToast.getToastiness() + " toastiness level.");
 		if (criteriaToast.getToastiness() < 2) {
-			System.out.println("And not toasted.");
+			criteriaString  = criteriaString + "And not toasted.";
 		} else if (criteriaToast.getToastiness() < 4) {
-			System.out.println("And somewhat toasted.");
+			criteriaString  = criteriaString + "And somewhat toasted.";
 		} else {
-			System.out.println("And almost burnt.");
+			criteriaString  = criteriaString + "And almost burnt.";
 		}
+		return criteriaString;
 	}
 
 	/**
