@@ -19,6 +19,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -51,6 +52,8 @@ public class ViewInitializer implements Initializable {
 	private Pane criteriaToastPane;
 	@FXML
 	private VBox toastRequest;
+	@FXML
+	private TextArea criteriaToastText;
 
 	// Instance Variables
 	private GameController myController;

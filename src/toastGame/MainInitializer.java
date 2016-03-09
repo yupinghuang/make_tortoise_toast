@@ -60,6 +60,7 @@ public class MainInitializer implements Initializable {
 		if (eventString.substring(eventString.length()-6).equals("'MAIN'")) {
 			System.out.println("Main pressed!");
 			// TODO Figure out how to get the howToStage to close when user clicks button!
+			System.out.println(myStage);
 			myStage.close();
 		}
 	}
@@ -67,7 +68,7 @@ public class MainInitializer implements Initializable {
 	private void openPlay() throws IOException {
 		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
 		scene = new Scene(page);
-
+		
 		myStage.setScene(scene);
 		myStage.setTitle("Play Toast For Tory!");
 		myStage.show();
@@ -77,7 +78,6 @@ public class MainInitializer implements Initializable {
 		page = (Pane) FXMLLoader.load(Main.class.getResource("HowToTory.fxml"));
 		
 		scene = new Scene(page);
-
 		myStage.setScene(scene);
 		myStage.setTitle("How To Play");
 		myStage.show();

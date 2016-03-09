@@ -51,7 +51,6 @@ class GameModel {
 		if ((0<=toastiness) || (toastiness <= 3)) {
 			Image toast = new Image(getClass().getResource("images/toastlevel"+toastiness+".png").toExternalForm());
 			view.changeToastiness(toast);
-
 		}
 	}
 }

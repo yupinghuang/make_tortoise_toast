@@ -106,10 +106,14 @@ public class GameController {
 	/**
 	 * Method called when submit is pressed to judge the toast made
 	 */
-	void submitToast() {
-		// TODO initiate judging
-		
+	void submitToast() {		
 		this.toryModel.judgeToast(this.toastModel.getToast());
+	}
+	
+	String getCriteria() {
+		toryModel.getCriteria();
+		
+		return "";
 	}
 	
 	/**
