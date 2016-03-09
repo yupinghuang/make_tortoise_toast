@@ -153,7 +153,7 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Takes the image to put on the toastStackPane, resize it to appropriate
+	 * Takes the image to put on the toastPane, resize it to appropriate
 	 * size, rotate and position it randomly on the toast
 	 * 
 	 * @param image
@@ -186,6 +186,14 @@ public class ViewInitializer implements Initializable {
 				amount--;
 			}
 		}
+	}
+	
+	void addCriteriaToast(Image image) {
+		ImageView imageview = new ImageView(image);
+		
+		imageview.setFitHeight(100);
+		imageview.setPreserveRatio(true);
+		criteriaToastPane.getChildren().add(imageview);
 	}
 
 	/**
