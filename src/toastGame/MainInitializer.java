@@ -23,8 +23,6 @@ public class MainInitializer implements Initializable {
 	private Button play;
 	@FXML
 	private Button howTo;
-	@FXML
-	private Button newGameButton;
 
 	Stage myStage;
 	Stage howToStage;
@@ -70,9 +68,6 @@ public class MainInitializer implements Initializable {
 		if (event.getSource().equals(howTo)) {
 			openHowTo();
 		}
-		if (event.getSource().equals(newGameButton)) {
-			openPlay();
-		}
 		if (eventString.substring(eventString.length() - 6).equals("'MAIN'")) {
 			System.out.println("Main pressed!");
 			// TODO Figure out how to get the howToStage to close when user
@@ -116,7 +111,7 @@ public class MainInitializer implements Initializable {
 		myStage.show();
 
 		/*
-		 * Here is some code that another group used to close thier pop up
+		 * Here is some code that another group used to close their pop up
 		 * windows Check it out and see if you can figure this out because i
 		 * still can't
 		 * 
