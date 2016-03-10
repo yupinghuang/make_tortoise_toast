@@ -46,6 +46,8 @@ public class GameController {
 		possibleToppings.add(5, new Topping("Avocado", "images/avocado.png"));
 		possibleToppings.add(6, new Topping("Cream Cheese", "images/creamcheese.png"));
 		possibleToppings.add(7, new Topping("Sugar", "images/sugar.png"));
+		possibleToppings.add(8, new Topping("Ice Cream", "images/icecream.png"));
+		possibleToppings.add(9, new Topping("Chocolate Chips", "images/chocolatechips.png"));
 		
 		return possibleToppings;
 	}

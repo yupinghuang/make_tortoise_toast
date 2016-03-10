@@ -42,6 +42,8 @@ public class ViewInitializer implements Initializable {
 	@FXML
 	private Button submitButton;
 	@FXML
+	private Button newGameButton;
+	@FXML
 	private Pane toastPane;
 	@FXML
 	private StackPane sideButtonPane;
@@ -147,7 +149,24 @@ public class ViewInitializer implements Initializable {
 	protected void handleButtonAction(ActionEvent event) {
 		// When submit is pressed, calls the submit toast method
 		if (event.getSource().equals(submitButton)) {
+			//Code which clears the side button pane and adds Tory picture and text area there
+			/** sideButtonPane.getChildren().clear();
+			
+			TextArea judgments = new TextArea();
+			judgements.setLayoutY(100);
+			sideButtonPane.getChildren().add(judgments);
+			
+			Image toryImage = new Image(getClass().getResource("images/tory.png").toExternalForm());
+			ImageView toryImageView = new ImageView(toryImage);
+			toryImageView.setPreserveRatio(true);
+			toryImageView.setFitHeight(90);
+			sideButtonPane.getChildren().add(toryImageView); */
+			
 			myController.submitToast();
+		}
+		if (event.getSource().equals(newGameButton)) {
+			// TODO: Get newGameButton to actually work
+			System.out.println("New Game!");
 		}
 	}
 

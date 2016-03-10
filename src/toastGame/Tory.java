@@ -94,7 +94,7 @@ public class Tory {
 			if (criteriaToppingNumber == 0) {
 				//criteriaString = criteriaString + "None of " + topping.getName() + "\n";
 			} else if (criteriaToppingNumber < 4) {
-				criteriaString = criteriaString + "A few " + topping.getName() + ".\n";
+				criteriaString = criteriaString + "A little " + topping.getName() + ".\n";
 			} else if (criteriaToppingNumber < 9) {
 				criteriaString = criteriaString + "Lots of " + topping.getName() + ".\n";
 			} else {

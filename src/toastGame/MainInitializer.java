@@ -23,6 +23,8 @@ public class MainInitializer implements Initializable {
 	private Button play;
 	@FXML
 	private Button howTo;
+	@FXML
+	private Button newGameButton;
 
 	Stage myStage;
 	Stage howToStage;
@@ -68,6 +70,9 @@ public class MainInitializer implements Initializable {
 		if (event.getSource().equals(howTo)) {
 			openHowTo();
 		}
+		if (event.getSource().equals(newGameButton)) {
+			openPlay();
+		}
 		if (eventString.substring(eventString.length() - 6).equals("'MAIN'")) {
 			System.out.println("Main pressed!");
 			// TODO Figure out how to get the howToStage to close when user
@@ -86,7 +91,7 @@ public class MainInitializer implements Initializable {
 	 * @throws IOException
 	 *             fxml file not found
 	 */
-	private void openPlay() throws IOException {
+	void openPlay() throws IOException {
 		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
 		scene = new Scene(page);
 
