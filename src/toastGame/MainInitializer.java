@@ -44,7 +44,6 @@ public class MainInitializer implements Initializable {
 		myStage.setResizable(false);
 		page = new Pane();
 		scene = new Scene(page);
-
 	}
 
 	/**
@@ -71,13 +70,18 @@ public class MainInitializer implements Initializable {
 	 *             fxml file not found
 	 */
 	void openPlay() throws IOException {
-		page = (Pane) FXMLLoader.load(Main.class.getResource("ToastForToryPlay.fxml"));
-		scene = new Scene(page);
+		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ToastForToryPlay.fxml"));
+		Parent root = (Parent) fxmlLoader.load();
+
+		ViewInitializer viewInit = (ViewInitializer) fxmlLoader.getController();
+		viewInit.setParentController(this);
+
+		scene = new Scene(root);
 		myStage.setScene(scene);
 		myStage.setTitle("Play Toast For Tory!");
 		myStage.show();
+
 	}
-	
 
 	/**
 	 * Launches the how to fxml page
@@ -85,16 +89,16 @@ public class MainInitializer implements Initializable {
 	 * @throws IOException
 	 *             fxml file not found
 	 */
-	private void openHowTo() throws IOException {		
+	private void openHowTo() throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HowToTory.fxml"));
-	    Parent root = (Parent) fxmlLoader.load();		
-		
-	    howToInit howToInit = (howToInit) fxmlLoader.getController();
+		Parent root = (Parent) fxmlLoader.load();
+
+		howToInit howToInit = (howToInit) fxmlLoader.getController();
 		howToInit.setParentController(this);
 
 		scene = new Scene(root);
-        howToStage = new Stage();
-        howToStage.setScene(scene);
-        howToStage.show();
+		howToStage = new Stage();
+		howToStage.setScene(scene);
+		howToStage.show();
 	}
 }

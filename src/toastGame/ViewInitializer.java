@@ -61,6 +61,7 @@ public class ViewInitializer implements Initializable {
 	// Instance Variables
 	private GameController myController;
 	private Button[] buttonList;
+	private MainInitializer parent;
 
 	/**
 	 * Sets up observer relationship with GameController. Uses GameController to
@@ -99,7 +100,7 @@ public class ViewInitializer implements Initializable {
 					myController.toastToast(newValue.intValue());
 				}
 			}
-		} );
+		});
 	}
 
 	/**
@@ -149,29 +150,32 @@ public class ViewInitializer implements Initializable {
 	protected void handleButtonAction(ActionEvent event) {
 		// When submit is pressed, calls the submit toast method
 		if (event.getSource().equals(submitButton)) {
-			//Code which clears the side button pane and adds Tory picture and text area there
-			/** sideButtonPane.getChildren().clear();
-			
-			TextArea judgments = new TextArea();
-			judgements.setLayoutY(100);
-			sideButtonPane.getChildren().add(judgments);
-			
-			Image toryImage = new Image(getClass().getResource("images/tory.png").toExternalForm());
-			ImageView toryImageView = new ImageView(toryImage);
-			toryImageView.setPreserveRatio(true);
-			toryImageView.setFitHeight(90);
-			sideButtonPane.getChildren().add(toryImageView); */
-			
+			// Code which clears the side button pane and adds Tory picture and
+			// text area there
+			/**
+			 * sideButtonPane.getChildren().clear();
+			 * 
+			 * TextArea judgments = new TextArea(); judgements.setLayoutY(100);
+			 * sideButtonPane.getChildren().add(judgments);
+			 * 
+			 * Image toryImage = new
+			 * Image(getClass().getResource("images/tory.png").toExternalForm())
+			 * ; ImageView toryImageView = new ImageView(toryImage);
+			 * toryImageView.setPreserveRatio(true);
+			 * toryImageView.setFitHeight(90);
+			 * sideButtonPane.getChildren().add(toryImageView);
+			 */
+
 			myController.submitToast();
 		}
 		if (event.getSource().equals(newGameButton)) {
- 			this.resetGame();
+			this.resetGame();
 		}
 	}
 
 	/**
-	 * Takes the image to put on the toastPane, resize it to appropriate
-	 * size, rotate and position it randomly on the toast
+	 * Takes the image to put on the toastPane, resize it to appropriate size,
+	 * rotate and position it randomly on the toast
 	 * 
 	 * @param image
 	 *            The image to be shown on top the toast image
@@ -204,19 +208,19 @@ public class ViewInitializer implements Initializable {
 			}
 		}
 	}
-	
+
 	void addCriteriaToppings(Toast toast) {
 		Map<Topping, Integer> map = toast.getToppings();
-		for(Map.Entry<Topping, Integer> entry : map.entrySet()){
-			for (int i=0; i < entry.getValue(); i++) {
+		for (Map.Entry<Topping, Integer> entry : map.entrySet()) {
+			for (int i = 0; i < entry.getValue(); i++) {
 				putToppingCriteria(entry);
 			}
-        }
+		}
 	}
 
 	private void putToppingCriteria(Map.Entry<Topping, Integer> entry) {
 		ImageView imageview = new ImageView(entry.getKey().getImage());
-		
+
 		Random r = new Random();
 		int imageViewX = (r.nextInt(80)) + 20;
 		int imageViewY = (r.nextInt(80)) + 20;
@@ -225,10 +229,10 @@ public class ViewInitializer implements Initializable {
 		imageview.setFitHeight(25);
 		imageview.setLayoutX(imageViewX);
 		imageview.setLayoutY(imageViewY);
-		
+
 		criteriaToastPane.getChildren().add(imageview);
 	}
-	
+
 	void addCriteriaToast(Image image) {
 		ImageView imageview = new ImageView(image);
 		imageview.setFitHeight(160);
@@ -237,8 +241,8 @@ public class ViewInitializer implements Initializable {
 	}
 
 	/**
-	 * Helper function to add an image onto a
-	 * pane. Usually used to add topping onto an existing toast
+	 * Helper function to add an image onto a pane. Usually used to add topping
+	 * onto an existing toast
 	 * 
 	 * @param image
 	 * @param pane
@@ -271,7 +275,7 @@ public class ViewInitializer implements Initializable {
 	void createTextRequest(String[][] requests) {
 
 	}
-	
+
 	void addCriteria(String criteria) {
 		criteriaToastText.setText(criteria);
 	}
@@ -280,11 +284,15 @@ public class ViewInitializer implements Initializable {
 		toastImage.setImage(toast);
 		toastImage.getImage();
 	}
-	
+
 	void resetGame() {
 		criteriaToastPane.getChildren().clear();
 		toastPane.getChildren().clear();
 		toastinessIndicator.setValue(0);
 		this.initialize(null, null);
+	}
+
+	void setParentController(MainInitializer mainInit) {
+		this.parent = mainInit;
 	}
 }
