@@ -166,7 +166,7 @@ public class ViewInitializer implements Initializable {
 		}
 		if (event.getSource().equals(newGameButton)) {
 			// TODO: Get newGameButton to actually work
-			System.out.println("New Game!");
+			this.newGame();
 		}
 	}
 
@@ -280,5 +280,10 @@ public class ViewInitializer implements Initializable {
 	void changeToastiness(Image toast) {
 		toastImage.setImage(toast);
 		toastImage.getImage();
+	}
+	
+	void newGame() {
+		toastPane.getChildren().clear();
+		this.initialize(null, null);
 	}
 }
