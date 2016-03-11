@@ -17,6 +17,7 @@ class GameModel {
 
 	/**
 	 * instantiates the user's toast in view
+	 * 
 	 * @param game
 	 * @param view
 	 */
@@ -28,6 +29,7 @@ class GameModel {
 
 	/**
 	 * Adds topping to the user's toast in view
+	 * 
 	 * @param topping
 	 */
 	void addTopping(Topping topping) {
@@ -35,20 +37,21 @@ class GameModel {
 		Image addedToastImage = topping.getImage();
 		view.addImageOnToast(addedToastImage);
 	}
-	
-	//Returns the toast
+
+	// Returns the toast
 	Toast getToast() {
 		return toast;
 	}
-	
+
 	/**
 	 * Toasts the toast and changes the toast image based on toastiness scale
+	 * 
 	 * @param toastiness
 	 */
-	void toast(int toastiness) { 
+	void toast(int toastiness) {
 		toast.toast(toastiness);
-		if ((0<=toastiness) || (toastiness <= 3)) {
-			Image toast = new Image(getClass().getResource("images/toastlevel"+toastiness+".png").toExternalForm());
+		if ((0 <= toastiness) || (toastiness <= 3)) {
+			Image toast = new Image(getClass().getResource("images/toastlevel" + toastiness + ".png").toExternalForm());
 			view.changeToastiness(toast);
 		}
 	}

@@ -101,13 +101,6 @@ public class GameController {
 		int toppingIndex = buttonIndex;
 		this.toastModel.addTopping(toppingList[toppingIndex]);
 	}
-
-	/**
-	 * Method called when submit is pressed to judge the toast made
-	 */
-	void submitToast() {		
-		this.toryModel.judgeToast(this.toastModel.getToast());
-	}
 	
 	/**
 	 * Method called by the view to toast the toast
@@ -115,5 +108,12 @@ public class GameController {
 	 */
 	void toastToast(int toastiness) {
 		this.toastModel.toast(toastiness);
+	}
+	
+	/**
+	 * Method called when submit is pressed to judge the toast made
+	 */
+	void submitToast() {		
+		this.toryModel.judgeToast(this.toastModel.getToast());
 	}
 }
