@@ -178,6 +178,7 @@ public class Tory {
 			toryOpinion = "Horrible!";
 		}
 		System.out.println(toryOpinion);
+		view.openJudgeEvent(toryOpinion);
 		return toryOpinion;
 	}
 }

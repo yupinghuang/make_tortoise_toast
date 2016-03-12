@@ -6,6 +6,7 @@
 * ViewInitializer class helps set up the GUI (View) */
 package toastGame;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
@@ -17,7 +18,10 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -26,6 +30,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class ViewInitializer implements Initializable {
@@ -272,27 +277,50 @@ public class ViewInitializer implements Initializable {
 	 *            as a two-column array, the first the name and the second the
 	 *            description(e.g. amount)
 	 */
-	void createTextRequest(String[][] requests) {
+	public void createTextRequest(String[][] requests) {
 
 	}
 
-	void addCriteria(String criteria) {
+	public void addCriteria(String criteria) {
 		criteriaToastText.setText(criteria);
 	}
 
-	void changeToastiness(Image toast) {
+	public void changeToastiness(Image toast) {
 		toastImage.setImage(toast);
 		toastImage.getImage();
 	}
 
-	void resetGame() {
+	public void resetGame() {
 		criteriaToastPane.getChildren().clear();
 		toastPane.getChildren().clear();
 		toastinessIndicator.setValue(0);
 		this.initialize(null, null);
 	}
 
-	void setParentController(MainInitializer mainInit) {
+	public void setParentController(MainInitializer mainInit) {
 		this.parent = mainInit;
+	}
+
+	public void openJudgeEvent(String toryOpinion) {
+		// TODO Auto-generated method stub
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ToastForToryJudging.fxml"));
+		Parent root;
+		try {
+			root = (Parent) fxmlLoader.load();
+			
+			JudgingInitializer judgingInitializer = (JudgingInitializer) fxmlLoader.getController();
+			judgingInitializer.setParentController(this);
+			judgingInitializer.setText(toryOpinion);
+			
+			Scene scene = new Scene(root);
+			Stage howToStage = new Stage();
+			howToStage.setScene(scene);
+			howToStage.show();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("AH" + toryOpinion);
+		}
 	}
 }
