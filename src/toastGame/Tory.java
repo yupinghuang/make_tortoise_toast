@@ -135,7 +135,6 @@ public class Tory {
 		// takes in the user's toast and judges it based on Tory's current
 		// criteria (implement later)
 		// Could judge differently based on difficulty of level
-		System.out.println("Toast has been submitted for judging.");
 
 		int judgeValue = 0;
 		Map<Topping, Integer> userToppingsMap = userToast.getToppings();
@@ -164,7 +163,6 @@ public class Tory {
 		// adds difference to the judgeValue
 
 		judgeValue = judgeValue + Math.abs(userToast.getToastiness() - criteriaToast.getToastiness());
-		System.out.println("You made " + judgeValue + " mistakes.");
 
 		// Returns Tory's opinion of the toast based on the judgeValue
 		String toryOpinion = "";
@@ -177,7 +175,7 @@ public class Tory {
 		} else {
 			toryOpinion = "Horrible!";
 		}
-		System.out.println(toryOpinion);
+		//System.out.println(toryOpinion);
 		view.openJudgeEvent(toryOpinion);
 		return toryOpinion;
 	}

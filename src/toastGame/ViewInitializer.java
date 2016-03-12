@@ -170,7 +170,6 @@ public class ViewInitializer implements Initializable {
 			 * toryImageView.setFitHeight(90);
 			 * sideButtonPane.getChildren().add(toryImageView);
 			 */
-
 			myController.submitToast();
 		}
 		if (event.getSource().equals(newGameButton)) {
@@ -302,23 +301,22 @@ public class ViewInitializer implements Initializable {
 	}
 
 	public void openJudgeEvent(String toryOpinion) {
-		// TODO Auto-generated method stub
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ToastForToryJudging.fxml"));
 		Parent root;
 		try {
 			root = (Parent) fxmlLoader.load();
-			
+
+			Scene scene = new Scene(root);
+			Stage judgeStage = new Stage();
+			judgeStage.setScene(scene);
+			judgeStage.show();
+
 			JudgingInitializer judgingInitializer = (JudgingInitializer) fxmlLoader.getController();
 			judgingInitializer.setParentController(this);
 			judgingInitializer.setText(toryOpinion);
-			
-			Scene scene = new Scene(root);
-			Stage howToStage = new Stage();
-			howToStage.setScene(scene);
-			howToStage.show();
-			
+			judgingInitializer.setThisStage(judgeStage);
+
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("AH" + toryOpinion);
 		}

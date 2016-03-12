@@ -80,7 +80,6 @@ public class MainInitializer implements Initializable {
 		myStage.setScene(scene);
 		myStage.setTitle("Play Toast For Tory!");
 		myStage.show();
-
 	}
 
 	/**
