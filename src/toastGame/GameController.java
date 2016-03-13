@@ -21,15 +21,13 @@ public class GameController {
 
 	// maintains references to the view and models
 	private GameModel gameModel;
-	private Tory toryModel;
 
 	/**
 	 * Constructor for GameController
 	 */
 	GameController(PlayInitializer view) {
 		// Creates the instance models
-		this.gameModel = new GameModel(this, view);
-		this.toryModel = new Tory(view);
+		this.gameModel = new GameModel(view);
 		this.possibleToppings = createPossibleHeadings();
 	}
 
@@ -87,7 +85,7 @@ public class GameController {
 			toppingList[i] = possibleToppings.get(i);
 		}
 		// Creates Tory's criteria within this method
-		this.toryModel.createCriteria(toppingList);
+		gameModel.createCriteria(toppingList);
 		return toppingList;
 	}
 
@@ -115,6 +113,6 @@ public class GameController {
 	 * Submits (judges) the user's toast
 	 */
 	void submitToast() {
-		this.toryModel.judgeToast(this.gameModel.getToast());
+		gameModel.judgeToast();
 	}
 }

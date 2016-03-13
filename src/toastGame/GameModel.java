@@ -13,6 +13,7 @@ class GameModel {
 	// instance variables for user's toast and view
 	private Toast toast;
 	private PlayInitializer view;
+	private Tory toryModel;
 
 	/**
 	 * Instantiates the user's toast in view
@@ -20,9 +21,10 @@ class GameModel {
 	 * @param view
 	 *            PlayInitializer object
 	 */
-	GameModel(GameController game, PlayInitializer view) {
+	GameModel(PlayInitializer view) {
 		this.toast = new Toast();
 		this.view = view;
+		this.toryModel = new Tory(view);
 	}
 
 	/**
@@ -31,14 +33,18 @@ class GameModel {
 	 * @param topping
 	 *            Topping to add on user's toast
 	 */
-	void addTopping(Topping topping) {
+	public void addTopping(Topping topping) {
 		toast.addTopping(topping);
 		Image addedToastImage = topping.getImage();
 		view.addImageOnToast(addedToastImage);
 	}
 
-	// Returns the user's toast
-	Toast getToast() {
+	/**
+	 * Method to get user toast
+	 * 
+	 * @return user toast
+	 */
+	public Toast getToast() {
 		return toast;
 	}
 
@@ -48,11 +54,28 @@ class GameModel {
 	 * @param toastiness
 	 *            The toastiness desired by the user
 	 */
-	void toast(int toastiness) {
+	public void toast(int toastiness) {
 		toast.toast(toastiness);
 		if ((0 <= toastiness) && (toastiness <= 5)) {
 			Image toast = new Image(getClass().getResource("images/toastlevel" + toastiness + ".png").toExternalForm());
 			view.changeToastiness(toast);
 		}
+	}
+
+	/**
+	 * Calls Tory judge toast method
+	 */
+	public void judgeToast() {
+		this.toryModel.judgeToast(toast);
+	}
+
+	/**
+	 * Creates criteria for Tory
+	 * 
+	 * @param toppingList
+	 *            a list of toppings to use to create criteria
+	 */
+	public void createCriteria(Topping[] toppingList) {
+		this.toryModel.createCriteria(toppingList);
 	}
 }
