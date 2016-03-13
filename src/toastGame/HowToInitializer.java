@@ -10,15 +10,27 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
 public class HowToInitializer implements Initializable {
-
+	// FXML Variable Injections
 	@FXML
 	private Button main;
-
 	@FXML
 	private Button play;
-	
+
+	// Instance Variables
 	private MainInitializer parent;
-	
+
+	/**
+	 * Initialize method as implements initializable
+	 * 
+	 * @param location
+	 *            URL location of file
+	 * @param resources
+	 *            ResourceBundle to be used
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+	}
+
 	/**
 	 * Handles button action
 	 * 
@@ -36,10 +48,6 @@ public class HowToInitializer implements Initializable {
 		}
 	}
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {		
-	}
-	
 	/**
 	 * Launches fxml file for the main play page
 	 * 
@@ -50,12 +58,21 @@ public class HowToInitializer implements Initializable {
 		parent.openPlay();
 		closeWindow();
 	}
-	
+
+	/**
+	 * Close howTo window using parent
+	 */
 	void closeWindow() {
 		parent.howToStage.close();
 	}
-	
-	void setParentController(MainInitializer mainInit){
+
+	/**
+	 * Sets parent
+	 * 
+	 * @param mainInit
+	 *            Parent initializer
+	 */
+	void setParentInitializer(MainInitializer mainInit) {
 		this.parent = mainInit;
 	}
 

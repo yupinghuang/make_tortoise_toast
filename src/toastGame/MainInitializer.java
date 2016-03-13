@@ -101,7 +101,7 @@ public class MainInitializer implements Initializable {
 		Parent root = (Parent) fxmlLoader.load();
 
 		HowToInitializer howToInit = (HowToInitializer) fxmlLoader.getController();
-		howToInit.setParentController(this);
+		howToInit.setParentInitializer(this);
 
 		mainScene = new Scene(root);
 		howToStage = new Stage();
