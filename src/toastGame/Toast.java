@@ -11,13 +11,12 @@ package toastGame;
 import java.util.*;
 
 class Toast {
-	//instance variables: toppings and toastiness
+	// instance variables: toppings and toastiness
 	private Map<Topping, Integer> toppings;
 	private int toastiness;
-	
 
 	/**
-	 * create the toast object with 0 toastiness and no toppings
+	 * Creates the toast object with 0 toastiness and no toppings
 	 */
 	Toast() {
 		this.toppings = new HashMap<Topping, Integer>();
@@ -26,31 +25,36 @@ class Toast {
 
 	/**
 	 * Adds topping to the toast, might want to check the topping is legitimate
-	 * (Topping should be legitimate, since it was created, but we could create an assert/if statement...)
+	 * (Topping should be legitimate, since it was created, but we could create
+	 * an assert/if statement...)
 	 * 
 	 * @param topping
+	 *            Topping to add
 	 */
 	void addTopping(Topping topping) {
 		if (this.toppings.containsKey(topping)) {
-			//if topping is already in hashmap, updates the number
+			// if topping is already in hashmap, updates the number
 			int i = this.toppings.get(topping);
 			i++;
 			this.toppings.put(topping, i);
 		} else {
-			//else, adds the new topping to the hashmap
-			this.toppings.put(topping,  1);
+			// else, adds the new topping to the hashmap
+			this.toppings.put(topping, 1);
 		}
 	}
-	
+
 	/**
 	 * Add an amount of a certain topping, gets called by Tory
+	 * 
 	 * @param topping
+	 *            Topping to add
 	 * @param amount
+	 *            Amount of topping to add
 	 */
-	void addTopping(Topping topping,int amount) {
+	void addTopping(Topping topping, int amount) {
 		if (this.toppings.containsKey(topping)) {
 			int i = this.toppings.get(topping);
-			this.toppings.put(topping, i+amount);
+			this.toppings.put(topping, i + amount);
 		} else {
 			this.toppings.put(topping, amount);
 		}
@@ -58,17 +62,17 @@ class Toast {
 
 	/**
 	 * Get function for the toppings hashmap
-	 * @return		list of toppings currently on toast
+	 * 
+	 * @return List of toppings currently on toast
 	 */
 	Map<Topping, Integer> getToppings() {
 		return this.toppings;
 	}
 
 	/**
-	 * Toast the toast: add certain toastiness to the current value
+	 * Sets toastiness of toast to the toastiness int value
 	 * 
-	 * @param toastiness
-	 *            toastiness to add to the current toastiness
+	 * @param toastiness	Toastiness to set to
 	 */
 	void toast(int toastiness) {
 		// is toastiness is not between 0 and 5, sets it to 0 or 5.
@@ -82,21 +86,14 @@ class Toast {
 	}
 
 	/**
-	 * get function for toastiness
-	 * @return		current toastiness of toast
+	 * Get function for toastiness
+	 * 
+	 * @return		Current toastiness of toast
 	 */
 	int getToastiness() {
 		return toastiness;
 	}
 
-	/**
-	 * set function for toastiness
-	 * @param	desired toastiness of toast
-	 */
-	void setToastiness(int toastiness) {
-		this.toastiness = toastiness;
-	}
-	
 	/**
 	 * Clears the toast object
 	 */
