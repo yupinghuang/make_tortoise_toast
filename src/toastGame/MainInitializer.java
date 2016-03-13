@@ -97,7 +97,7 @@ public class MainInitializer implements Initializable {
 	 *             fxml file not found
 	 */
 	private void openHowTo() throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HowToTory.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("howToTory.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 
 		HowToInitializer howToInit = (HowToInitializer) fxmlLoader.getController();
