@@ -14,6 +14,7 @@ import java.util.Collections;
 import javafx.scene.control.Button;
 
 public class GameController {
+	private static final int NUMBER_OF_TOPPINGS = 6;
 	// Topping instance variables
 	private Topping[] toppingList; // toppings used for this round
 	private ArrayList<Topping> possibleToppings; // all possible toppings
@@ -59,7 +60,7 @@ public class GameController {
 	 * @return List of all the buttons created.
 	 */
 	Button[] createButtons(int numberOfButtons) {
-		this.toppingList = generateToppingsAndCriteria(numberOfButtons);
+		this.toppingList = generateToppingsAndCriteria();
 		Button[] buttons = new Button[toppingList.length];
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i] = new Button();
@@ -77,9 +78,8 @@ public class GameController {
 	 *            this value and change it to 6)
 	 * @return List of randomized toppings to be used in this round of the game
 	 */
-	private Topping[] generateToppingsAndCriteria(int numberOfToppings) {
-		numberOfToppings = 6; // Override: we always use 6 toppings
-		toppingList = new Topping[numberOfToppings];
+	private Topping[] generateToppingsAndCriteria() {
+		toppingList = new Topping[NUMBER_OF_TOPPINGS];
 		Collections.shuffle(possibleToppings);
 
 		for (int i = 0; i < toppingList.length; i++) {
