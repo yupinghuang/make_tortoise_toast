@@ -10,9 +10,9 @@ package toastGame;
 import javafx.scene.image.Image;
 
 class Topping {
+	// Name and image instance variables
 	private String name;
 	private Image image;
-	//TODO implement default size for a given topping
 
 	/**
 	 * Instantiates topping object
@@ -20,16 +20,18 @@ class Topping {
 	 * @param imageFile		Image of topping
 	 */
 	Topping(String name, String imageFile) {
-		// load the Image object from the imageFile file under the same path as
+		// loads the Image object from the imageFile file under the same path as
 		// the package
 		this.image = new Image(getClass().getResource(imageFile).toExternalForm());
 		this.name = name;
 	}
-
+	
+	// Returns the name of topping in string form
 	public String getName() {
 		return name;
 	}
 
+	// Returns the image of topping
 	public Image getImage() {
 		return image;
 	}

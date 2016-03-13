@@ -3,8 +3,7 @@
  * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
  * Date: Feb 28, 2016
  * 
- * GameController class to communicate between the ViewInitializer and eventually the model 
- * Doesn't yet communicate to the model as we have not yet implemented that aspect of the project
+ * GameController class to communicate between the ViewInitializer and models classes
  */
 
 package toastGame;
@@ -16,9 +15,10 @@ import javafx.scene.control.Button;
 
 public class GameController {
 	// Topping instance variables
-	private Topping[] toppingList;
-	private ArrayList<Topping> possibleToppings;
-	
+	private Topping[] toppingList; // toppings used for this round
+	private ArrayList<Topping> possibleToppings; // all possible toppings in
+													// general
+
 	// maintains references to the view and models
 	private GameModel toastModel;
 	private Tory toryModel;
@@ -27,14 +27,14 @@ public class GameController {
 	 * Constructor for GameController
 	 */
 	GameController(ViewInitializer view) {
-		// Create the models
+		// Creates the instance models
 		this.toastModel = new GameModel(this, view);
 		this.toryModel = new Tory(view);
 		this.possibleToppings = createPossibleHeadings();
 	}
 
 	/**
-	 * Helper method to generate possible topping list 
+	 * Helper method to generate list of all possible toppings
 	 */
 	private ArrayList<Topping> createPossibleHeadings() {
 		possibleToppings = new ArrayList<Topping>();
@@ -48,7 +48,7 @@ public class GameController {
 		possibleToppings.add(7, new Topping("Sugar", "images/sugar.png"));
 		possibleToppings.add(8, new Topping("Ice Cream", "images/icecream.png"));
 		possibleToppings.add(9, new Topping("Chocolate", "images/chocolatechips.png"));
-		
+
 		return possibleToppings;
 	}
 
@@ -56,11 +56,11 @@ public class GameController {
 	 * Create a list of buttons and return it. Should be called by the view.
 	 * 
 	 * @param numberOfButtons
-	 *            Topping buttons desired in the given round
-	 * @return buttons List of all the buttons created.
+	 *            Number of topping buttons desired in the given round
+	 * @return List of all the buttons created.
 	 */
 	Button[] createButtons(int numberOfButtons) {
-		this.toppingList = generateToppings(numberOfButtons);
+		this.toppingList = generateToppingsAndCriteria(numberOfButtons);
 		Button[] buttons = new Button[toppingList.length];
 		for (int i = 0; i < buttons.length; i++) {
 			buttons[i] = new Button();
@@ -70,50 +70,52 @@ public class GameController {
 	}
 
 	/**
-	 * Generates random toppings for a given round of the game.
-	 * Currently also generates Tory's criteria.
+	 * Generates random toppings for a given round of the game. Also calls Tory
+	 * to generate Tory's criteria.
 	 * 
 	 * @param numberOfToppings
-	 * @return
+	 *            Number of toppings desired (NOTE: for our game, we override
+	 *            this value and change it to 6)
+	 * @return List of randomized toppings to be used in this round of the game
 	 */
-	private Topping[] generateToppings(int numberOfToppings) {
-		numberOfToppings = 6; // for testing purpose
+	private Topping[] generateToppingsAndCriteria(int numberOfToppings) {
+		numberOfToppings = 6; // Override: we always use 6 toppings
 		toppingList = new Topping[numberOfToppings];
 		Collections.shuffle(possibleToppings);
-		
+
 		for (int i = 0; i < toppingList.length; i++) {
 			// randomizes the topping generation process
 			toppingList[i] = possibleToppings.get(i);
 		}
-		//currently creates Tory's criteria within this method
+		// Creates Tory's criteria within this method
 		this.toryModel.createCriteria(toppingList);
 		return toppingList;
 	}
-	
+
 	/**
-	 * Called by the view to react to button click
+	 * Adds the correct topping to user toast when topping button is clicked
 	 * 
 	 * @param buttonIndex
-	 *            the index of the button clicked
+	 *            The index of the button clicked
 	 */
 	void handleButtonClickEvent(int buttonIndex) {
-		// TODO change toast model state
 		int toppingIndex = buttonIndex;
 		this.toastModel.addTopping(toppingList[toppingIndex]);
 	}
-	
+
 	/**
-	 * Method called by the view to toast the toast
+	 * Toasts the toast
+	 * 
 	 * @param toastiness
 	 */
 	void toastToast(int toastiness) {
 		this.toastModel.toast(toastiness);
 	}
-	
+
 	/**
-	 * Method called when submit is pressed to judge the toast made
+	 * Submits (judges) the user's toast
 	 */
-	void submitToast() {		
+	void submitToast() {
 		this.toryModel.judgeToast(this.toastModel.getToast());
 	}
 }
