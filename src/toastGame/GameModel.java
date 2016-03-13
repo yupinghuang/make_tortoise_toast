@@ -10,19 +10,18 @@ import javafx.scene.image.Image;
  *
  */
 class GameModel {
+	// instance variables for user's toast and view
 	private Toast toast;
-	private GameController controller;
 	private PlayInitializer view;
 
 	/**
-	 * instantiates the user's toast in view
+	 * Instantiates the user's toast in view
 	 * 
-	 * @param game
 	 * @param view
+	 *            PlayInitializer object
 	 */
 	GameModel(GameController game, PlayInitializer view) {
 		this.toast = new Toast();
-		this.controller = game;
 		this.view = view;
 	}
 
@@ -30,6 +29,7 @@ class GameModel {
 	 * Adds topping to the user's toast in view
 	 * 
 	 * @param topping
+	 *            Topping to add on user's toast
 	 */
 	void addTopping(Topping topping) {
 		toast.addTopping(topping);
@@ -37,19 +37,20 @@ class GameModel {
 		view.addImageOnToast(addedToastImage);
 	}
 
-	// Returns the toast
+	// Returns the user's toast
 	Toast getToast() {
 		return toast;
 	}
 
 	/**
-	 * Toasts the toast and changes the toast image based on toastiness scale
+	 * Toasts user's toast and changes the toast image based on toastiness scale
 	 * 
 	 * @param toastiness
+	 *            The toastiness desired by the user
 	 */
 	void toast(int toastiness) {
 		toast.toast(toastiness);
-		if ((0 <= toastiness) || (toastiness <= 3)) {
+		if ((0 <= toastiness) && (toastiness <= 5)) {
 			Image toast = new Image(getClass().getResource("images/toastlevel" + toastiness + ".png").toExternalForm());
 			view.changeToastiness(toast);
 		}

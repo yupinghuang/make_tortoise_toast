@@ -17,11 +17,10 @@ public class GameController {
 	private static final int NUMBER_OF_TOPPINGS = 6;
 	// Topping instance variables
 	private Topping[] toppingList; // toppings used for this round
-	private ArrayList<Topping> possibleToppings; // all possible toppings in
-													// general
+	private ArrayList<Topping> possibleToppings; // all possible toppings
 
 	// maintains references to the view and models
-	private GameModel toastModel;
+	private GameModel gameModel;
 	private Tory toryModel;
 
 	/**
@@ -29,7 +28,7 @@ public class GameController {
 	 */
 	GameController(PlayInitializer view) {
 		// Creates the instance models
-		this.toastModel = new GameModel(this, view);
+		this.gameModel = new GameModel(this, view);
 		this.toryModel = new Tory(view);
 		this.possibleToppings = createPossibleHeadings();
 	}
@@ -100,7 +99,7 @@ public class GameController {
 	 */
 	void handleButtonClickEvent(int buttonIndex) {
 		int toppingIndex = buttonIndex;
-		this.toastModel.addTopping(toppingList[toppingIndex]);
+		this.gameModel.addTopping(toppingList[toppingIndex]);
 	}
 
 	/**
@@ -109,13 +108,13 @@ public class GameController {
 	 * @param toastiness
 	 */
 	void toastToast(int toastiness) {
-		this.toastModel.toast(toastiness);
+		this.gameModel.toast(toastiness);
 	}
 
 	/**
 	 * Submits (judges) the user's toast
 	 */
 	void submitToast() {
-		this.toryModel.judgeToast(this.toastModel.getToast());
+		this.toryModel.judgeToast(this.gameModel.getToast());
 	}
 }

@@ -4,7 +4,7 @@
  * Code altered from  https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to
  * Date: Feb 28, 2016
  * 
- * View communicates with the FXML file to set up the GUI
+ * Main communicates with the FXML file to set up the GUI
  */
 
 package toastGame;
@@ -18,10 +18,10 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	/**
-	 * start method override to set the stage with the fxml file
+	 * Start method override to set the stage with the fxml file
 	 * 
 	 * @param primaryStage
-	 *            the stage to set
+	 *            The stage to set up at the beginning
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -36,7 +36,7 @@ public class Main extends Application {
 
 	/**
 	 * @param args
-	 *            the command line arguments
+	 *            The command line arguments
 	 */
 	public static void main(String[] args) {
 		Application.launch(Main.class, (java.lang.String[]) null);
