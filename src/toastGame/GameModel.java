@@ -13,7 +13,6 @@ class GameModel {
 	private Toast toast;
 	private GameController controller;
 	private ViewInitializer view;
-	private ScoreTracker scoreTracker;
 
 	/**
 	 * instantiates the user's toast in view
