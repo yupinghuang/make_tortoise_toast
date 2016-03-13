@@ -4,21 +4,25 @@
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import java.net.*?>
 
 <Pane fx:controller="toastGame.howToInit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="343.0" style="-fx-background-color: #F6D9a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+	<stylesheets>
+		<URL value="@style.css" />
+	</stylesheets>
    <children>
       <Text fill="#5b4118" layoutX="29.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How To Play" textAlignment="CENTER" wrappingWidth="284.2817687988281">
          <font>
             <Font name="Chalkduster" size="36.0" />
          </font>
       </Text>
-      <TextArea editable="false" layoutX="38.0" layoutY="84.0" prefHeight="306.0" prefWidth="273.0" text="The goal is to create the perfect toast for &#10;Tory the Tortoise.  His dream toast is &#10;shown in the top left hand of the game&#10;play page.  Try to match it as best as you&#10;can!&#10;&#10;You can add toppings using the buttons &#10;on the right hand side.  &#10;&#10;You can change the toastiness of your&#10;toast by using the slider at the bottom &#10;right of your toast.&#10;&#10;Good luck!" />
-      <Button fx:id="play" layoutX="38.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #5B4118;" text="PLAY!" textAlignment="CENTER" textFill="WHITE">
+      <TextArea editable="false" layoutX="38.0" layoutY="84.0" prefHeight="306.0" prefWidth="273.0" wrapText="true" text="The goal is to create the perfect toast for Tory the Tortoise.  His dream toast is shown in the top left hand of the game play page.  Try to match it as best as you can! You can add toppings using the buttons on the right hand side.  &#10;You can change the toastiness of your toast by using the slider at the bottom right of your toast.&#10;Good luck!" />
+      <Button fx:id="play" layoutX="38.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="112.0"  text="PLAY!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="main" layoutX="182.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #5B4118;" text="MAIN" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="main" layoutX="182.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="112.0" text="MAIN" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>

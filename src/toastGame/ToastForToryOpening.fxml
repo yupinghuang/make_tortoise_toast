@@ -7,8 +7,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
+<?import java.net.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D9a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toastGame.MainInitializer">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toastGame.MainInitializer">
+	<stylesheets>
+		<URL value="@style.css" />
+	</stylesheets>
    <children>
    	  <Text fill="#5b4118" layoutX="56.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Toast for Tory the Tortoise!" textAlignment="CENTER">
          <font>
@@ -16,13 +20,13 @@
          	</font>
       </Text>
       
-      <Button fx:id="play" layoutX="249.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="102.0" style="-fx-background-color: #5B4118;" text="PLAY!" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="play" layoutX="249.0" layoutY="159.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="102.0" text="PLAY!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>
       </Button> 
       
-      <Button fx:id="howTo" layoutX="249.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="102.0" style="-fx-background-color: #5B4118;" text="HOW TO!" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="howTo" layoutX="249.0" layoutY="221.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="55.0" prefWidth="102.0" text="HOW TO!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>
