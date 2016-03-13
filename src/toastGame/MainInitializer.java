@@ -1,3 +1,13 @@
+/**
+ * MainInitializer.java
+ * 
+ * @author Tegan Wilson, Yupung Huang, & Carolyn Ryan
+ * Date: 3/13/16
+ * 
+ * Class structure taken from https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to 
+ * Initializes the GUI elements for the opening page 
+ * 
+ */
 package toastGame;
 
 import java.io.IOException;
@@ -15,20 +25,21 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class MainInitializer implements Initializable {
-
+	// FXML Variable Injections
 	@FXML
 	private Button play;
 	@FXML
 	private Button howTo;
 
-	Stage myStage;
+	// Instance Variables
+	Stage mainStage;
 	Stage howToStage;
-	Pane page;
-	Scene scene;
+	Pane mainPage;
+	Scene mainScene;
 	Scene howToScene;
 
 	/**
-	 * override initialize method that acts as faux constructor
+	 * Initialize method to instantiate instance variables
 	 * 
 	 * @param location
 	 *            URL location
@@ -37,21 +48,21 @@ public class MainInitializer implements Initializable {
 	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		myStage = new Stage();
-		howToStage = new Stage();
+		mainStage = new Stage();
+		mainStage.setResizable(false);
 
-		myStage.setResizable(false);
-		page = new Pane();
-		scene = new Scene(page);
+		howToStage = new Stage();
+		mainPage = new Pane();
+		mainScene = new Scene(mainPage);
 	}
 
 	/**
-	 * Handles button action
+	 * Handles button action for play and howTo buttons
 	 * 
 	 * @param event
 	 *            The event that needs to be handled
 	 * @throws IOException
+	 *             fxml file not found for play or how to
 	 */
 	@FXML
 	protected void handleButtonAction(ActionEvent event) throws IOException {
@@ -64,7 +75,7 @@ public class MainInitializer implements Initializable {
 	}
 
 	/**
-	 * Launches fxml file for the main play page
+	 * Launches fxml file for play window
 	 * 
 	 * @throws IOException
 	 *             fxml file not found
@@ -73,31 +84,28 @@ public class MainInitializer implements Initializable {
 		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("ToastForToryPlay.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 
-		ViewInitializer viewInit = (ViewInitializer) fxmlLoader.getController();
-		viewInit.setParentController(this);
-
-		scene = new Scene(root);
-		myStage.setScene(scene);
-		myStage.setTitle("Play Toast For Tory!");
-		myStage.show();
+		mainScene = new Scene(root);
+		mainStage.setScene(mainScene);
+		mainStage.setTitle("Play Toast For Tory!");
+		mainStage.show();
 	}
 
 	/**
-	 * Launches the how to fxml page
+	 * Launches the how to fxml window
 	 * 
 	 * @throws IOException
 	 *             fxml file not found
 	 */
 	private void openHowTo() throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("howToTory.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("HowToTory.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
 
-		howToInit howToInit = (howToInit) fxmlLoader.getController();
+		HowToInitializer howToInit = (HowToInitializer) fxmlLoader.getController();
 		howToInit.setParentController(this);
 
-		scene = new Scene(root);
+		mainScene = new Scene(root);
 		howToStage = new Stage();
-		howToStage.setScene(scene);
+		howToStage.setScene(mainScene);
 		howToStage.show();
 	}
 }

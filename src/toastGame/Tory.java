@@ -16,13 +16,13 @@ import javafx.scene.image.Image;
 public class Tory {
 	private Toast criteriaToast;
 	private Topping[] toppingList;
-	private ViewInitializer view;
+	private PlayInitializer view;
 
 	/**
 	 * Instantiates Tory object, which has a (plain) Toast object as it's
 	 * criteria
 	 */
-	Tory(ViewInitializer view) {
+	Tory(PlayInitializer view) {
 		this.criteriaToast = new Toast();
 		this.view = view;
 	}

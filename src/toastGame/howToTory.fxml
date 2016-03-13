@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<Pane fx:controller="toastGame.howToInit" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="343.0" style="-fx-background-color: #F6D9a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="toastGame.HowToInitializer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="527.0" prefWidth="343.0" style="-fx-background-color: #F6D9a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
 	<stylesheets>
 		<URL value="@style.css" />
 	</stylesheets>

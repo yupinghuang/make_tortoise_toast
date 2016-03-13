@@ -26,7 +26,7 @@ public class GameController {
 	/**
 	 * Constructor for GameController
 	 */
-	GameController(ViewInitializer view) {
+	GameController(PlayInitializer view) {
 		// Create the models
 		this.toastModel = new GameModel(this, view);
 		this.toryModel = new Tory(view);

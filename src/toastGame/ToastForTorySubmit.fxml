@@ -8,7 +8,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.Cursor?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D9a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toastGame.JudgingInitializer">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F6D9a9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toastGame.SubmitInitializer">
    <children>
    	  <Text fx:id="speechBubble" fill="#5b4118" layoutX="56.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Toast for Tory the Tortoise!" textAlignment="CENTER">
          <font>
@@ -30,7 +30,7 @@
             <Font name="Chalkduster" size="24.0" />
          </font>
       </Text>
-      <Button fx:id="play" layoutX="401.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="52.0" prefWidth="150.0" style="-fx-background-color: #5B4118;" text="PLAY AGAIN!" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="newGame" layoutX="401.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="52.0" prefWidth="150.0" style="-fx-background-color: #5B4118;" text="PLAY AGAIN!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
          </font>
