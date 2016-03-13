@@ -39,7 +39,7 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 public class PlayInitializer implements Initializable {
-	//Constant Variables
+	// Constant Variables
 	private static final double SCALE_FACTOR = 4.6;
 	private static final int BUTTON_Y_MULTIPLIER = 56;
 	private static final int BUTTON_X_LAYOUT = 25;
@@ -84,14 +84,10 @@ public class PlayInitializer implements Initializable {
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
 		myController = new GameController(this);
-		buttonList = myController.createButtons(6);
-		for (int i = 0; i < buttonList.length; i++) {
-			buttonList[i].setPrefSize(BUTTONSIZE_X, BUTTONSIZE_Y);
-			buttonList[i].setLayoutX(BUTTON_X_LAYOUT);
-			buttonList[i].setLayoutY(BUTTON_Y_MULTIPLIER * i + BUTTON_X_LAYOUT);
-		}
-		this.setButtons();
-		this.handleButtons();
+
+		// Create and handle buttons
+		this.createToppingButtons();
+		this.handleToppingButtons();
 
 		// Listen for Slider value changes
 		toastinessIndicator.valueProperty().addListener(new ChangeListener<Number>() {
@@ -105,11 +101,25 @@ public class PlayInitializer implements Initializable {
 	}
 
 	/**
+	 * Creates the buttonList from myController Sets button sizes and calls
+	 * setButtonsInPane
+	 */
+	private void createToppingButtons() {
+		buttonList = myController.createButtons(6);
+		for (int i = 0; i < buttonList.length; i++) {
+			buttonList[i].setPrefSize(BUTTONSIZE_X, BUTTONSIZE_Y);
+			buttonList[i].setLayoutX(BUTTON_X_LAYOUT);
+			buttonList[i].setLayoutY(BUTTON_Y_MULTIPLIER * i + BUTTON_X_LAYOUT);
+		}
+		this.setButtonsInPane();
+	}
+
+	/**
 	 * Arranges Buttons in a pane. This stack pane is placed on the right side
 	 * of the window.
 	 */
 	@FXML
-	protected void setButtons() {
+	private void setButtonsInPane() {
 		// Add buttons in list to the pane
 		buttonPane = new Pane();
 		for (int i = 0; i < buttonList.length; i++) {
@@ -123,9 +133,9 @@ public class PlayInitializer implements Initializable {
 
 	/**
 	 * Handles button action. Calls to the GameController to handle the button
-	 * press.
+	 * clicks.
 	 */
-	void handleButtons() {
+	void handleToppingButtons() {
 		// Associate actions with each button
 		for (int i = 0; i < buttonList.length; i++) {
 			// Associate actions with each button
@@ -140,9 +150,9 @@ public class PlayInitializer implements Initializable {
 	}
 
 	/**
-	 * Handles button action for submit button. The submit button is implemented
-	 * in the .fxml file. As such, it can't be handled in the same method as the
-	 * other buttons.
+	 * Handles button action for submit and new game button. These buttons are
+	 * implemented in the .fxml file. As such, it can't be handled in the same
+	 * method as the topping buttons.
 	 * 
 	 * @param event
 	 *            The event that needs to be handled
@@ -151,21 +161,6 @@ public class PlayInitializer implements Initializable {
 	protected void handleButtonAction(ActionEvent event) {
 		// When submit is pressed, calls the submit toast method
 		if (event.getSource().equals(submitButton)) {
-			// Code which clears the side button pane and adds Tory picture and
-			// text area there
-			/**
-			 * sideButtonPane.getChildren().clear();
-			 * 
-			 * TextArea judgments = new TextArea(); judgements.setLayoutY(100);
-			 * sideButtonPane.getChildren().add(judgments);
-			 * 
-			 * Image toryImage = new
-			 * Image(getClass().getResource("images/tory.png").toExternalForm())
-			 * ; ImageView toryImageView = new ImageView(toryImage);
-			 * toryImageView.setPreserveRatio(true);
-			 * toryImageView.setFitHeight(90);
-			 * sideButtonPane.getChildren().add(toryImageView);
-			 */
 			myController.submitToast();
 		}
 		if (event.getSource().equals(newGameButton)) {
@@ -209,15 +204,12 @@ public class PlayInitializer implements Initializable {
 		}
 	}
 
-	void addCriteriaToppings(Toast toast) {
-		Map<Topping, Integer> map = toast.getToppings();
-		for (Map.Entry<Topping, Integer> entry : map.entrySet()) {
-			for (int i = 0; i < entry.getValue(); i++) {
-				putToppingCriteria(entry);
-			}
-		}
-	}
-
+	/**
+	 * Adds criteria toast image to criteriaToastPane
+	 * 
+	 * @param image
+	 *            Toast image of criteria toast's toastiness
+	 */
 	void addCriteriaToast(Image image) {
 		ImageView imageview = new ImageView(image);
 		imageview.setFitHeight(160);
@@ -225,8 +217,27 @@ public class PlayInitializer implements Initializable {
 		criteriaToastPane.getChildren().add(imageview);
 	}
 
-	private void putToppingCriteria(Map.Entry<Topping, Integer> entry) {
-		ImageView imageview = new ImageView(entry.getKey().getImage());
+	/**
+	 * Loops through getToppings map to add toppings to the criteria toast pane
+	 * 
+	 * @param toast
+	 */
+	void addCriteriaToppings(Toast toast) {
+		Map<Topping, Integer> map = toast.getToppings();
+		for (Map.Entry<Topping, Integer> entry : map.entrySet()) {
+			for (int i = 0; i < entry.getValue(); i++) {
+				putToppingCriteria(entry.getKey().getImage());
+			}
+		}
+	}
+
+	/**
+	 * Takes an entry from the hash map and 
+	 * 
+	 * @param entry
+	 */
+	private void putToppingCriteria(Image toppingImage) {
+		ImageView imageview = new ImageView(toppingImage);
 
 		Random r = new Random();
 		int imageViewX = (r.nextInt(80)) + 20;
@@ -312,7 +323,7 @@ public class PlayInitializer implements Initializable {
 			judgingInitializer.setParentInitializer(this);
 			judgingInitializer.setText(toryOpinion);
 			judgingInitializer.setThisStage(judgeStage);
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println("Error in finding fxml file.  \n Tory thinks" + toryOpinion);
