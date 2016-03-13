@@ -129,7 +129,7 @@ public class ViewInitializer implements Initializable {
 	 * Handles button action. Calls to the GameController to handle the button
 	 * press.
 	 */
-	public void handleButtons() {
+	void handleButtons() {
 		// Associate actions with each button
 		for (int i = 0; i < buttonList.length; i++) {
 			// Associate actions with each button
@@ -222,6 +222,13 @@ public class ViewInitializer implements Initializable {
 		}
 	}
 
+	void addCriteriaToast(Image image) {
+		ImageView imageview = new ImageView(image);
+		imageview.setFitHeight(160);
+		imageview.setPreserveRatio(true);
+		criteriaToastPane.getChildren().add(imageview);
+	}
+
 	private void putToppingCriteria(Map.Entry<Topping, Integer> entry) {
 		ImageView imageview = new ImageView(entry.getKey().getImage());
 
@@ -234,13 +241,6 @@ public class ViewInitializer implements Initializable {
 		imageview.setLayoutX(imageViewX);
 		imageview.setLayoutY(imageViewY);
 
-		criteriaToastPane.getChildren().add(imageview);
-	}
-
-	void addCriteriaToast(Image image) {
-		ImageView imageview = new ImageView(image);
-		imageview.setFitHeight(160);
-		imageview.setPreserveRatio(true);
 		criteriaToastPane.getChildren().add(imageview);
 	}
 
@@ -300,7 +300,11 @@ public class ViewInitializer implements Initializable {
 		this.parent = mainInit;
 	}
 
-	public void openJudgeEvent(String toryOpinion) {
+	/**
+	 * Called by the Tory class (the judge) to display the judge result
+	 * @param toryOpinion
+	 */
+	void openJudgeEvent(String toryOpinion) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ToastForToryJudging.fxml"));
 		Parent root;
 		try {
