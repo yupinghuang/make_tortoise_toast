@@ -241,18 +241,30 @@ public class PlayInitializer implements Initializable {
 	}
 
 	/**
+	 * Criteria toast criteria string
 	 * 
 	 * @param criteria
+	 *            Toppings & toastiness of of criteria toast
 	 */
 	public void addCriteria(String criteria) {
 		criteriaToastText.setText(criteria);
 	}
 
+	/**
+	 * Change toast image
+	 * 
+	 * @param toast
+	 *            New toast image
+	 */
 	public void changeToastiness(Image toast) {
 		toastImage.setImage(toast);
 		toastImage.getImage();
 	}
 
+	/**
+	 * Resets game by clearing criteria toast and user toast toppings and
+	 * setting user toastiness to 0. Re-initializes class.
+	 */
 	public void resetGame() {
 		criteriaToastPane.getChildren().clear();
 		toastPane.getChildren().clear();
@@ -261,9 +273,10 @@ public class PlayInitializer implements Initializable {
 	}
 
 	/**
-	 * Called by the Tory class (the judge) to display the judge result
+	 * Opens new window with Tory feedback for user
 	 * 
 	 * @param toryOpinion
+	 *            Tory's opinion on the user's submitted toast
 	 */
 	void openJudgeEvent(String toryOpinion) {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ToastForTorySubmit.fxml"));
@@ -282,8 +295,9 @@ public class PlayInitializer implements Initializable {
 			judgingInitializer.setThisStage(judgeStage);
 
 		} catch (IOException e) {
+			System.out.println("Error in finding fxml file.  \n Your toast was " + toryOpinion);
+			System.out.println();
 			e.printStackTrace();
-			System.out.println("Error in finding fxml file.  \n Tory thinks" + toryOpinion);
 		}
 	}
 }
