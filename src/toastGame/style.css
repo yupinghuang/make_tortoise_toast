@@ -1,0 +1,35 @@
+.root{
+    -fx-background-color: #F6D9a9;
+ }
+ 
+ .text-area {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar:vertical:disabled {
+    -fx-opacity: 0;
+}
+ .button{
+ 	-fx-background-color: #5B4118;
+ 	-fx-text-fill: white;
+ 	-fx-font: 13 chalkduster;
+ }
+ 
+ .button:hover{
+	-fx-background-color: #9ACD32; 
+ }
+ 
+ .slider .thumb {
+}

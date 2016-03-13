@@ -106,7 +106,7 @@ public class PlayInitializer implements Initializable {
 	 * setButtonsInPane
 	 */
 	private void createToppingButtons() {
-		buttonList = myController.createButtons(6);
+		buttonList = myController.createButtons();
 		for (int i = 0; i < buttonList.length; i++) {
 			buttonList[i].setPrefSize(BUTTONSIZE_X, BUTTONSIZE_Y);
 			buttonList[i].setLayoutX(BUTTON_X_LAYOUT);

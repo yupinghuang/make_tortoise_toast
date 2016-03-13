@@ -1,5 +1,9 @@
 package toastGame;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 
 /**
@@ -10,10 +14,15 @@ import javafx.scene.image.Image;
  *
  */
 class GameModel {
+	private static final int NUMBER_OF_BUTTONS = 6;
+
 	// instance variables for user's toast and view
 	private Toast toast;
 	private PlayInitializer view;
 	private Tory toryModel;
+	ArrayList<Topping> possibleToppings;
+	private Topping[] toppingList; // toppings used for this round
+
 
 	/**
 	 * Instantiates the user's toast in view
@@ -77,5 +86,57 @@ class GameModel {
 	 */
 	public void createCriteria(Topping[] toppingList) {
 		this.toryModel.createCriteria(toppingList);
+	}
+
+	/**
+	 * Method that creates possible toppings array for game play
+	 * @return
+	 */
+	public ArrayList<Topping> createPossibleHeadings() {
+		possibleToppings = new ArrayList<Topping>();
+		possibleToppings.add(0, new Topping("Honey", "images/honey.png"));
+		possibleToppings.add(1, new Topping("Butter", "images/butter.png"));
+		possibleToppings.add(2, new Topping("Peanut Butter", "images/peanutbutter.png"));
+		possibleToppings.add(3, new Topping("Cinnamon", "images/cinnamon.png"));
+		possibleToppings.add(4, new Topping("Jam", "images/jam.png"));
+		possibleToppings.add(5, new Topping("Avocado", "images/avocado.png"));
+		possibleToppings.add(6, new Topping("Cream Cheese", "images/creamcheese.png"));
+		possibleToppings.add(7, new Topping("Sugar", "images/sugar.png"));
+		possibleToppings.add(8, new Topping("Ice Cream", "images/icecream.png"));
+		possibleToppings.add(9, new Topping("Chocolate", "images/chocolatechips.png"));
+
+		return possibleToppings;
+	}
+	
+	/**
+	 * Generates random toppings for a given round of the game. Also calls Tory
+	 * to generate Tory's criteria.
+	 *
+	 * @return List of randomized toppings to be used in this round of the game
+	 */
+	public Topping[] generateToppingsAndCriteria() {
+		toppingList = new Topping[NUMBER_OF_BUTTONS];
+		Collections.shuffle(possibleToppings);
+
+		for (int i = 0; i < toppingList.length; i++) {
+			// randomizes the topping generation process
+			toppingList[i] = possibleToppings.get(i);
+		}
+		// Creates Tory's criteria within this method
+		createCriteria(toppingList);
+		return toppingList;
+	}
+
+	/**
+	 * Method to create topping buttons
+	 * @return	buttons	List of 6 buttons to be used
+	 */
+	public Button[] createButtons() {
+		Button[] buttons = new Button[toppingList.length];
+		for (int i = 0; i < buttons.length; i++) {
+			buttons[i] = new Button();
+			buttons[i].setText(toppingList[i].getName());
+		}
+		return buttons;		
 	}
 }

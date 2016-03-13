@@ -16,7 +16,7 @@
             <Font name="Chalkduster" size="36.0" />
          </font>
       </Text>
-      <TextArea editable="false" layoutX="38.0" layoutY="84.0" prefHeight="306.0" prefWidth="273.0" wrapText="true" text="The goal is to create the perfect toast for Tory the Tortoise.  His dream toast is shown in the top left hand of the game play page.  Try to match it as best as you can! You can add toppings using the buttons on the right hand side.  &#10;You can change the toastiness of your toast by using the slider at the bottom right of your toast.&#10;Good luck!" />
+      <TextArea editable="false" layoutX="38.0" layoutY="84.0" prefHeight="306.0" prefWidth="273.0" wrapText="true" text="The goal is to create the perfect toast for Tory the Tortoise. &#10;&#10;His dream toast is shown in the top left hand of the game play page.  Try to match it as best as you can! &#10;&#10;You can add toppings using the buttons on the right hand side.  &#10;&#10;You can change the toastiness of your toast by using the slider at the bottom right of your toast.&#10;&#10;Good luck!" />
       <Button fx:id="play" layoutX="38.0" layoutY="437.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="58.0" prefWidth="112.0"  text="PLAY!" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font name="Chalkduster" size="13.0" />
