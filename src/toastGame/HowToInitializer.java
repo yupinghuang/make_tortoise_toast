@@ -9,7 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 
-public class howToInit implements Initializable {
+public class HowToInitializer implements Initializable {
 
 	@FXML
 	private Button main;

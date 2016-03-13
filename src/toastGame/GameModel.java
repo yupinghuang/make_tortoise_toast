@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 class GameModel {
 	private Toast toast;
 	private GameController controller;
-	private ViewInitializer view;
+	private PlayInitializer view;
 
 	/**
 	 * instantiates the user's toast in view
@@ -20,7 +20,7 @@ class GameModel {
 	 * @param game
 	 * @param view
 	 */
-	GameModel(GameController game, ViewInitializer view) {
+	GameModel(GameController game, PlayInitializer view) {
 		this.toast = new Toast();
 		this.controller = game;
 		this.view = view;

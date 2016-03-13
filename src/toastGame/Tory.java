@@ -3,7 +3,7 @@
  * Authors: Carolyn Ryan, Yuping Huang, Tegan Wilson
  * Date: Feb 28, 2016
  * 
- * Beginning of the model for judging the toast(incomplete)
+ * Model for the Tory object which creates criteria and judges the user's toast.
  */
 
 package toastGame;
@@ -16,13 +16,13 @@ import javafx.scene.image.Image;
 public class Tory {
 	private Toast criteriaToast;
 	private Topping[] toppingList;
-	private ViewInitializer view;
+	private PlayInitializer view;
 
 	/**
 	 * Instantiates Tory object, which has a (plain) Toast object as it's
 	 * criteria
 	 */
-	Tory(ViewInitializer view) {
+	Tory(PlayInitializer view) {
 		this.criteriaToast = new Toast();
 		this.view = view;
 	}
@@ -31,12 +31,11 @@ public class Tory {
 	 * Changes the criteria Toast to have a randomized set of toppings
 	 * 
 	 * @param toppingList
-	 *            the list of possible toppings the user can select
-	 * @return the criteria Toast object
+	 *            The list of possible toppings the user can select
+	 * @return The criteria Toast object
 	 */
 	public void createCriteria(Topping[] toppingList) {
-		// should create toast objects based on difficulty of the game
-		// (implement this later)
+
 		this.criteriaToast.clear();
 		this.toppingList = toppingList;
 
@@ -44,8 +43,7 @@ public class Tory {
 		Random rand = new Random();
 		int numToppings = 5 + rand.nextInt(5);
 
-		// adds random toppings from toppingList
-		// adds toppings in randomized amounts
+		// adds random toppings from toppingList in randomized amounts
 		for (int i = 0; i < numToppings; i++) {
 			int topping = rand.nextInt(6);
 			int amount = rand.nextInt(6);
@@ -55,7 +53,8 @@ public class Tory {
 		// toasts the toast a random amount
 		int toastiness = rand.nextInt(6);
 		criteriaToast.toast(toastiness);
-		
+
+		// creates the criteria toast image in the upper left corner
 		view.addCriteria(getCriteriaString());
 		view.addCriteriaToast(this.getToastImage());
 		view.addCriteriaToppings(criteriaToast);
@@ -72,27 +71,30 @@ public class Tory {
 	}
 
 	/**
-	 * Prints Tory's criteria to the terminal window
-	 * Criteria is given somewhat vaguely, but specific enough to (kind of) understand
+	 * Prints Tory's criteria to the terminal window.
 	 */
 	void printCriteria() {
 		System.out.println(getCriteriaString());
 	}
-	
+
 	/**
-	 * Prints Tory's criteria to the terminal window
-	 * Criteria is given somewhat vaguely, but specific enough to (kind of) understand
+	 * Returns Tory's criteria in a string. Criteria is given somewhat vaguely
+	 * (in term of "alot", "a little", etc.), but specific enough to (kind of)
+	 * understand.
+	 * 
+	 * @return Tory's criteria in a string
 	 */
 	String getCriteriaString() {
 		String criteriaString = "Tory wants: \n";
 		Map<Topping, Integer> criteriaToppingsMap = criteriaToast.getToppings();
+		// loops through toppings to describe amount of each topping wanted
 		for (Topping topping : toppingList) {
 			int criteriaToppingNumber = 0;
 			if (criteriaToppingsMap.get(topping) != null) {
 				criteriaToppingNumber = criteriaToppingsMap.get(topping);
-			}			
+			}
 			if (criteriaToppingNumber == 0) {
-				//criteriaString = criteriaString + "None of " + topping.getName() + "\n";
+				// pass
 			} else if (criteriaToppingNumber < 4) {
 				criteriaString = criteriaString + "A little " + topping.getName() + ".\n";
 			} else if (criteriaToppingNumber < 9) {
@@ -100,27 +102,27 @@ public class Tory {
 			} else {
 				criteriaString = criteriaString + "A ton of " + topping.getName() + ".\n";
 			}
-			
+
 		}
+		// describes amount of toastiness wanted
 		if (criteriaToast.getToastiness() < 2) {
-			criteriaString  = criteriaString + "And not toasted.";
+			criteriaString = criteriaString + "And not toasted.";
 		} else if (criteriaToast.getToastiness() < 4) {
-			criteriaString  = criteriaString + "And somewhat toasted.";
+			criteriaString = criteriaString + "And somewhat toasted.";
 		} else {
-			criteriaString  = criteriaString + "And almost burnt.";
+			criteriaString = criteriaString + "And almost burnt.";
 		}
 		return criteriaString;
 	}
 
 	/**
-	 * Generate and return the image of the toast? (Currently returns null)
-	 * TODO: Finish dealing with this function
+	 * Generates and returns the image of the criteria toast, without toppings
 	 * 
-	 * @return
+	 * @return Criteria toast image without toppings
 	 */
 	Image getToastImage() {
 		int toastiness = criteriaToast.getToastiness();
-		Image toast = new Image(getClass().getResource("images/toastlevel"+ toastiness +".png").toExternalForm());
+		Image toast = new Image(getClass().getResource("images/toastlevel" + toastiness + ".png").toExternalForm());
 		return toast;
 	}
 
@@ -129,39 +131,38 @@ public class Tory {
 	 * criteria Toast object
 	 * 
 	 * @param userToast
-	 * @return
+	 *            The user's toast, to be judged
+	 * @return Tory's opinion of the user's toast, in a string
 	 */
 	String judgeToast(Toast userToast) {
-		// takes in the user's toast and judges it based on Tory's current
-		// criteria (implement later)
-		// Could judge differently based on difficulty of level
-
 		int judgeValue = 0;
 		Map<Topping, Integer> userToppingsMap = userToast.getToppings();
 		Map<Topping, Integer> criteriaToppingsMap = criteriaToast.getToppings();
+
 		// loops through the possible toppings for this round
 		for (Topping topping : toppingList) {
 
 			int userToppingNumber = 0;
-			// finds the number of this topping the user put into their toast,
+			// finds the number of current topping the user put into their
+			// toast,
 			// sets to 0 if not in the map
 			if (userToppingsMap.get(topping) != null) {
 				userToppingNumber = userToppingsMap.get(topping);
 			}
-			// finds the number of this topping in the criteria toast
+			// finds the number of current topping in the criteria toast,
 			// sets to 0 if not in the map
 			int criteriaToppingNumber = 0;
 			if (criteriaToppingsMap.get(topping) != null) {
 				criteriaToppingNumber = criteriaToppingsMap.get(topping);
 			}
-			// finds the difference between user and criteria toppings
-			// adds difference to the judgeValue
+
+			// finds the difference in number of toppings between user and
+			// criteria toasts, adds difference to the judgeValue
 			judgeValue = judgeValue + Math.abs(userToppingNumber - criteriaToppingNumber);
 		}
 
-		// finds difference in toastiness between user and criteria toast
+		// finds difference in toastiness between user and criteria toast,
 		// adds difference to the judgeValue
-
 		judgeValue = judgeValue + Math.abs(userToast.getToastiness() - criteriaToast.getToastiness());
 
 		// Returns Tory's opinion of the toast based on the judgeValue
@@ -175,7 +176,7 @@ public class Tory {
 		} else {
 			toryOpinion = "Horrible!";
 		}
-		//System.out.println(toryOpinion);
+		// calls the view to open Tory's judging page
 		view.openJudgeEvent(toryOpinion);
 		return toryOpinion;
 	}

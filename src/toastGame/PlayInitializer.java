@@ -1,9 +1,14 @@
-/** 
-* ViewInitializer.java 
-* Authors: Yuping Huang, Tegan Wilson, and Carolyn Ryan 
-* Class structure taken from https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to 
-* Date: Feb 28, 2016
-* ViewInitializer class helps set up the GUI (View) */
+/**
+ * ViewInitializer.java
+ * 
+ * @author Tegan Wilson, Yupung Huang, & Carolyn Ryan
+ * Date: 2/28/16
+ * 
+ * Class structure taken from https://blogs.oracle.com/jmxetc/entry/connecting_scenebuilder_edited_fxml_to 
+ * ViewInitializer sets up GUI elements for play page
+ * 
+ */
+
 package toastGame;
 
 import java.io.IOException;
@@ -33,9 +38,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-public class ViewInitializer implements Initializable {
+public class PlayInitializer implements Initializable {
+	//Constant Variables
 	private static final double SCALE_FACTOR = 4.6;
-	// Constant variables
 	private static final int BUTTON_Y_MULTIPLIER = 56;
 	private static final int BUTTON_X_LAYOUT = 25;
 	private static final int BUTTONSIZE_Y = 45;
@@ -66,16 +71,6 @@ public class ViewInitializer implements Initializable {
 	// Instance Variables
 	private GameController myController;
 	private Button[] buttonList;
-	private MainInitializer parent;
-
-	/**
-	 * Sets up observer relationship with GameController. Uses GameController to
-	 * define button list.
-	 */
-	protected void setUp() {
-		myController = new GameController(this);
-		buttonList = myController.createButtons(6);
-	}
 
 	/**
 	 * Called as a constructor, initializes all GUI elements of the java GUI.
@@ -88,7 +83,8 @@ public class ViewInitializer implements Initializable {
 	 */
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {
-		this.setUp();
+		myController = new GameController(this);
+		buttonList = myController.createButtons(6);
 		for (int i = 0; i < buttonList.length; i++) {
 			buttonList[i].setPrefSize(BUTTONSIZE_X, BUTTONSIZE_Y);
 			buttonList[i].setLayoutX(BUTTON_X_LAYOUT);
@@ -298,16 +294,13 @@ public class ViewInitializer implements Initializable {
 		this.initialize(null, null);
 	}
 
-	public void setParentController(MainInitializer mainInit) {
-		this.parent = mainInit;
-	}
-
 	/**
 	 * Called by the Tory class (the judge) to display the judge result
+	 * 
 	 * @param toryOpinion
 	 */
 	void openJudgeEvent(String toryOpinion) {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ToastForToryJudging.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ToastForTorySubmit.fxml"));
 		Parent root;
 		try {
 			root = (Parent) fxmlLoader.load();
@@ -317,14 +310,14 @@ public class ViewInitializer implements Initializable {
 			judgeStage.setScene(scene);
 			judgeStage.show();
 
-			JudgingInitializer judgingInitializer = (JudgingInitializer) fxmlLoader.getController();
-			judgingInitializer.setParentController(this);
+			SubmitInitializer judgingInitializer = (SubmitInitializer) fxmlLoader.getController();
+			judgingInitializer.setParentInitializer(this);
 			judgingInitializer.setText(toryOpinion);
 			judgingInitializer.setThisStage(judgeStage);
-
+			
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.out.println("AH" + toryOpinion);
+			System.out.println("Error in finding fxml file.  \n Tory thinks" + toryOpinion);
 		}
 	}
 }
