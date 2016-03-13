@@ -24,13 +24,9 @@
  .button{
  	-fx-background-color: #5B4118;
  	-fx-text-fill: white;
+ 	-fx-font: 13 chalkduster;
  }
  
- .button:text {
- 	-fx-font: 13 chalkduster;
- 	-fx-text-fill: WHITE;
- }
-
  .button:hover{
 	-fx-background-color: #9ACD32; 
  }
