@@ -11,8 +11,8 @@ package toastGame;
 import javafx.scene.control.Button;
 
 public class GameController {
-	// Topping instance variables
-	private Topping[] toppingList; // toppings used for this round
+	// toppings Corresponding to the buttons
+	private Topping[] toppingList; 
 
 	// maintains references to the view and models
 	private GameModel gameModel;
@@ -23,7 +23,7 @@ public class GameController {
 	GameController(PlayInitializer view) {
 		// Creates the instance models
 		this.gameModel = new GameModel(view);
-		gameModel.createPossibleHeadings();
+		gameModel.createPossibleToppings();
 	}
 
 	/**
@@ -33,7 +33,7 @@ public class GameController {
 	 *            Number of topping buttons desired in the given round
 	 * @return List of all the buttons created.
 	 */
-	public Button[] createButtons() {
+	Button[] createButtons() {
 		this.toppingList = gameModel.generateToppingsAndCriteria();
 		return gameModel.createButtons();
 	}

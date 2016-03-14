@@ -1,5 +1,5 @@
 /**
- * ViewInitializer.java
+ * PlayInitializer.java
  * 
  * @author Tegan Wilson, Yupung Huang, & Carolyn Ryan
  * Date: 2/28/16
@@ -37,11 +37,12 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class PlayInitializer implements Initializable {
-	// Constant Variables
+	// Constant Variables used to ad-hocly adjust overlaid image positions and sizes
 	private static final int CRITERIA_TOPPING_HEIGHT = 25;
 	private static final int CRITERIA_TOPPING_PLACEMENT = 20;
 	private static final int RANDOM_CRITERIA_TOPPING_PLACEMENT = 80;
 	private static final double SCALE_FACTOR = 4.6;
+	// constants used for button creation and size adjustment(ad-hoc)
 	private static final int BUTTON_Y_MULTIPLIER = 56;
 	private static final int BUTTON_X_LAYOUT = 25;
 	private static final int BUTTONSIZE_Y = 45;
@@ -205,27 +206,12 @@ public class PlayInitializer implements Initializable {
 	}
 
 	/**
-	 * Loops through getToppings map to add toppings to the criteria toast pane
-	 * 
-	 * @param toast
-	 *            Criteria toast
-	 */
-	void addCriteriaToppings(Toast toast) {
-		Map<Topping, Integer> map = toast.getToppings();
-		for (Map.Entry<Topping, Integer> entry : map.entrySet()) {
-			for (int i = 0; i < entry.getValue(); i++) {
-				putToppingCriteria(entry.getKey().getImage());
-			}
-		}
-	}
-
-	/**
 	 * Takes an image and adds it to the criteria toast
 	 * 
 	 * @param toppingImage
 	 *            Image corresponding to topping to be added
 	 */
-	private void putToppingCriteria(Image toppingImage) {
+	void putToppingCriteria(Image toppingImage) {
 		ImageView imageview = new ImageView(toppingImage);
 
 		Random r = new Random();

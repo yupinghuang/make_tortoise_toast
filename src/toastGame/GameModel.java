@@ -8,7 +8,8 @@ import javafx.scene.image.Image;
 
 /**
  * The model that keeps track of the current toast displayed on the view. Should
- * be observed by the view.
+ * be observed by the view (push, the GameModel simply calls aproriate methods on
+ * view to update the display).
  * 
  * @author Yuping Huang, Tegan Wilson, and Carolyn Ryan
  *
@@ -19,8 +20,9 @@ class GameModel {
 	// instance variables for user's toast and view
 	private Toast toast;
 	private PlayInitializer view;
+	// the judge for the toast
 	private Tory toryModel;
-	ArrayList<Topping> possibleToppings;
+	private ArrayList<Topping> possibleToppings;
 	private Topping[] toppingList; // toppings used for this round
 
 
@@ -92,7 +94,7 @@ class GameModel {
 	 * Method that creates possible toppings array for game play
 	 * @return
 	 */
-	public ArrayList<Topping> createPossibleHeadings() {
+	public ArrayList<Topping> createPossibleToppings() {
 		possibleToppings = new ArrayList<Topping>();
 		possibleToppings.add(0, new Topping("Honey", "images/honey.png"));
 		possibleToppings.add(1, new Topping("Butter", "images/butter.png"));

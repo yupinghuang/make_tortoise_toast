@@ -27,12 +27,12 @@ class Topping {
 	}
 	
 	// Returns the name of topping in string form
-	public String getName() {
+	String getName() {
 		return name;
 	}
 
 	// Returns the image of topping
-	public Image getImage() {
+	Image getImage() {
 		return image;
 	}
 	

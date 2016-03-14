@@ -34,7 +34,7 @@ public class Tory {
 	 *            The list of possible toppings the user can select
 	 * @return The criteria Toast object
 	 */
-	public void createCriteria(Topping[] toppingList) {
+	void createCriteria(Topping[] toppingList) {
 
 		this.criteriaToast.clear();
 		this.toppingList = toppingList;
@@ -57,7 +57,12 @@ public class Tory {
 		// creates the criteria toast image in the upper left corner
 		view.addCriteria(getCriteriaString());
 		view.addCriteriaToast(this.getToastImage());
-		view.addCriteriaToppings(criteriaToast);
+		// Loop through the toppings on the toast to add to the view
+		for (Map.Entry<Topping, Integer> entry : getCriteria().getToppings().entrySet()) {
+			for (int i = 0; i < entry.getValue(); i++) {
+				view.putToppingCriteria(entry.getKey().getImage());
+			}
+		}
 	}
 
 	/**
