@@ -16,7 +16,7 @@ Known bugs:
 -Submit button sometimes stalls or doesn't register clicks immediately
 -Chalkduster font used for buttons is not available on all platforms (it's available on MacOS)
 -If the player closes the judging result window, they will be able to play the last game again,
-    which is note supposed to happen
+    which is not supposed to happen
 
 Improvements Possible in further versions:
 -Allow user to drag and drop toppings on toast to their liking
